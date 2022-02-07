@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="WORLD_GEN" name="11_CORE_WORLD_GEN">
+		<event_param chain_event="LAST_STAND_SECTOR"/>
+		<event_param chain_event="LAST_STAND_POS"/>
+		<event_param chain_event="DEFAULT_VD_TARGETS"/>
+		<event_param chain_event="DEF_PLAT_NUM_INC"/>
+		<event_param chain_event="TUNNING_PRICE"/>
+		<event_param chain_event="GATE_OPERATOR_PRICE"/>
+		<event_param chain_event="GATE_BUILD_PRICE"/>
+		<event_param chain_event="GATE_ACTIVATION_PRICE"/>
+		<event_param chain_event="GATE_INHIBITOR_PRICE"/>
+		<event_param chain_event="SINGU_WORKER_PRICE"/>
+		<event_param chain_event="SINGU_NAME"/>
+		<event_param chain_event="VOID_OWNER"/>
+		<event_param chain_event="VOID_INHIBITOR_NAME"/>
+		<event_param chain_event="VOID_CONS_NAME"/>
+		<event_param chain_event="VOID_CARRIER_POS"/>
+		<event_param chain_event="VOID_CONS_PICKUP_POS"/>
+		<event_param chain_event="VOID_CONS_PICKUP_POS1"/>
+		<event_param chain_event="VOID_CONS_PICKUP_POS2"/>
+		<event_param chain_event="VOID_MINE_NAME"/>
+		<event_param chain_event="VOID_BUILD_NAME"/>
+		<event_param chain_event="VOID_CARGO_NAME"/>
+		<event_param chain_event="VOID_CARRIER_NAME"/>
+		<event_param chain_event="VOID_DEF_PLAT_NAME"/>
+		<event_param chain_event="VOID_DEF_PLAT_PRICE"/>
+		<event_param chain_event="VOID_RESUPLY_SIZE"/>
+		<event_param chain_event="GRAULIDE_CAPACITOR_PRICE"/>
+		<event_param chain_event="SCRAP_FOR_SMALL_SHACK_UPGRADE"/>
+		<event_param chain_event="SCRAP_FOR_BIG_SHACK_UPGRADE"/>
+		<event_param chain_event="DUCK_MANAGER_PRICE"/>
+		<event_param chain_event="RARE_WHALE_NAME"/>
+		<event_param chain_event="VD_FORCE_NUM_INC"/>
+		<event_param chain_event="VD_BLD_CARGO_NUM_INC"/>
+		<event_param chain_event="WHALE_OWNER_NAME"/>
+		<event_param chain_event="INC_MAX_VD_CONS"/>
+		<event_param chain_event="VD_CARGO_SIZE"/>
+		<event_param chain_event="VD_SECTOR_BASE_COORDS_NOT_FOUND"/>
+		<event_param chain_event="SW_JUMP_MAX"/>
+		<event_param chain_event="W_HORN_PRICE"/>
+		<event_param chain_event="W_EYE_PRICE"/>
+		<event_param chain_event="SW_HEART_PRICE"/>
+		<event_param chain_event="SW_SIGHTING_INFO_PRICE"/>
+		<event_param chain_event="SPAWN_SW"/>
+		<event_param chain_event="SINGU_SURGE_FREQUENCY"/>
+		<event_param chain_event="MAX_SLAVER_STOCK"/>
+		<event_param chain_event="MAX_SEA_STOCK"/>
+		<event_param chain_event="SEA_STOCK_PRICE"/>
+		<event_param chain_event="SLAVER_STOCK_PRICE"/>
+		<event_param chain_event="HANDGUN_PRICES"/>
+	</event>
+	
+	<event type="SERVER_VARIABLE" name="START_NEW_THREAT">
+		<event_param chain_event="SPAWN_VDS_SELECTOR"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS"/>
+		<event_param chain_event="CLEAR_SPAWN_POINTS"/>
+		<event_param chain_event="SPAWN_SINGULARITY"/>
+		<event_param var_name="NEW_THREAT"/>
+		<event_param var_value="1"/>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="SINGU_SURGE_FREQUENCY">
+		<event_param var_name="SINGU_SURGE_FREQUENCY"/>
+		<event_param var_value="50"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="MAX_SEA_STOCK">
+		<event_param var_name="MAX_SEA_STOCK"/>
+		<event_param var_value="2"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SEA_STOCK_PRICE">
+		<event_param var_name="SEA_STOCK_PRICE"/>
+		<event_param var_value="299"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="MAX_SLAVER_STOCK">
+		<event_param var_name="MAX_SLAVER_STOCK"/>
+		<event_param var_value="3"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SLAVER_STOCK_PRICE">
+		<event_param var_name="SLAVER_STOCK_PRICE"/>
+		<event_param var_value="320"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="LAST_STAND_SECTOR">
+		<event_param var_name="LAST_STAND_SECTOR"/>
+		<event_param var_value="99:99"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="LAST_STAND_POS">
+		<event_param var_name="LAST_STAND_POS"/>
+		<event_param var_value="7200:6000"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="W_HORN_PRICE">
+		<event_param var_name="W_HORN_PRICE"/>
+		<event_param var_value="200"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="W_EYE_PRICE">
+		<event_param var_name="W_EYE_PRICE"/>
+		<event_param var_value="200"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SW_HEART_PRICE">
+		<event_param var_name="SW_HEART_PRICE"/>
+		<event_param var_value="3000"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SW_SIGHTING_INFO_PRICE">
+		<event_param var_name="SW_SIGHTING_INFO_PRICE"/>
+		<event_param var_value="1000"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SW_JUMP_MAX">
+		<event_param var_name="SW_JUMP_MAX"/>
+		<event_param var_value="10"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SINGU_NAME">
+		<event_param var_name="SINGU_NAME"/>
+		<event_param var_value="Singularity station"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SINGU_WORKER_PRICE">
+		<event_param var_name="SINGU_WORKER_PRICE"/>
+		<event_param var_value="500"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="RARE_WHALE_NAME">
+		<event_param var_name="RARE_WHALE_NAME"/>
+		<event_param var_value="Star Whale"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="WHALE_OWNER_NAME">
+		<event_param var_name="WHALE_OWNER_NAME"/>
+		<event_param var_value="Whale_Owner"/>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="SCRAP_FOR_SMALL_SHACK_UPGRADE">
+		<event_param var_name="SCRAP_FOR_SMALL_SHACK_UPGRADE"/>
+		<event_param var_value="800"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="SCRAP_FOR_BIG_SHACK_UPGRADE">
+		<event_param var_name="SCRAP_FOR_BIG_SHACK_UPGRADE"/>
+		<event_param var_value="1000"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="DUCK_MANAGER_PRICE">
+		<event_param var_name="DUCK_MANAGER_PRICE"/>
+		<event_param var_value="200"/>
+	</event> 
+
+	<event type="SERVER_VARIABLE" name="GRAULIDE_CAPACITOR_PRICE">
+		<event_param var_name="GRAULIDE_CAPACITOR_PRICE"/>
+		<event_param var_value="500"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="VOID_DEF_PLAT_PRICE" var_name="VOID_DEF_PLAT_PRICE" var_value="50"/>
+	<event type="SERVER_VARIABLE" name="VOID_RESUPLY_SIZE" var_name="VOID_RESUPLY_SIZE" var_value="200"/>
+	<event type="SERVER_VARIABLE" name="VD_CARGO_SIZE">
+		<event_param var_name="VD_CARGO_SIZE"/>
+		<event_param var_value="300"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="INC_MAX_VD_CONS">
+		<event_param var_name="MAX_VD_CONS"/>
+		<event_param var_value="++"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="VOID_OWNER">
+		<event_param var_name="VOID_OWNER"/>
+		<event_param var_value="VOID_DWELLERS"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="VOID_INHIBITOR_NAME">
+		<event_param var_name="VOID_INHIBITOR_NAME"/>
+		<event_param var_value="Inhibitor"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="VOID_CONS_NAME">
+		<event_param var_name="VOID_CONS_NAME"/>
+		<event_param var_value="Void Dweller Expansion Ship"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="VOID_CONS_PICKUP_POS">
+		<event_param var_name="VOID_CONS_PICKUP_POS"/>
+		<event_param var_value="5980:4980"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="VOID_CONS_PICKUP_POS1">
+		<event_param var_name="VOID_CONS_PICKUP_POS1"/>
+		<event_param var_value="5730:4640"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="VOID_CONS_PICKUP_POS2">
+		<event_param var_name="VOID_CONS_PICKUP_POS2"/>
+		<event_param var_value="6230:5320"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="VOID_CARRIER_POS">
+		<event_param var_name="VOID_CARRIER_POS"/>
+		<event_param var_value="5980:5980"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="VOID_CARRIER_NAME">
+		<event_param var_name="VOID_CARRIER_NAME"/>
+		<event_param var_value="Void Dweller Main Carrier"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="VOID_DEF_PLAT_NAME">
+		<event_param var_name="VOID_DEF_PLAT_NAME"/>
+		<event_param var_value="Void Dweller Defense platform"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="VOID_MINE_NAME">
+		<event_param var_name="VOID_MINE_NAME"/>
+		<event_param var_value="Void Dweller Mining Platform"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="VOID_BUILD_NAME">
+		<event_param var_name="VOID_BUILD_NAME"/>
+		<event_param var_value="Void Dweller Shipyard"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="VOID_CARGO_NAME">
+		<event_param var_name="VOID_CARGO_NAME"/>
+		<event_param var_value="Void Dweller Cargo Ship"/>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="TUNNING_PRICE">
+		<event_param var_name="TUNNING_PRICE"/>
+		<event_param var_value="150"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="GATE_INHIBITOR_PRICE">
+		<event_param var_name="GATE_INHIBITOR_PRICE"/>
+		<event_param var_value="1000"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="GATE_OPERATOR_PRICE">
+		<event_param var_name="GATE_OPERATOR_PRICE"/>
+		<event_param var_value="300"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="GATE_BUILD_PRICE">
+		<event_param var_name="GATE_BUILD_PRICE"/>
+		<event_param var_value="300"/>
+	</event> 
+	<event type="SERVER_VARIABLE" name="GATE_ACTIVATION_PRICE">
+		<event_param var_name="GATE_ACTIVATION_PRICE"/>
+		<event_param var_value="50"/>
+	</event> 
+		
+	<event type="SERVER_VARIABLE" name="ADD_VD_SEC" var_name="VD_SEC" value_expr="1" var_value="('VAR(VD_SEC)'.indexOf(':')===-1 ? '' : 'VAR(VD_SEC),')+'[SECTOR]'"/>
+	<event type="GROUP" name="REMOVE_VD_SEC">
+		<event_param chain_event="REMOVE_VD_SEC1"/>
+		<event_param chain_event="REMOVE_VD_SEC2"/>
+		<event_param chain_event="REMOVE_VD_SEC3"/>
+		<event_param chain_event="REMOVE_VD_SEC4"/>
+		<event_param chain_event="REMOVE_VD_SEC5"/>
+		<event_param chain_event="REMOVE_VD_SEC6"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_SEC1" var_name="REM_VD_SEC_I" value_expr="1">
+		<event_param var_value="'VAR(VD_SEC)'.split(',').indexOf('[SECTOR]').toFixed(0)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_SEC2" var_name="REM_VD_SEC_L" value_expr="1">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_SEC_I" var_value="-1"/>
+		<event_param var_value="VAR(REM_VD_SEC_I)===0 ? '' : 'VAR(VD_SEC)'.split(',').slice(0,VAR(REM_VD_SEC_I)).join(',')"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_SEC3" var_name="REM_VD_SEC_R" value_expr="1">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_SEC_R" var_value="-1"/>
+		<event_param var_value="VAR(REM_VD_SEC_I)===('VAR(VD_SEC)'.split(',').length-1) ? '' : 'VAR(VD_SEC)'.split(',').slice(VAR(REM_VD_SEC_I)+1).join(',')"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_SEC4" var_name="VD_SEC">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_SEC_I" var_value="-1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="REM_VD_SEC_L" any_value="1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="REM_VD_SEC_R" any_value="1"/>
+		<event_param var_value="VAR(REM_VD_SEC_L),VAR(REM_VD_SEC_R)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_SEC5" var_name="VD_SEC">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_SEC_I" var_value="-1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="REM_VD_SEC_L" any_value="1"/>
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_SEC_R" any_value="1"/>
+		<event_param var_value="VAR(REM_VD_SEC_L)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_SEC6" var_name="VD_SEC">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_SEC_I" var_value="-1"/>
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_SEC_L" any_value="1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="REM_VD_SEC_R" any_value="1"/>
+		<event_param var_value="VAR(REM_VD_SEC_R)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SET_TEMP_VD_SEC" var_name="TEMP_VD_SEC" value_expr="1" var_value="('VAR(VD_SEC)'.indexOf(':')===-1 ? '' : ('VAR(VD_SEC)'.split(',').length===1 ? 'VAR(VD_SEC)' : 'VAR(VD_SEC)'.split(',')[Math.floor(Math.random()*'VAR(VD_SEC)'.split(',').length)]))"/>
+
+	<event type="SERVER_VARIABLE" name="ADD_VD_BLD" var_name="VD_BLD" value_expr="1" var_value="('VAR(VD_BLD)'.indexOf(':')===-1 ? '' : 'VAR(VD_BLD),')+'[SECTOR]'"/>
+	<event type="GROUP" name="REMOVE_VD_BLD">
+		<event_param chain_event="REMOVE_VD_BLD1"/>
+		<event_param chain_event="REMOVE_VD_BLD2"/>
+		<event_param chain_event="REMOVE_VD_BLD3"/>
+		<event_param chain_event="REMOVE_VD_BLD4"/>
+		<event_param chain_event="REMOVE_VD_BLD5"/>
+		<event_param chain_event="REMOVE_VD_BLD6"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_BLD1" var_name="REM_VD_BLD_I" value_expr="1">
+		<event_param var_value="'VAR(VD_BLD)'.split(',').indexOf('[SECTOR]').toFixed(0)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_BLD2" var_name="REM_VD_BLD_L" value_expr="1">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_BLD_I" var_value="-1"/>
+		<event_param var_value="VAR(REM_VD_BLD_I)===0 ? '' : 'VAR(VD_BLD)'.split(',').slice(0,VAR(REM_VD_BLD_I)).join(',')"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_BLD3" var_name="REM_VD_BLD_R" value_expr="1">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_BLD_R" var_value="-1"/>
+		<event_param var_value="VAR(REM_VD_BLD_I)===('VAR(VD_BLD)'.split(',').length-1) ? '' : 'VAR(VD_BLD)'.split(',').slice(VAR(REM_VD_BLD_I)+1).join(',')"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_BLD4" var_name="VD_BLD">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_BLD_I" var_value="-1"/>.
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="REM_VD_BLD_L" any_value="1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="REM_VD_BLD_R" any_value="1"/>
+		<event_param var_value="VAR(REM_VD_BLD_L),VAR(REM_VD_BLD_R)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_BLD5" var_name="VD_BLD">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_BLD_I" var_value="-1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="REM_VD_BLD_L" any_value="1"/>
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_BLD_R" any_value="1"/>
+		<event_param var_value="VAR(REM_VD_BLD_L)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_BLD6" var_name="VD_BLD">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_BLD_I" var_value="-1"/>
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_BLD_L" any_value="1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="REM_VD_BLD_R" any_value="1"/>
+		<event_param var_value="VAR(REM_VD_BLD_R)"/>
+	</event>
+	<event type="GROUP" name="LOOP_VD_BLD_TARGET">
+		<event_param chain_event="INC_VD_BLD_TARGET_IND"/>
+		<event_param chain_event="SET_NEXT_VD_BLD"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="INC_VD_BLD_TARGET_IND" var_name="VD_BLD_TARGET_IND" var_value="++">
+		<event_param chain_event="COUNT_VD_BLD_SIZE"/>
+		<event_param chain_event="RESET_VD_BLD_TARGET_IND"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="COUNT_VD_BLD_SIZE" var_name="VD_BLD_SIZE" value_expr="1" var_value="(('VAR(VD_BLD)'.split(',').length)-1).toFixed(0)"/>
+	<event type="SERVER_VARIABLE" name="RESET_VD_BLD_TARGET_IND" var_name="VD_BLD_TARGET_IND" var_value="0">
+		<condition type="SERVER_VARIABLE_BIGGER" var_name="VD_BLD_TARGET_IND" var_value="VAR(VD_BLD_SIZE)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SET_NEXT_VD_BLD" var_name="TEMP_VD_BLD_TARGET" value_expr="1" var_value="'VAR(VD_BLD)'.split(',')[VAR(VD_BLD_TARGET_IND)]"/>
+
+	<event type="SERVER_VARIABLE" name="DEFAULT_VD_TARGETS" var_name="VD_TARGETS" var_value="VAR(STARTING_SECTOR),VAR(LAST_STAND_SECTOR)"/>
+	<event type="SERVER_VARIABLE" name="ADD_VD_TARGET" var_name="VD_TARGETS" value_expr="1" var_value="('VAR(VD_TARGETS)'.indexOf(':')===-1 ? '' : 'VAR(VD_TARGETS),')+'[SECTOR]'"/>
+	<event type="GROUP" name="REMOVE_VD_TARGET">
+		<event_param chain_event="REMOVE_VD_TARGET1"/>
+		<event_param chain_event="REMOVE_VD_TARGET2"/>
+		<event_param chain_event="REMOVE_VD_TARGET3"/>
+		<event_param chain_event="REMOVE_VD_TARGET4"/>
+		<event_param chain_event="REMOVE_VD_TARGET5"/>
+		<event_param chain_event="REMOVE_VD_TARGET6"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_TARGET1" var_name="REM_VD_TARGETS_I" value_expr="1">
+		<event_param var_value="'VAR(VD_TARGETS)'.split(',').indexOf('[SECTOR]').toFixed(0)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_TARGET2" var_name="REM_VD_TARGETS_L" value_expr="1">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_TARGETS_I" var_value="-1"/>
+		<event_param var_value="VAR(REM_VD_TARGETS_I)===0 ? '' : 'VAR(VD_TARGETS)'.split(',').slice(0,VAR(REM_VD_TARGETS_I)).join(',')"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_TARGET3" var_name="REM_VD_TARGETS_R" value_expr="1">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_TARGETS_R" var_value="-1"/>
+		<event_param var_value="VAR(REM_VD_TARGETS_I)===('VAR(VD_TARGETS)'.split(',').length-1) ? '' : 'VAR(VD_TARGETS)'.split(',').slice(VAR(REM_VD_TARGETS_I)+1).join(',')"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_TARGET4" var_name="VD_TARGETS">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_TARGETS_I" var_value="-1"/>.
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="REM_VD_TARGETS_L" any_value="1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="REM_VD_TARGETS_R" any_value="1"/>
+		<event_param var_value="VAR(REM_VD_TARGETS_L),VAR(REM_VD_TARGETS_R)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_TARGET5" var_name="VD_TARGETS">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_TARGETS_I" var_value="-1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="REM_VD_TARGETS_L" any_value="1"/>
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_TARGETS_R" any_value="1"/>
+		<event_param var_value="VAR(REM_VD_TARGETS_L)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_VD_TARGET6" var_name="VD_TARGETS">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_TARGETS_I" var_value="-1"/>
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="REM_VD_TARGETS_L" any_value="1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="REM_VD_TARGETS_R" any_value="1"/>
+		<event_param var_value="VAR(REM_VD_TARGETS_R)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SET_TEMP_VD_TARGET" var_name="TEMP_VD_TARGET" value_expr="1" var_value="('VAR(VD_TARGETS)'.indexOf(':')===-1 ? 'VAR(LAST_STAND_SECTOR)' : ('VAR(VD_TARGETS)'.split(',').length===1 ? 'VAR(VD_TARGETS)' : 'VAR(VD_TARGETS)'.split(',')[Math.floor(Math.random()*'VAR(VD_TARGETS)'.split(',').length)]))"/>
+
+	<event type="MODIFY_SHIP" name="REMOVE_SAFEZONE">
+		<event_param remove_ship_ai_id="SAFEZONE_REMOVER"/>
+		<event_param safe_zone="0"/>
+	</event>
+
+</events>

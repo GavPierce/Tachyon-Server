@@ -1,0 +1,8 @@
+name=Acid gland
+image=agland
+range=1
+damage=150
+door_damage=60
+system_damage=200
+reload=60
+projectile=agland

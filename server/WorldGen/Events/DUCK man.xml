@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="SPAWN_NPC" name="SPAWN_DUCK_MANAGER">
+		<event_param for_ship_name="VAR([PLAYER_NAME]_input_ship_name)"/>
+		<spawn_npc>
+			<npc_param npc_remote_dialogue="DUCK_MANAGER"/>
+			<npc_param npc_dialogue="DUCK_MANAGER"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="D.U.C.K. Manager"/>
+			<npc_param npc_race="CYBORG"/>
+			<npc_param npc_home_system="MEDICAL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT" heal_at_percent="90" oxygen_at_percent="70"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="REACTOR:SHIELDS:SENSORS:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="30"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+
+	<event type="MODIFY_MOB" name="TAKE_SCRAP_FOR_DUCK_MANAGER">
+		<event_param take_scrap="VAR(DUCK_MANAGER_PRICE)"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="PLATFORM_EJECT_ALL">
+		<event_param for_ship_name="Defense Platform VAR([PLAYER_NAME]_input_ship_name)"/>
+		<event_param random_eject_direction="1"/>
+		<event_param eject_all_cargo="1"/>
+		<event_param eject_scrap="99999999"/>
+		<event_param eject_drones="99999999"/>
+		<event_param eject_missiles="99999999"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="INPUT_PLAYER_NAME">
+		<event_param var_name="[PLAYER_NAME]_input_player_name"/>
+		<event_param var_value="[INPUT]"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="PLATFORM_DISARM">
+		<event_param for_ship_name="Defense Platform VAR([PLAYER_NAME]_input_ship_name)"/>
+		<event_param uninstall_system_type="BEAM_WEAPONS"/>
+		<event_param uninstall_system_type="LASER_WEAPONS"/>
+		<event_param uninstall_system_type="MISSILE_WEAPONS"/>
+		<event_param random_eject_direction="1"/>
+		<event_param eject_system_type_from_cargo="BEAM_WEAPONS"/>
+		<event_param eject_system_type_from_cargo="LASER_WEAPONS"/>
+		<event_param eject_system_type_from_cargo="MISSILE_WEAPONS"/>
+		<event_param chain_events_to_modified="1"/>
+		<event_param chain_event="ADD_PLATFORM_WEAPONS_INSTALLER_AI"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="SET_NEW_SHIP_OWNER">
+		<event_param for_ship_name="Defense Platform VAR([PLAYER_NAME]_input_ship_name)"/>
+		<event_param set_owner="VAR([PLAYER_NAME]_input_player_name)"/>
+		<event_param remove_crew="[PLAYER_NAME]"/>
+	</event>
+	<event type="MODIFY_SHIP" name="PLATFORM_REMOVE_SENTRY_ALL">
+		<event_param for_owner="[PLAYER_NAME]"/>
+		<event_param for_race="HUMAN"/>
+		<event_param for_ship_class="PLATFORM"/>		
+		<event_param remove_ship_ai_id="SENTRY"/>
+	</event>
+	<event type="MODIFY_SHIP" name="PLATFORM_ADD_SENTRY_ALL">
+		<condition type="SHIP_AI_ABSENT" ai_type="SHIP_GUARD"/>
+		<event_param for_owner="[PLAYER_NAME]"/>
+		<event_param for_race="HUMAN"/>
+		<event_param for_ship_class="PLATFORM"/>
+		<event_param remove_ship_ai_id="SENTRY"/>
+		<ship_ai type="SENTRY" crewless="1" ignore_unowned="1" ai_id="SENTRY"/>
+	</event>
+	<event type="MODIFY_SHIP" name="PLATFORM_DISABLE_MINING">
+		<event_param for_ship_name="Defense Platform VAR([PLAYER_NAME]_input_ship_name)"/>
+		<event_param remove_ship_ai_id="MINER"/>
+		<event_param remove_ship_ai_id="LEVEL_LOADER"/>
+	</event>
+	<event type="MODIFY_SHIP" name="PLATFORM_ENABLE_MINING">
+		<event_param for_ship_name="Defense Platform VAR([PLAYER_NAME]_input_ship_name)"/>
+		<event_param remove_ship_ai_id="MINER"/>
+		<event_param remove_ship_ai_id="LEVEL_LOADER"/>
+		<ship_ai type="SHIP_CLASS_HUNTER" TARGET="ASTEROID" crewless="1" ai_id="MINER"/>
+		<ship_ai type="LEVEL_LOADER" ai_id="LEVEL_LOADER"/>
+	</event>
+	<event type="MODIFY_SHIP" name="PLATFORM_DISABLE_DEFENDER">
+		<event_param for_ship_name="Defense Platform VAR([PLAYER_NAME]_input_ship_name)"/>
+		<event_param remove_ship_ai_id="DEFENDER"/>
+	</event>
+	<event type="MODIFY_SHIP" name="PLATFORM_ENABLE_DEFENDER">
+		<event_param for_ship_name="Defense Platform VAR([PLAYER_NAME]_input_ship_name)"/>
+		<event_param remove_ship_ai_id="DEFENDER"/>
+		<ship_ai type="SHIP_GUARD" GNAME="VAR([SHIP_NAME] DEF)" crewless="1" ai_id="DEFENDER"/>
+		<event_param chain_event="PLATFORM_DISABLE_SENTRY"/>
+	</event>
+	<event type="MODIFY_SHIP" name="PLATFORM_DISABLE_SENTRY">
+		<event_param for_ship_name="Defense Platform VAR([PLAYER_NAME]_input_ship_name)"/>
+		<event_param remove_ship_ai_id="SENTRY"/>
+	</event>
+	<event type="MODIFY_SHIP" name="PLATFORM_ENABLE_SENTRY">
+		<event_param for_ship_name="Defense Platform VAR([PLAYER_NAME]_input_ship_name)"/>
+		<event_param remove_ship_ai_id="SENTRY"/>
+		<ship_ai type="SENTRY" crewless="1" ignore_unowned="1" ai_id="SENTRY"/>
+		<event_param chain_event="PLATFORM_DISABLE_DEFENDER"/>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="INPUT_SELECTED_PLATFORM_DEF">
+        <event_param var_name="Defense Platform VAR([PLAYER_NAME]_input_ship_name) DEF"/>
+        <event_param var_value="[INPUT]"/>
+    </event>
+
+</events>

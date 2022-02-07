@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialogues>
+    <dialogue name="SHACK_INSTRUCTOR" start="M1">
+        <message id="11" text="to complete the current construction stage.">
+            <reply id="1" next="12" text="[SKIP]..." />
+        </message>
+        <message id="12" text="Step 6 - keep bringing scrap to the construction site until it is finished.">
+            <reply id="1" next="13" text="[SKIP]..." />
+        </message>
+        <message id="13" text="Step 7 - enjoy your very own Space Habitat.">
+            <reply id="1" next="14" text="Nice." />
+        </message>
+        <message id="14" text="Oh, and BTW, every habitat is provided with an emergency escape pod storage.">
+            <reply id="1" text="Great, thanks." />
+        </message>
+        <message id="M1" text="Greetings, I am the Space Habitat Automated Construction Kit Instructor.">
+            <reply id="R1" next="1" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="1" text="Would you like to learn how to use a S.H.A.C.K?">
+            <reply id="1" text="No thanks, I already know." />
+            <reply id="2" next="2" text="Yes please."/>
+        </message>
+        <message id="2" text="Step 1 - acquire a S.H.A.C.K, preferably from our shop.">
+            <reply id="1" next="3" text="[SKIP]..."/>
+        </message>
+        <message id="3" text="Step 2 - mount it on your ship.">
+            <reply id="1" next="4" text="[SKIP]..."/>
+        </message>
+        <message id="4" text="Step 3 - find a Planet sector. Any planet will do.">
+            <reply id="1" next="5" text="[SKIP]..."/>
+        </message>
+        <message id="5" text="Step 4 - shoot from the installed S.H.A.C.K as from a weapon.">
+            <reply id="1" next="6" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="6" text="Wherever you aimed, there the constuction will start.">
+            <reply id="1" next="7" text="[SKIP]..." />
+        </message>
+        <message id="7" text="Note: Every S.H.A.C.K comes with a set of One Use Construction Helper bots.">
+            <reply id="1" next="8" text="[SKIP]NEW[AUTO]" />
+        </message>
+        <message id="8" text="Every S.H.A.C.K has 3 construction stages. With 3rd stage being finished.">
+            <reply id="1" next="9" text="[SKIP]..." />
+        </message>
+        <message id="9" text="Step 5 - talk with the Foreman drone that is present on your build site.">
+            <reply id="1" next="10" text="[SKIP]NEW[AUTO]" />
+        </message>
+        <message id="10" text="It can tell you how much scrap is still needed for the O.U.C.H bots">
+            <reply id="1" next="11" text="[SKIP]NEW[AUTO]" />
+        </message>
+    </dialogue>
+    <dialogue name="DUCK_INSTRUCTOR" start="M1">
+        <message id="D3" text="Very well, it costs VAR(DUCK_MANAGER_PRICE) scraps.">
+            <reply id="R1" text="No, thanks."/>
+            <reply id="R2" text="I don't have that much on me right now.">
+                <condition type="MOB_SCRAP_ABSENT">
+                    <condition_param target_player="1"/>
+                    <condition_param qty="VAR(DUCK_MANAGER_PRICE)"/>
+                </condition>
+			</reply>
+            <reply id="R3" text="OK" next="D7">
+                <condition type="MOB_SCRAP_PRESENT">
+                    <condition_param target_player="1"/>
+                    <condition_param qty="VAR(DUCK_MANAGER_PRICE)"/>
+                </condition>
+			</reply>
+        </message>
+        <message id="D7" text="Please, input your ship's name.">
+            <reply id="R4" text="[INPUT](Input ship name)" regex="^[a-zA-Z0-9 -']+$" next="D4"/>
+        </message>
+        <message id="D4" text="One second please...">
+            <event id="INPUT_ShipName" target="PLAYER"/>
+            <reply id="R3" text="[SKIP]...[AUTO]" next="D8">
+				<condition type="MOB_SCRAP_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(DUCK_MANAGER_PRICE)"/>
+				</condition>
+                <condition type="SECTOR_SHIPS_PRESENT">
+                    <condition_param target_player="1"/>
+                    <condition_param ship_name="VAR([PLAYER_NAME]_input_ship_name)"/>
+                    <condition_param owner="[PLAYER_NAME]"/>
+                    <condition_param qty="1"/>
+                </condition>
+            </reply>
+            <reply id="R6" text="[SKIP]...[AUTO]" next="D2" any_condition="1">
+                <condition type="SECTOR_SHIPS_ABSENT">
+                    <condition_param target_player="1"/>
+                    <condition_param ship_name="VAR([PLAYER_NAME]_input_ship_name)"/>
+                    <condition_param owner="[PLAYER_NAME]"/>
+                    <condition_param qty="1"/>
+                </condition>
+				<condition type="MOB_SCRAP_ABSENT">
+                    <condition_param target_player="1"/>
+                    <condition_param qty="VAR(DUCK_MANAGER_PRICE)"/>
+                </condition>
+            </reply>
+        </message>
+        <message id="D2" text="Either there's no such ship, or you don't have the scrap.">
+			<reply id="R6" text="[SKIP]..." next="D7"/>
+		</message>
+        <message id="D8" text="Transaction is successful. D.U.C.K. Manager transfered to your ship.">
+            <reply id="1" text="Thanks."/>
+            <event id="TAKE_SCRAP_FOR_DUCK_MANAGER" target="PLAYER"/>
+			<event id="SPAWN_DUCK_MANAGER" target="PLAYER"/>
+        </message>
+
+        <message id="11" text="then just eject it into the platform, and it will auto-install it.">
+            <reply id="1" next="12" text="[SKIP]..." />
+        </message>
+        <message id="12" text="Now you have a platform that will shoot any ship that does not belong to you.">
+            <reply id="1" next="13" text="Seems simple enough." />
+        </message>
+        <message id="13" text="You might also want to consider getting a D.U.C.K. Manager drone.">
+            <reply id="1" next="14" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="14" text="With it's help you can temporary disable your platforms and do many other things.">
+            <reply id="1" text="Great, thanks." />
+        </message>
+        <message id="M1" text="Greetings, I am the Defense Unit Construction Kit instructor.">
+            <reply id="R1" next="1" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="1" text="Would you like to learn how to use a D.U.C.K or purchase a D.U.C.K Manager?">
+            <reply id="1" text="Nothing right now, thanks" />
+            <reply id="2" next="2" text="Please tell me how to use a D.U.C.K." />
+            <reply id="3" next="D3" text="I would like to buy a D.U.C.K Manager." />
+        </message>
+        <message id="2" text="Step 1 - acquire a D.U.C.K, preferably from our shop.">
+            <reply id="1" next="3" text="[SKIP]..." />
+        </message>
+        <message id="3" text="Step 2 - mount it on your ship.">
+            <reply id="1" next="5" text="[SKIP]..." />
+        </message>
+        <message id="5" text="Step 3 - shoot from the installed D.U.C.K as from a weapon.">
+            <reply id="1" next="6" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="6" text="Wherever you aimed, there the Defense platform will be constructed.">
+            <reply id="1" next="7" text="[SKIP]..." />
+        </message>
+        <message id="7" text="Every platform comes with it's own set of reactors. ">
+            <reply id="1" next="8" text="[SKIP]NEW[AUTO]" />
+        </message>
+        <message id="8" text="But you will need to provide it with a weapon.">
+            <reply id="1" next="9" text="[SKIP]..." />
+        </message>
+        <message id="9" text="Step 4 - choose a weapon that you want to install on the platform,">
+            <reply id="1" next="11" text="[SKIP]NEW[AUTO]" />
+        </message>
+    </dialogue>
+    <dialogue name="SMALL_SHACK_FOREMAN" start="M1">
+        <message id="M1" text="You have [CURRENT_SHIP_SCRAP] scrap. You need VAR(SCRAP_FOR_SMALL_SHACK_UPGRADE) scrap.">
+            <reply id="R1" text="Thanks." />
+        </message>
+    </dialogue>
+    <dialogue name="BIG_SHACK_FOREMAN" start="M1">
+        <message id="M1" text="You have [CURRENT_SHIP_SCRAP] scrap. You need VAR(SCRAP_FOR_BIG_SHACK_UPGRADE) scrap.">
+            <reply id="R1" text="Thanks." />
+        </message>
+    </dialogue>
+</dialogues>

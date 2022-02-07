@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialogues>
+    <dialogue name="WHALE_TRADER" start="S0">
+        <message id="S0" text="[ACTION]The person in front of you has that specific eye glow that you can only get from being near dead">
+            <reply id="1" next="M0" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="M0" text="[ACTION]space whales for a long period of time.">
+            <reply id="1" next="M1" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="M1" text="Hi. Do you want to make some money?">
+            <reply id="1" next="E1" text="How exactly?">
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_ABSENT" var_name="EXPLAIN_WHALES_[PLAYER_NAME]"/>
+            </reply>
+            <reply id="2" text="Another time."/>
+            <reply id="3" next="SW1" text="Can you tell me the latest sector where the Star Whale was sighted?.">
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_PRESENT" var_name="EXPLAIN_WHALES_[PLAYER_NAME]"/>
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_PRESENT" var_name="SW_SIGHTING"/>
+            </reply>
+            <reply id="4" next="S1" text="Yeah, I've got some things to sell.">
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_PRESENT" var_name="EXPLAIN_WHALES_[PLAYER_NAME]"/>
+            </reply>
+        </message>
+        <message id="SW1" text="Yeah, but it's gonna cost you.">
+            <reply id="R1" text="How much?" next="SW2"/>
+        </message>
+        <message id="SW2" text="VAR(SW_SIGHTING_INFO_PRICE)">
+            <reply id="1" text="I don't have that much on me right now.">
+				<condition type="MOB_SCRAP_ABSENT" target_player="1" qty="VAR(SW_SIGHTING_INFO_PRICE)"/>
+            </reply>
+            <reply id="2" text="Wow that's a lot! No thank you."/>
+            <reply id="3" text="Fine, here you go." next="SW3">
+				<condition type="MOB_SCRAP_PRESENT" target_player="1" qty="VAR(SW_SIGHTING_INFO_PRICE)"/>
+            </reply>
+        </message>
+        <message id="SW3" text="Last time it was seen at VAR(SW_SIGHTING). Note it down somewhere.">
+            <event id="TAKE_SCRAP_FOR_SW_SIGHTING_INFO" target="PLAYER" />
+            <reply id="R1" text="Thanks."/>
+        </message>
+        <message id="M2" text="Come back when you change your mind.">
+            <reply id="R1" text="Forget it." />
+        </message>
+        <message id="M4" text="Great. Come back when you find anything.">
+            <reply id="GC3" text="Sure." />
+        </message>
+        <message id="E1" text="Easy. You gotta find some whales, kill them and bring me their body parts.">
+            <reply id="1" text="Yuck! I'm out!" />
+            <reply id="R5" next="E2" text="How am I supposed to find them?" />
+        </message>
+        <message id="E2" text="They roam the space, just look around.">
+            <reply id="R6" next="E3" text="Hmmm, ok." />
+        </message>
+        <message id="E3" text="So. Are you in?">
+            <reply id="R8" next="M2" text="No I think I'll pass." />
+            <reply id="R9" next="E5" text="OK, I'm in." />
+        </message>
+        <message id="E5" text="Wonderful. There is just one more thing i need to tell you.">
+            <reply id="R7" next="E6" text="What is it?" />
+        </message>
+        <message id="E6" text="There's a rumor about a very rare Star Whale roaming the galaxy.">
+            <reply id="R8" next="E7" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="E7" text="Some even claim to have seen it.">
+            <reply id="R9" next="E8" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="E8" text="So, if you find and kill it - bring me the heart and I will reward you.">
+            <event id="START_EXPLAINING_WHALES" target="PLAYER" />
+            <reply id="R9" next="M4" text="Alright." />
+        </message>
+        <message id="SELL_HORN" text="Good. I'll transfer the payment.">
+            <event id="TAKE_HORN" target="PLAYER" />
+            <reply id="SELL5" text="Thanks." />
+        </message>
+        <message id="S1" text="Great. What do you want to sell?">
+            <reply id="1" next="SELL_HORN" text="I wanna sell the horn.">
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="WHALE_HORN" target_player="1" type="SHIP_CARGO_PRESENT" />
+            </reply>
+            <reply id="2" next="SELL_EYE" text="I wanna sell the eye.">
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="WHALE_EYE" target_player="1" type="SHIP_CARGO_PRESENT" />
+            </reply>
+            <reply id="3" next="SELL_HEART" text="I wanna sell the heart.">
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="WHALE_HEART" target_player="1" type="SHIP_CARGO_PRESENT" />
+            </reply>
+            <reply id="4" text="Actually, nevermind."/>
+        </message>
+        <message id="SELL_HEART" text="NO WAY! The heart of a Star Whale! Here's your pay! Now give it to me!">
+            <event id="TAKE_HEART" target="PLAYER" />
+            <reply id="SELL4" text="Woa, take it easy." />
+        </message>
+        <message id="SELL_EYE" text="Good. I'll transfer the payment.">
+            <event id="TAKE_EYE" target="PLAYER" />
+            <reply id="SELL6" text="Thanks." />
+        </message>
+    </dialogue>
+</dialogues>

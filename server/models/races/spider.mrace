@@ -1,0 +1,9 @@
+name=SPIDER
+sprite=SPIDER
+health=3000
+oxygen=2000
+no_oxygen_damage=5
+oxygen_consum_speed=5
+weapon=agland
+repair_power = 2
+fireman_power = 2

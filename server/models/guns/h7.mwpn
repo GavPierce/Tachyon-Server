@@ -1,0 +1,8 @@
+name=Mini rocket
+image=mini_rl
+range=5
+damage=250
+door_damage=150
+system_damage=500
+reload=200
+projectile=mini_rocket

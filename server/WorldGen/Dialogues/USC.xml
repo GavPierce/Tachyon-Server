@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialogues>
+    <dialogue name="GRAYDON" start="M0">
+        <message id="M0" text="[ACTION]You see a man in a white lab coat.">
+            <reply id="1" next="1" text="[SKIP]New tnreat[AUTO]">
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_PRESENT" var_name="NEW_THREAT"/>
+            </reply>
+            <reply id="R1" next="M1" text="[SKIP][AUTO]">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="HJ_TUTORIAL_STARTED" var_value="1" />
+            </reply>
+            <reply id="R2" next="M33" text="[SKIP][AUTO]">
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="HJ_TUTORIAL_STARTED" var_value="1" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="S_EMP_QUEST" var_value="1" />
+            </reply>
+            <reply id="R3" next="M34" text="[SKIP][AUTO]">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="S_EMP_QUEST" var_value="1" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="F_EMP_QUEST" var_value="1" />
+            </reply>
+            <reply id="R4" next="M38" text="[SKIP][AUTO]">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="S_EMP_PICKUP_QUEST" var_value="1" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="F_EMP_PICKUP_QUEST" var_value="1" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="EMP_Cannon" target_player="1" type="SHIP_CARGO_ABSENT" />
+                <condition all_mob_ships="1" qty="1" system_model="EMP_Cannon" target_player="1" type="SHIP_SYSTEM_ABSENT" />
+            </reply>
+            <reply id="R5" next="M40" text="[SKIP][AUTO]">
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="EMP_Cannon" target_player="1" type="SHIP_CARGO_PRESENT" />
+                <condition all_mob_ships="1" qty="1" system_model="EMP_Cannon" target_player="1" type="SHIP_SYSTEM_ABSENT" />
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="S_EMP_PICKUP_QUEST" var_value="1" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="F_EMP_PICKUP_QUEST" var_value="1" />
+            </reply>
+            <reply id="R6" next="M40" text="[SKIP][AUTO]">
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="EMP_Cannon" target_player="1" type="SHIP_CARGO_ABSENT" />
+                <condition all_mob_ships="1" qty="1" system_model="EMP_Cannon" target_player="1" type="SHIP_SYSTEM_PRESENT" />
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="S_EMP_PICKUP_QUEST" var_value="1" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="F_EMP_PICKUP_QUEST" var_value="1" />
+            </reply>
+            <reply id="R7" next="M42" text="[SKIP][AUTO]">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="FINAL_PREP_QUEST_STARTED" var_value="1" />
+            </reply>
+            <reply id="R8" next="M43" text="[SKIP][AUTO]">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="LAST_FISHING_QUEST_STARTED" var_value="1" />
+            </reply>
+            <reply id="R9" next="M43" text="[SKIP][AUTO]">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="KEK_LAST_RAIDED_QUEST_STARTED" var_value="1" />
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_ABSENT" var_name="NEW_THREAT" var_value="" />
+            </reply>
+        </message>
+        <message id="M1" text="Who are you and why are you flying one of our secret prototype ships?">
+            <reply id="R1" next="M2" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M2" text="Explain yourself immediately, or I'm calling in reinforcements!">
+            <reply id="R1" next="M3" text="My name is [PLAYER_NAME], I am one of the guards at D31." />
+        </message>
+        <message id="M3" text="Oh no, did the Empire attack us? Tell me what happened?">
+            <reply id="R1" next="M4" text="The station was attacked by pirates, they have stolen the D.F. Prototype." />
+        </message>
+        <message id="M4" text="What?! The D.F. Prototype is stolen? This is devastating!">
+            <reply id="R1" next="M5" text="All communications were cut off..." />
+        </message>
+        <message id="M5" text="...">
+            <reply id="R1" next="M6" text="The second prototype ship was the only way to deliver the news to you." />
+        </message>
+        <message id="M40" text="Excellent! I see you have retrieved the EMP Cannon.">
+            <event id="EMP_CANNON_COLLECTED" target="PLAYER" />
+            <reply id="R1" next="M41" text="Yes, we have it.">
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="FINAL_PREP_QUEST_STARTED" var_value="1" />
+            </reply>
+            <reply id="R2" next="M42" text="Yes, we have it.">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="FINAL_PREP_QUEST_STARTED" var_value="1" />
+            </reply>
+        </message>
+        <message id="M6" text="This is horrifying! Can you imagine what those pirates can do with that ship?">
+            <reply id="R1" next="M7" text="No, I don't. Can't we just send a fleet to find it and destroy it?" />
+        </message>
+        <message id="M7" text="You see, there are two problems with that ship.">
+            <reply id="R1" next="M8" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M42" text="Dr. Bishop has finished assembling the Super Sensors. Please speak to him.">
+            <reply id="R1" text="OK." />
+        </message>
+        <message id="M8" text="First is that it's near impossible to track it down.">
+            <reply id="R1" next="M9" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M41" text="Dr. Bishop has finished assembling the Super Sensors. Please speak to him.">
+            <event id="FINISH_EMP_PICKUP_QUEST" target="PLAYER" />
+            <event id="START_FINAL_PREP_QUEST" target="PLAYER" />
+            <reply id="R1" text="OK." />
+        </message>
+        <message id="M9" text="As you probably know, when a ship goes into Hyper-Space it leaves a trail behind.">
+            <reply id="R1" next="M10" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M43" text="Good luck to you! You are our only hope." />
+        <message id="10" text="Admiral Breachburn is coordinating all Unity forces from sector [VAR(LAST_STAND_SECTOR)]">
+            <reply id="1" next="11" text="[SKIP]..." />
+        </message>
+        <message id="11" text="I think it would be wise for you to take your ship there and talk to him.">
+            <reply id="1" text="Alright." />
+        </message>
+        <message id="M11" text="More powerful HyperDrives leave a less detectable trail behind.">
+            <reply id="R1" next="M12" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M10" text="And with a good enough Sensors system you can detect this trail.">
+            <reply id="R1" next="M11" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M13" text="The D.F. Prototype has the newest HyperDrive prototype.">
+            <reply id="R1" next="M14" text="[SKIP]..." />
+        </message>
+        <message id="M12" text="So you need a more powerful Sensors system to detect it.">
+            <reply id="R1" next="M13" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M15" text="We only have a theory on how to make such a sensors system.">
+            <reply id="R1" next="M16" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M14" text="And I can assure you, there is no sensors system that can detect its trail.">
+            <reply id="R1" next="M15" text="[SKIP][AUTO]" />
+        </message>
+        <message id="1" text="[PLAYER_NAME], you're back!">
+            <reply id="1" next="2" text="[SKIP]NEW[AUTO]" />
+        </message>
+        <message id="M17" text="Yes, the second problem is that it's near impossible to destroy it!">
+            <reply id="R1" next="M18" text="What?" />
+        </message>
+        <message id="2" text="Please tell me that you've managed to defeat the DF prototype?">
+            <reply id="1" next="3" text="As a matter of fact we did." />
+        </message>
+        <message id="M16" text="But as you can guess, we have never tried it.">
+            <reply id="R1" next="M17" text="You've said that there are two problems with the D.F. Prototype." />
+        </message>
+        <message id="3" text="Oh that's wonderful news, whith all that's going on, having to deal with the ">
+            <reply id="1" next="4" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="M19" text="We have retrieved it from an alien spaceship of unknown origin.">
+            <reply id="R1" next="M20" text="[SKIP][AUTO]" />
+        </message>
+        <message id="4" text="DF prototype in the hands of pirates, would have been simply impossible.">
+            <reply id="1" next="5" text="Why, what's going on?" />
+        </message>
+        <message id="M18" text="The D.F. Prototype has a one of a kind shield system.">
+            <reply id="R1" next="M19" text="[SKIP][AUTO]" />
+        </message>
+        <message id="5" text="Haven't you heard yet? Haven't you seen THEM yet?">
+            <reply id="1" next="6" text="No. Seen who?" />
+            <reply id="2" next="6" text="Yeah I've seen them. But who are they?" />
+        </message>
+        <message id="6" text="Some new alien race, that seems to be keen on wiping out everyone they meet.">
+            <reply id="1" next="7" text="[SKIP]..." />
+        </message>
+        <message id="7" text="Their designated name is the Void Dwellers.">
+            <reply id="1" next="8" text="The Void Dwellers?" />
+        </message>
+        <message id="8" text="Yes, presumably they came to our galaxy from a complete void space,">
+            <reply id="1" next="9" text="[SKIP]NEW[AUTO]" />
+        </message>
+        <message id="9" text="through some sort of artifical wormhole.">
+            <reply id="1" next="10" text="So what now?" />
+        </message>
+        <message id="M20" text="Even missiles can not bypass that shield!">
+            <reply id="R1" next="M21" text="No way!" />
+        </message>
+        <message id="M22" text="They couldn't have. I don't think they know what they got their hands on.">
+            <reply id="R1" next="M23" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M21" text="It's true. And to be honest, I have no idea how we can stop it now.">
+            <reply id="R1" next="M22" text="How did the pirates find out about this ship?" />
+        </message>
+        <message id="M24" text="Exactly! That's why we have to find a way to destroy it, ASAP.">
+            <reply id="R1" next="M25" text="Right..." />
+        </message>
+        <message id="M23" text="If they figure out what they have stolen...">
+            <reply id="R1" next="M24" text="They can wreck havoc all over our galaxy!" />
+        </message>
+        <message id="M26" text="Because only it has the potential to stand up to the D.F. Prototype and survive.">
+            <reply id="R1" next="M27" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M25" text="And apparently, the second prototype ship is now our only hope.">
+            <reply id="R1" next="M26" text="Why?" />
+        </message>
+        <message id="M28" text="The systems on it can be upgraded many times.">
+            <reply id="R1" next="M29" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M27" text="It is our older prototype ship, it has very high upgrading capabilities.">
+            <reply id="R1" next="M28" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M29" text="Unlike our other common ships. So I guess you're in for a ride.">
+            <reply id="R1" next="M30" text="So what do we do now?" />
+        </message>
+        <message id="M31" text="He can tell you more about his super sensors theory.">
+            <reply id="R1" next="M32" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M30" text="Please speak to Dr. Bishop, he is our sensors specialist.">
+            <reply id="R1" next="M31" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M33" text="Hopefully, we will be able to figure out how to break through the super shields.">
+            <event id="STOP_HJ_TUTORIAL" target="PLAYER" />
+            <event id="START_SENSORS_QUEST" target="PLAYER" />
+            <event id="Game_Progress_3" target="PLAYER" />
+            <reply id="R1" text="OK." />
+        </message>
+        <message id="M32" text="Meanwhile, I will arrange a meeting with the other scientists.">
+            <reply id="R1" next="M33" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M35" text="We have found a way to disable the shields on the D.F. Prototype!">
+            <reply id="R1" next="M36" text="Really, How?" />
+        </message>
+        <message id="M34" text="Ah! [PLAYER_NAME]! Finally! I have great news!!!">
+            <reply id="R1" next="M35" text="What happened?" />
+        </message>
+        <message id="M37" text="You need to pick it up at science station A03 in sector [SECTOR]">
+            <event id="START_EMP_PICKUP_QUEST" target="PLAYER" />
+            <event id="FINISH_EMP_QUEST" target="PLAYER" />
+            <event id="SPAWN_A03" target="PLAYER" />
+            <event id="MAKE_A03_SECTOR_EXPLORED" target="PLAYER" />
+            <event id="Game_Progress_11" target="PLAYER" />
+            <reply id="R1" text="I'll get right on that!" />
+        </message>
+        <message id="M36" text="We were able to build an EMP Cannon that can disable any shields.">
+            <reply id="R1" next="M37" text="Wow! This is great!" />
+        </message>
+        <message id="M39" text="The A03 station is located in sector VAR(A03_SECTOR)">
+            <reply id="R1" text="Thanks." />
+        </message>
+        <message id="M38" text="Hello, [PLAYER_NAME]. Have you retrieved the EMP Cannon?">
+            <reply id="R1" text="Not yet. I'm working on it." />
+            <reply id="R2" next="M39" text="Please remind me where is A03 station located." />
+        </message>
+    </dialogue>
+    <dialogue name="BISHOP" start="M0">
+        <message id="M0" text="Yes?">
+            <reply id="R1" next="M1" text="Hi. You are [NPC_NAME], right?">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="SENSORS_QUEST_STARTED" var_value="1" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="KEK_SENSORS_QUEST_STARTED" var_value="1" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="CRYSTALS_COLLECTED" var_value="3" />
+            </reply>
+            <reply any_condition="1" id="R2" next="M9" text="Hello, [NPC_NAME].">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="EMPIRE_CRYSTAL_QUEST_STARTED" var_value="1" />
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="KEK_SENSORS_QUEST_STARTED" var_value="1" />
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="CRYSTALS_COLLECTED" var_value="3" />
+            </reply>
+            <reply id="R4" next="M16" text="Hello, [NPC_NAME]. How goes the work on the Super sensors?">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="S_EMP_PICKUP_QUEST" var_value="1" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="F_EMP_PICKUP_QUEST" var_value="1" />
+            </reply>
+            <reply id="R6" next="M18" text="Can you please remind me how to track down ships?">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="KEK_LAST_RAIDED_QUEST_STARTED" var_value="1" />
+            </reply>
+            <reply id="R7" next="M11" text="Can you please remind me where the KeK headquarters are located?">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="KEK_LAST_RAIDED_QUEST_STARTED" var_value="1" />
+            </reply>
+        </message>
+        <message id="M1" text="Yes. And you must be [PLAYER_NAME]. Darius messaged that you will contact me.">
+            <reply id="R1" next="M2" text="Yes." />
+        </message>
+        <message id="M2" text="So, I'm guessing we are finally going to try and build the Super Sensors...">
+            <reply id="R1" next="M3" text="That's right." />
+        </message>
+        <message id="M3" text="Well, we have all the parts I will need right here at USC.">
+            <reply id="R1" next="M4" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M4" text="The only thing we're missing are the HAK86 crystals.">
+            <reply id="R1" next="M5" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M5" text="These crystals are very rare, and we need 3 pieces of it.">
+            <reply id="R1" next="M6" text="Where do we find them then?" />
+        </message>
+        <message id="M6" text="I would suggest that you visit the KeK trading company first.">
+            <reply id="R1" next="M7" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M7" text="If I'm not mistaken they have some of it.">
+            <reply id="R1" next="M8" text="Where are they located?" />
+        </message>
+        <message id="M20" text="In this mode, the sector map will show you the Hyper-Space entry points.">
+            <reply id="R1" next="M21" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M8" text="The KeK headquarters are located at sector [SECTOR]">
+            <event id="SPAWN_KEK_HQ" target="PLAYER" />
+            <event id="MAKE_KEK_HQ_SECTOR_EXPLORED" target="PLAYER" />
+            <event id="START_KEK_SENSORS_QUEST" target="PLAYER" />
+            <reply id="R1" text="OK. I'll go talk to them." />
+        </message>
+        <message id="M9" text="Hello, [PLAYER_NAME].">
+            <reply id="R1" next="M10" text="I'm still looking for those crystals.">
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="CRYSTALS_COLLECTED" var_value="3" />
+            </reply>
+            <reply id="R2" next="M11" text="Can you please remind me where the KeK headquarters are located?">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="KEK_SENSORS_QUEST_STARTED" var_value="1" />
+            </reply>
+            <reply id="R3" next="M12" text="I have found the three HAK86 crystals.">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="CRYSTALS_COLLECTED" var_value="3" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="3" system_model="CRYSTAL" type="SHIP_CARGO_ABSENT" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="S_EMP_QUEST" var_value="1" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="F_EMP_QUEST" var_value="1" />
+            </reply>
+            <reply id="R4" next="M13" text="The HAK86 crystals have been transferred to the USC station.">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="CRYSTALS_COLLECTED" var_value="3" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="3" system_model="CRYSTAL" type="SHIP_CARGO_PRESENT" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="S_EMP_QUEST" var_value="1" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="F_EMP_QUEST" var_value="1" />
+            </reply>
+            <reply id="R5" next="M16" text="How goes the work on the Super sensors?">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="S_EMP_QUEST" var_value="1" />
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="F_EMP_QUEST" var_value="1" />
+            </reply>
+            <reply id="R6" next="M17" text="You've finished the Super Sensors system?">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="FINAL_PREP_QUEST_STARTED" var_value="1" />
+            </reply>
+        </message>
+        <message id="M22" text="On the target map screen you will see the details of that entry point.">
+            <reply id="R1" next="M23" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M21" text="Focus on one of the entry points so that it's visible in the target map screen.">
+            <reply id="R1" next="M22" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M24" text="I think it would be best to ask at KeK; where their last caravan was raided.">
+            <event id="STOP_FINAL_PREP_QUEST" target="PLAYER" />
+            <event id="ADD_SUPER_SENSORS" target="PLAYER" />
+            <event id="START_KEK_LAST_RAIDED_QUEST" target="PLAYER" />
+            <event id="Game_Progress_13" target="PLAYER" />
+            <reply id="R1" next="M" text="OK, thanks." />
+        </message>
+        <message id="M23" text="What ship left this trail, and where it jumped to.">
+            <reply id="R1" next="M24" text="Thanks. Where should I start looking for the DF prototype?">
+                <condition type="SERVER_VARIABLE_ABSENT" var_name="START_KEK_LAST_RAIDED_QUEST" var_value="1" />
+            </reply>
+            <reply id="R2" text="Thanks.">
+                <condition type="SERVER_VARIABLE_PRESENT" var_name="START_KEK_LAST_RAIDED_QUEST" var_value="1" />
+            </reply>
+        </message>
+        <message id="M11" text="The KeK headquarters are located at sector VAR(KEK_HQ_SECTOR)">
+            <reply id="R1" text="Thank you." />
+        </message>
+        <message id="M10" text="Please hurry up. It is very important that we stop that ship ASAP.">
+            <reply id="R1" text="I'm working on it." />
+        </message>
+        <message id="M13" text="Excellent! We now have everything we need to build the Super Sensors.">
+            <reply id="R1" next="M14" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M12" text="Great work! Please transfer them to the USC station.">
+            <reply id="R1" text="Will do." />
+        </message>
+        <message id="M15" text="By the way, Darius was looking for you, please contact him.">
+            <event id="DROP_COLLECTED_CRYSTALS" target="PLAYER" />
+            <event id="START_EMP_QUEST" target="PLAYER" />
+            <event id="Game_Progress_10" target="PLAYER" />
+            <reply id="R1" text="OK. Thanks." />
+        </message>
+        <message id="M14" text="This will take some time, contact me again later on.">
+            <reply id="R1" next="M15" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M17" text="Yes. With it, you should be able to track down the VAR(DF_NAME).">
+            <reply id="R1" next="M17_2" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M17_2" text="I will send the Super sensors to your ship. Don't forget to install it.">
+            <reply id="R1" next="M18" text="How do I track down a ship with the sensors?" />
+            <reply id="R2" next="M24" text="Where should I start looking for the DF prototype?" />
+        </message>
+        <message id="M16" text="I'm working on it." />
+        <message id="M19" text="The sensors will switch to trailing mode.">
+            <reply id="R1" next="M20" text="[SKIP][AUTO]" />
+        </message>
+        <message id="M18" text="Open the sensors system interface, and click the TRAIL MODE button.">
+            <reply id="R1" next="M19" text="[SKIP][AUTO]" />
+        </message>
+    </dialogue>
+</dialogues>

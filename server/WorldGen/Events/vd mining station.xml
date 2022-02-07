@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+
+	<event type="SPAWN_SHIP" name="SPAWN_MINER">
+		<event_param chain_events_to_created="1" />
+		<event_param chain_event="PREPARE_MINER"/>
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<event_param chain_event="ADD_VD_SEC"/>
+		<add_ship>
+			<ship_param random_pos="1"/>
+			<ship_param ship_model="VDST"/>
+			<ship_param ship_name="VAR(VOID_MINE_NAME)"/>
+			<ship_param min_health="15"/>
+			<ship_param max_health="30"/>
+			<ship_param ship_owner="VAR(VOID_OWNER)"/>
+			<ship_param death_event="REMOVE_VD_SEC"/>
+			<ship_ai type="SHIP_CLASS_HUNTER">
+				<ship_ai_param TARGET="ASTEROID"/>
+			</ship_ai>
+			<ship_ai type="LIFE_SUPPORT"/>
+			<ship_ai type="EVENT_TRIGGER" TIMER="1800">
+				<ship_ai_condition type="SECTOR_SHIPS_ABSENT">
+				   <condition_param ship_class="ASTEROID"/>
+				   <condition_param qty="1"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="ASTEROID_SPAWN"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" TIMER="60">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(VOID_DEF_PLAT_PRICE)"/>
+				</ship_ai_condition>
+				<ship_ai_condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="VAR(VOID_DEF_PLAT_NAME)"/>
+					<condition_param qty="4"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="SPAWN_VOID_DEF"/>
+				<ship_ai_param EVENT="PAY_FOR_VOID_DEF_PLATFORM"/>
+			</ship_ai>
+			<ship_ai type="LEVEL_LOADER"/>
+			<ship_ai type="EVENT_TRIGGER" TIMER="60">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(VD_CARGO_SIZE)"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="MIN_CARGO_SHIP_SPAWN"/>	
+				<ship_ai_param EVENT="TAKE_SCRAP_FOR_CARGO"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" CREWLESS="1" CREWLESS_ONLY="1" TIMER="1800" EVENT="SPAWN_VOID_CREW_MIN"/>
+		</add_ship>
+	</event>
+	
+	<event type="SPAWN_SHIP" name="ASTEROID_SPAWN">
+		<event_param min_event_qty="3"/>
+		<event_param max_event_qty="6"/>
+		<add_ship>
+			<ship_param ship_model="ASTEROID1"/>
+			<ship_param ship_model="ASTEROID2"/>
+			<ship_param ship_model="ASTEROID3"/>
+			<ship_param ship_model="ASTEROID4"/>
+			<ship_param ship_model="ASTEROID5"/>
+			<ship_param ship_model="ASTEROID6"/>
+			<ship_param ship_model="ASTEROID7"/>
+			<ship_param ship_model="ASTEROID8"/>
+			<ship_param ship_model="ASTEROID9"/>
+			<ship_param ship_model="ASTEROID10"/>
+			<ship_param ship_model="ASTEROID11"/>
+			<ship_param ship_model="ASTEROID12"/>
+			<ship_param ship_model="ASTEROID13"/>
+			<ship_param ship_model="ASTEROID14"/>
+			<ship_param ship_model="ASTEROID15"/>
+			<ship_param ship_model="ASTEROID16"/>
+			<ship_param ship_model="ASTEROID17"/>
+			<ship_param ship_model="ASTEROID18"/>
+			<ship_param ship_model="ASTEROID19"/>
+			<ship_param ship_model="ASTEROID20"/>
+			<ship_param ship_qty="1"/>
+			<ship_param ship_name="Asteroid"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_scrap="20"/>
+			<ship_param max_scrap="40"/>
+			<ship_param min_health="2"/>
+			<ship_param max_health="6"/>
+		</add_ship>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="PREPARE_MINER">
+		<event_param install_system_model_direct="VD_MIN_BEAM:4:4" />
+		<event_param install_system_model="VD_MIN_SHIELDS" />
+		<event_param install_system_model="VD_MIN_REACTOR" />
+		<event_param install_system_model="VD_MIN_CAPACITOR" />
+		<event_param install_system_model="VD_MIN_DOOR_CONTROL" />
+		<event_param install_system_model="VD_MIN_SENSORS" />
+	</event>
+	
+	<event type="SPAWN_SHIP" name="MIN_CARGO_SHIP_SPAWN">
+		<event_param chain_events_to_created="1"/>
+		<event_param chain_event="PREPARE_VD_CARGO"/>
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<add_ship>
+			<ship_param random_pos="1"/>
+			<ship_param no_sector_events="1"/>
+			<ship_param ship_model="VDCARGO"/>
+			<ship_param ship_name="VAR(VOID_CARGO_NAME)"/>
+			<ship_param min_health="10"/>
+			<ship_param max_health="20"/> 
+			<ship_param ship_owner="VAR(VOID_OWNER)"/>
+			<ship_ai type="EXPLORER" CREWLESS="1">
+				<ship_ai_param DELAY="5"/>
+				<ship_ai_condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="VAR(VOID_MINE_NAME)"/>
+					<condition_param qty="1"/>
+				</ship_ai_condition>
+			</ship_ai>
+			<ship_ai type="SCAVENGER" CREWLESS="1"/>
+			<ship_ai type="SECTOR_FINDER" CREWLESS="1">
+				<ship_ai_condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="VAR(VOID_MINE_NAME)"/>
+					<condition_param qty="1"/>
+				</ship_ai_condition>
+				<ship_ai_param TARGET="VAR(VDS)"/>
+			</ship_ai>
+			<ship_ai type="LEVEL_LOADER" CREWLESS="1"/>
+			<ship_ai type="EVENT_TRIGGER" CREWLESS="1">
+				<ship_ai_condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="VAR(VOID_CARRIER_NAME)"/>
+					<condition_param qty="1"/>
+				</ship_ai_condition>
+				<ship_ai_param TIMER="1"/>
+				<ship_ai_param EVENT="DELIVER_SCRAP_TO_VD_MAIN"/>
+				<ship_ai_param EVENT="REMOVE_SELF"/>
+			</ship_ai>
+		</add_ship>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="PREPARE_VD_CARGO">
+		<event_param install_system_model="VD_CARGO_REACTOR"/>
+		<event_param install_system_model="VD_CARGO_CAPACITOR"/>
+		<event_param install_system_model="VD_CARGO_HYPERDRIVE"/>
+		<event_param death_event="ADD_VD_TARGET"/>			
+	</event>
+	
+	<event type="MODIFY_SHIP" name="TAKE_SCRAP_FOR_CARGO">
+		<event_param take_scrap="VAR(VD_CARGO_SIZE)"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="DELIVER_SCRAP_TO_VD_MAIN">
+		<event_param nonstop="1"/>
+		<event_param give_scrap="500"/>
+		<event_param for_ship_name="VAR(VOID_CARRIER_NAME)"/>
+	</event>
+	
+</events>

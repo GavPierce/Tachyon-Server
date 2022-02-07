@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="SPAWN_SHIP" name="SPAWN_VOID_JUMP_INH">
+		<event_param nonstop="1"/>
+		<event_param chain_events_to_created="1" />
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<add_ship>
+			<ship_param ship_model="VDING"/>
+			<ship_param ship_name="VAR(VOID_INHIBITOR_NAME)"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_health="10"/>
+			<ship_param max_health="15"/>
+			<ship_param ship_owner="VAR(VOID_OWNER)"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="8" EVENT="VOID_JUMP_INH">
+				<ship_ai_condition type="SECTOR_PLAYERS_PRESENT" qty="1" online="1"/>
+			</ship_ai>
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_VOID_HYPER_INH">
+		<event_param nonstop="1"/>
+		<event_param chain_events_to_created="1" />
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<add_ship>
+			<ship_param ship_model="VDING"/>
+			<ship_param ship_name="VAR(VOID_INHIBITOR_NAME)"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_health="10"/>
+			<ship_param ship_owner="VAR(VOID_OWNER)"/>
+			<ship_param max_health="15"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="1" EVENT="VOID_HYPER_INH">
+				<ship_ai_condition type="SECTOR_PLAYERS_PRESENT" qty="1" online="1"/>
+			</ship_ai>
+		</add_ship>
+	</event>
+	<event type="MODIFY_SHIP" name="VOID_HYPER_INH">
+		<event_param all_sector_ships="1"/>
+		<event_param decharge_hd="100"/>
+		<condition type="SHIP_RACE_ABSENT" race="VOID"/>
+	</event>
+	<event type="MODIFY_SHIP" name="VOID_JUMP_INH">
+		<event_param all_sector_ships="1"/>
+		<event_param decharge_engines="100"/>
+		<condition type="SHIP_RACE_ABSENT" race="VOID"/>
+	</event>
+</events>

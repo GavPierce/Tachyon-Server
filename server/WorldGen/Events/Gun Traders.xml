@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="GROUP" name="HANDGUN_PRICES">
+		<event_param chain_event="PRICE_LP"/>
+		<event_param chain_event="PRICE_LR"/>
+		<event_param chain_event="PRICE_PP"/>
+		<event_param chain_event="PRICE_PR"/>
+		<event_param chain_event="PRICE_GR"/>
+		<event_param chain_event="PRICE_MR"/>
+		<event_param chain_event="PRICE_SC"/>
+
+		<event_param chain_event="PRICE_QL"/>
+		<event_param chain_event="PRICE_RL"/>
+		<event_param chain_event="PRICE_GL"/>
+		<event_param chain_event="PRICE_XRL"/>
+		<event_param chain_event="PRICE_PA"/>
+		<event_param chain_event="PRICE_UVL"/>
+		<event_param chain_event="PRICE_BL"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="PRICE_LP" var_name="PRICE_LP" var_value="50"/>
+	<event type="SERVER_VARIABLE" name="PRICE_LR" var_name="PRICE_LR" var_value="75"/>
+	<event type="SERVER_VARIABLE" name="PRICE_PP" var_name="PRICE_PP" var_value="100"/>
+	<event type="SERVER_VARIABLE" name="PRICE_PR" var_name="PRICE_PR" var_value="150"/>
+	<event type="SERVER_VARIABLE" name="PRICE_GR" var_name="PRICE_GR" var_value="200"/>
+	<event type="SERVER_VARIABLE" name="PRICE_MR" var_name="PRICE_MR" var_value="350"/>
+	<event type="SERVER_VARIABLE" name="PRICE_SC" var_name="PRICE_SC" var_value="150"/>
+
+	<event type="SERVER_VARIABLE" name="PRICE_RL" var_name="PRICE_RL" var_value="50"/>
+	<event type="SERVER_VARIABLE" name="PRICE_BL" var_name="PRICE_BL" var_value="75"/>
+	<event type="SERVER_VARIABLE" name="PRICE_UVL" var_name="PRICE_UVL" var_value="100"/>
+	<event type="SERVER_VARIABLE" name="PRICE_XRL" var_name="PRICE_XRL" var_value="150"/>
+	<event type="SERVER_VARIABLE" name="PRICE_GL" var_name="PRICE_GL" var_value="200"/>
+	<event type="SERVER_VARIABLE" name="PRICE_QL" var_name="PRICE_QL" var_value="350"/>
+	<event type="SERVER_VARIABLE" name="PRICE_PA" var_name="PRICE_PA" var_value="150"/>
+
+	<event type="MODIFY_MOB" name="BUY_LASER_PISTOL">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_LP)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="HUMAN"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_LP)"/>
+		<event_param weapon="Laser pistol"/>
+	</event>
+	<event type="MODIFY_MOB" name="BUY_LASER_RIFLE">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_LR)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="HUMAN"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_LR)"/>
+		<event_param weapon="Laser rifle"/>
+	</event>
+	<event type="MODIFY_MOB" name="BUY_PLASMA_PISTOL">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_PP)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="HUMAN"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_PP)"/>
+		<event_param weapon="Plasma pistol"/>
+	</event>
+	<event type="MODIFY_MOB" name="BUY_PLASMA_RIFLE">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_PR)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="HUMAN"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_PR)"/>
+		<event_param weapon="Plasma rifle"/>
+	</event>
+	<event type="MODIFY_MOB" name="BUY_GRENADES">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_GR)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="HUMAN"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_GR)"/>
+		<event_param weapon="Grenade"/>
+	</event>
+	<event type="MODIFY_MOB" name="BUY_MINI_ROCKET">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_MR)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="HUMAN"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_MR)"/>
+		<event_param weapon="Mini rocket"/>
+	</event>
+	<event type="MODIFY_MOB" name="BUY_SONIC_CROWBAR">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_SC)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="HUMAN"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_SC)"/>
+		<event_param weapon="Sonic crowbar"/>
+	</event>
+
+	<event type="MODIFY_MOB" name="BUY_RED_LASER">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_RL)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="CYBORG"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_RL)"/>
+		<event_param weapon="Red Laser"/>
+	</event>
+	<event type="MODIFY_MOB" name="BUY_BLUE_LASER">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_BL)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="CYBORG"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_BL)"/>
+		<event_param weapon="Blue Laser"/>
+	</event>
+	<event type="MODIFY_MOB" name="BUY_UV_LASER">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_UVL)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="CYBORG"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_UVL)"/>
+		<event_param weapon="UV Laser"/>
+	</event>
+	<event type="MODIFY_MOB" name="BUY_XRAY_LASER">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_XRL)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="CYBORG"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_XRL)"/>
+		<event_param weapon="X-Ray Laser"/>
+	</event>
+	<event type="MODIFY_MOB" name="BUY_GAMMA_LASER">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_GL)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="CYBORG"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_GL)"/>
+		<event_param weapon="Gamma Laser"/>
+	</event>
+	<event type="MODIFY_MOB" name="BUY_QUANTUM_LASER">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_QL)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="CYBORG"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_QL)"/>
+		<event_param weapon="Quantum Laser"/>
+	</event>
+	<event type="MODIFY_MOB" name="BUY_PICKAXE">
+		<condition type="MOB_SCRAP_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param qty="VAR(PRICE_PA)"/>
+		</condition>
+		<condition type="MOB_RACE_PRESENT">
+			<condition_param target_player="1"/>
+			<condition_param race="CYBORG"/>
+		</condition>
+		<event_param take_scrap="VAR(PRICE_PA)"/>
+		<event_param weapon="Pickaxe"/>
+	</event>
+	
+	<event type="GROUP" name="SPAWN_RANDOM_GUN_TRADER">
+		<condition type="CHANCE">
+			<condition_param percent="50"/>
+		</condition>
+		<event_param nonstop="1"/>
+		<event_param random_chain_event="1"/>
+		<event_param chain_event="SPAWN_GUN_TRADER_LP"/>
+		<event_param chain_event="SPAWN_GUN_TRADER_LP2"/>
+		<event_param chain_event="SPAWN_GUN_TRADER_LR"/>
+		<event_param chain_event="SPAWN_GUN_TRADER_LR2"/>
+		<event_param chain_event="SPAWN_GUN_TRADER_PP"/>
+		<event_param chain_event="SPAWN_GUN_TRADER_PP2"/>
+		<event_param chain_event="SPAWN_GUN_TRADER_PR"/>
+		<event_param chain_event="SPAWN_GUN_TRADER_GR"/>
+		<event_param chain_event="SPAWN_GUN_TRADER_MR"/>
+		<event_param chain_event="SPAWN_GUN_TRADER_SC"/>
+
+		<event_param chain_event="SPAWN_CGUN_TRADER_QL"/>
+		<event_param chain_event="SPAWN_CGUN_TRADER_RL"/>
+		<event_param chain_event="SPAWN_CGUN_TRADER_GL"/>
+		<event_param chain_event="SPAWN_CGUN_TRADER_XRL"/>
+		<event_param chain_event="SPAWN_CGUN_TRADER_PA"/>
+		<event_param chain_event="SPAWN_CGUN_TRADER_UVL"/>
+		<event_param chain_event="SPAWN_CGUN_TRADER_BL"/>
+	</event>
+
+	<event type="SPAWN_NPC" name="SPAWN_GUN_TRADER_LP">
+		<spawn_npc npc_dialogue="GUN_TRADER_LP">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="SHIELDS"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_GUN_TRADER_LP2">
+		<spawn_npc npc_dialogue="GUN_TRADER_LP2">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="SHIELDS"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_GUN_TRADER_LR">
+		<spawn_npc npc_dialogue="GUN_TRADER_LR">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="SHIELDS"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_GUN_TRADER_LR2">
+		<spawn_npc npc_dialogue="GUN_TRADER_LR2">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="SHIELDS"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_GUN_TRADER_PP">
+		<spawn_npc npc_dialogue="GUN_TRADER_PP">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_GUN_TRADER_PP2">
+		<spawn_npc npc_dialogue="GUN_TRADER_PP2">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_GUN_TRADER_PR">
+		<spawn_npc npc_dialogue="GUN_TRADER_PR">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_GUN_TRADER_GR">
+		<spawn_npc npc_dialogue="GUN_TRADER_GR">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_GUN_TRADER_MR">
+		<spawn_npc npc_dialogue="GUN_TRADER_MR">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_GUN_TRADER_SC">
+		<spawn_npc npc_dialogue="GUN_TRADER_SC">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+
+	<event type="SPAWN_NPC" name="SPAWN_CGUN_TRADER_QL">
+		<spawn_npc npc_dialogue="CGUN_TRADER_QL">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="CYBORG"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_CGUN_TRADER_RL">
+		<spawn_npc npc_dialogue="CGUN_TRADER_RL">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="CYBORG"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_CGUN_TRADER_GL">
+		<spawn_npc npc_dialogue="CGUN_TRADER_GL">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="CYBORG"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_CGUN_TRADER_XRL">
+		<spawn_npc npc_dialogue="CGUN_TRADER_XRL">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="CYBORG"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_CGUN_TRADER_PA">
+		<spawn_npc npc_dialogue="CGUN_TRADER_PA">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="CYBORG"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_CGUN_TRADER_UVL">
+		<spawn_npc npc_dialogue="CGUN_TRADER_UVL">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="CYBORG"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_CGUN_TRADER_BL">
+		<spawn_npc npc_dialogue="CGUN_TRADER_BL">
+			<npc_param npc_remote_dialogue="NO_REMOTE"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_random_name="1"/>
+			<npc_param npc_race="CYBORG"/>
+			<npc_param npc_home_system="WEAPONS_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:SENSORS:REACTOR:MEDICAL:OXYGEN"/>
+				<npc_ai_param WORK_TIME="60"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+
+</events>

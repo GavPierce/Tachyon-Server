@@ -1,0 +1,8 @@
+name=Grenade
+image=grenade
+range=3
+damage=100
+door_damage=80
+system_damage=250
+reload=120
+projectile=grenade

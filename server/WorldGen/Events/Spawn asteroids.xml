@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="SPAWN_SHIP" name="SPAWN_ASTEROID_BELT_5_10">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="10"/>
+		<event_param chain_event="SECTOR_ASTEROIDS_SPAWNED"/>
+		<event_param chain_event="ADD_ORES"/>
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="ASTEROID1"/>
+			<ship_param gen_ship_model="ASTEROID2"/>
+			<ship_param gen_ship_model="ASTEROID3"/>
+			<ship_param gen_ship_model="ASTEROID4"/>
+			<ship_param gen_ship_model="ASTEROID5"/>
+			<ship_param gen_ship_model="ASTEROID6"/>
+			<ship_param gen_ship_model="ASTEROID7"/>
+			<ship_param gen_ship_model="ASTEROID8"/>
+			<ship_param gen_ship_model="ASTEROID9"/>
+			<ship_param gen_ship_model="ASTEROID10"/>
+			<ship_param gen_ship_model="ASTEROID11"/>
+			<ship_param gen_ship_model="ASTEROID12"/>
+			<ship_param gen_ship_model="ASTEROID13"/>
+			<ship_param gen_ship_model="ASTEROID14"/>
+			<ship_param gen_ship_model="ASTEROID15"/>
+			<ship_param gen_ship_model="ASTEROID16"/>
+			<ship_param gen_ship_model="ASTEROID17"/>
+			<ship_param gen_ship_model="ASTEROID18"/>
+			<ship_param gen_ship_model="ASTEROID19"/>
+			<ship_param gen_ship_model="ASTEROID20"/>
+			<ship_param ship_qty="1"/>
+			<ship_param ship_name="Asteroid"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_scrap="20"/>
+			<ship_param max_scrap="100"/>
+			<ship_param min_health="2"/>
+			<ship_param max_health="6"/>
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_ASTEROID_BELT_10_15">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="10"/>
+		<event_param max_event_qty="15"/>
+		<event_param chain_event="SECTOR_ASTEROIDS_SPAWNED"/>
+		<event_param chain_event="ADD_ORES"/>
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="ASTEROID1"/>
+			<ship_param gen_ship_model="ASTEROID2"/>
+			<ship_param gen_ship_model="ASTEROID3"/>
+			<ship_param gen_ship_model="ASTEROID4"/>
+			<ship_param gen_ship_model="ASTEROID5"/>
+			<ship_param gen_ship_model="ASTEROID6"/>
+			<ship_param gen_ship_model="ASTEROID7"/>
+			<ship_param gen_ship_model="ASTEROID8"/>
+			<ship_param gen_ship_model="ASTEROID9"/>
+			<ship_param gen_ship_model="ASTEROID10"/>
+			<ship_param gen_ship_model="ASTEROID11"/>
+			<ship_param gen_ship_model="ASTEROID12"/>
+			<ship_param gen_ship_model="ASTEROID13"/>
+			<ship_param gen_ship_model="ASTEROID14"/>
+			<ship_param gen_ship_model="ASTEROID15"/>
+			<ship_param gen_ship_model="ASTEROID16"/>
+			<ship_param gen_ship_model="ASTEROID17"/>
+			<ship_param gen_ship_model="ASTEROID18"/>
+			<ship_param gen_ship_model="ASTEROID19"/>
+			<ship_param gen_ship_model="ASTEROID20"/>
+			<ship_param ship_qty="1"/>
+			<ship_param random_ship_name="Asteroid"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_scrap="20"/>
+			<ship_param max_scrap="100"/>
+			<ship_param min_health="2"/>
+			<ship_param max_health="6"/>
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_ASTEROID_BELT_15_20">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="15"/>
+		<event_param max_event_qty="20"/>
+		<event_param chain_event="SECTOR_ASTEROIDS_SPAWNED"/>
+		<event_param chain_event="ADD_ORES"/>
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="ASTEROID1"/>
+			<ship_param gen_ship_model="ASTEROID2"/>
+			<ship_param gen_ship_model="ASTEROID3"/>
+			<ship_param gen_ship_model="ASTEROID4"/>
+			<ship_param gen_ship_model="ASTEROID5"/>
+			<ship_param gen_ship_model="ASTEROID6"/>
+			<ship_param gen_ship_model="ASTEROID7"/>
+			<ship_param gen_ship_model="ASTEROID8"/>
+			<ship_param gen_ship_model="ASTEROID9"/>
+			<ship_param gen_ship_model="ASTEROID10"/>
+			<ship_param gen_ship_model="ASTEROID11"/>
+			<ship_param gen_ship_model="ASTEROID12"/>
+			<ship_param gen_ship_model="ASTEROID13"/>
+			<ship_param gen_ship_model="ASTEROID14"/>
+			<ship_param gen_ship_model="ASTEROID15"/>
+			<ship_param gen_ship_model="ASTEROID16"/>
+			<ship_param gen_ship_model="ASTEROID17"/>
+			<ship_param gen_ship_model="ASTEROID18"/>
+			<ship_param gen_ship_model="ASTEROID19"/>
+			<ship_param gen_ship_model="ASTEROID20"/>
+			<ship_param ship_qty="1"/>
+			<ship_param random_ship_name="Asteroid"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_scrap="20"/>
+			<ship_param max_scrap="100"/>
+			<ship_param min_health="2"/>
+			<ship_param max_health="5"/>
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_ASTEROID_BELT_10_20">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="10"/>
+		<event_param max_event_qty="20"/>
+		<event_param chain_event="SECTOR_ASTEROIDS_SPAWNED"/>
+		<event_param chain_event="ADD_ORES"/>
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="ASTEROID1"/>
+			<ship_param gen_ship_model="ASTEROID2"/>
+			<ship_param gen_ship_model="ASTEROID3"/>
+			<ship_param gen_ship_model="ASTEROID4"/>
+			<ship_param gen_ship_model="ASTEROID5"/>
+			<ship_param gen_ship_model="ASTEROID6"/>
+			<ship_param gen_ship_model="ASTEROID7"/>
+			<ship_param gen_ship_model="ASTEROID8"/>
+			<ship_param gen_ship_model="ASTEROID9"/>
+			<ship_param gen_ship_model="ASTEROID10"/>
+			<ship_param gen_ship_model="ASTEROID11"/>
+			<ship_param gen_ship_model="ASTEROID12"/>
+			<ship_param gen_ship_model="ASTEROID13"/>
+			<ship_param gen_ship_model="ASTEROID14"/>
+			<ship_param gen_ship_model="ASTEROID15"/>
+			<ship_param gen_ship_model="ASTEROID16"/>
+			<ship_param gen_ship_model="ASTEROID17"/>
+			<ship_param gen_ship_model="ASTEROID18"/>
+			<ship_param gen_ship_model="ASTEROID19"/>
+			<ship_param gen_ship_model="ASTEROID20"/>
+			<ship_param ship_qty="1"/>
+			<ship_param random_ship_name="Asteroid"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_scrap="20"/>
+			<ship_param max_scrap="100"/>
+			<ship_param min_health="2"/>
+			<ship_param max_health="5"/>
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_ASTEROID_BELT_5_20">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="20"/>
+		<event_param chain_event="SECTOR_ASTEROIDS_SPAWNED"/>
+		<event_param chain_event="ADD_ORES"/>
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="ASTEROID1"/>
+			<ship_param gen_ship_model="ASTEROID2"/>
+			<ship_param gen_ship_model="ASTEROID3"/>
+			<ship_param gen_ship_model="ASTEROID4"/>
+			<ship_param gen_ship_model="ASTEROID5"/>
+			<ship_param gen_ship_model="ASTEROID6"/>
+			<ship_param gen_ship_model="ASTEROID7"/>
+			<ship_param gen_ship_model="ASTEROID8"/>
+			<ship_param gen_ship_model="ASTEROID9"/>
+			<ship_param gen_ship_model="ASTEROID10"/>
+			<ship_param gen_ship_model="ASTEROID11"/>
+			<ship_param gen_ship_model="ASTEROID12"/>
+			<ship_param gen_ship_model="ASTEROID13"/>
+			<ship_param gen_ship_model="ASTEROID14"/>
+			<ship_param gen_ship_model="ASTEROID15"/>
+			<ship_param gen_ship_model="ASTEROID16"/>
+			<ship_param gen_ship_model="ASTEROID17"/>
+			<ship_param gen_ship_model="ASTEROID18"/>
+			<ship_param gen_ship_model="ASTEROID19"/>
+			<ship_param gen_ship_model="ASTEROID20"/>
+			<ship_param ship_qty="1"/>
+			<ship_param random_ship_name="Asteroid"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_scrap="20"/>
+			<ship_param max_scrap="100"/>
+			<ship_param min_health="2"/>
+			<ship_param max_health="5"/>
+		</add_ship>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="SECTOR_ASTEROIDS_SPAWNED">
+		<event_param var_name="[SECTOR]_ASTEROIDS_SPAWNED"/>
+		<event_param var_value="1"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="CLEAR_ASTEROIDS_SPAWNED">
+		<event_param var_name="[SECTOR]_ASTEROIDS_SPAWNED"/>
+		<event_param var_value=""/>
+	</event>
+
+	<event type="SPAWN_SHIP" name="SPAWN_DEAD_SHIP_PART">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="H_CRUS_D1"/>
+			<ship_param gen_ship_model="H_CRUS_D2"/>
+			<ship_param gen_ship_model="H_CRUS_D3"/>
+			<ship_param gen_ship_model="H_CRUS_D4"/>
+			<ship_param gen_ship_model="H_CARGO_D1"/>
+			<ship_param gen_ship_model="H_CARGO_D2"/>
+			<ship_param gen_ship_model="H_CARGO_D3"/>
+			<ship_param gen_ship_model="H_CARGO_D4"/>
+			<ship_param ship_qty="1"/>
+			<ship_param ship_name="Dead ship part"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_scrap="20"/>
+			<ship_param max_scrap="100"/>
+			<ship_param min_health="4"/>
+			<ship_param max_health="8"/>
+		</add_ship>
+	</event>
+
+	<event type="SPAWN_SHIP" name="SPAWN_SHIP_PARTS_IN_ASTEROIDS_P1">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="H_CRUS_D1"/>
+			<ship_param ship_qty="1"/>
+			<ship_param ship_name="Dead ship part"/>
+			<ship_param pos="6900:6100:"/>
+			<ship_param min_scrap="20"/>
+			<ship_param max_scrap="100"/>
+			<ship_param min_health="4"/>
+			<ship_param max_health="8"/>
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_SHIP_PARTS_IN_ASTEROIDS_P2">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="H_CRUS_D4"/>
+			<ship_param ship_qty="1"/>
+			<ship_param ship_name="Dead ship part"/>
+			<ship_param pos="7600:5400:"/>
+			<ship_param min_scrap="20"/>
+			<ship_param max_scrap="100"/>
+			<ship_param min_health="4"/>
+			<ship_param max_health="8"/>
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_SHIP_PARTS_IN_ASTEROIDS_P3">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="ASTEROID1"/>
+			<ship_param gen_ship_model="ASTEROID2"/>
+			<ship_param gen_ship_model="ASTEROID3"/>
+			<ship_param gen_ship_model="ASTEROID4"/>
+			<ship_param gen_ship_model="ASTEROID5"/>
+			<ship_param gen_ship_model="ASTEROID6"/>
+			<ship_param gen_ship_model="ASTEROID7"/>
+			<ship_param gen_ship_model="ASTEROID8"/>
+			<ship_param gen_ship_model="ASTEROID9"/>
+			<ship_param gen_ship_model="ASTEROID10"/>
+			<ship_param gen_ship_model="ASTEROID11"/>
+			<ship_param gen_ship_model="ASTEROID12"/>
+			<ship_param gen_ship_model="ASTEROID13"/>
+			<ship_param gen_ship_model="ASTEROID14"/>
+			<ship_param gen_ship_model="ASTEROID15"/>
+			<ship_param gen_ship_model="ASTEROID16"/>
+			<ship_param gen_ship_model="ASTEROID17"/>
+			<ship_param gen_ship_model="ASTEROID18"/>
+			<ship_param gen_ship_model="ASTEROID19"/>
+			<ship_param gen_ship_model="ASTEROID20"/>
+			<ship_param ship_qty="1"/>
+			<ship_param ship_name="Asteroid"/>
+			<ship_param pos="7250:5750:"/>
+			<ship_param min_scrap="10"/>
+			<ship_param max_scrap="40"/>
+			<ship_param min_health="1"/>
+			<ship_param max_health="4"/>
+		</add_ship>
+	</event>
+
+	<event type="SPAWN_SHIP" name="SPAWN_RANDOM_ASTEROID_BELT">
+		<event_param nonstop="1"/>
+		<event_param random_chain_event="1"/>
+		<event_param chain_event="SPAWN_ASTEROID_BELT_5_10"/>
+		<event_param chain_event="SPAWN_ASTEROID_BELT_10_15"/>
+		<event_param chain_event="SPAWN_ASTEROID_BELT_15_20"/>
+		<event_param chain_event="SPAWN_ASTEROID_BELT_10_20"/>
+		<event_param chain_event="SPAWN_ASTEROID_BELT_5_20"/>
+	</event>
+
+	<event type="GROUP" name="ADD_ORES">
+		<event_param random_chain_event="1"/>
+		<event_param chain_event="ORES10"/>
+		<event_param chain_event="ORES20"/>
+		<event_param chain_event="ORES20"/>
+		<event_param chain_event="ORES30"/>
+		<event_param chain_event="ORES30"/>
+		<event_param chain_event="ORES30"/>
+	</event>
+
+	<event type="GROUP" name="ORES10">
+		<event_param any_condition="1"/>
+		<condition type="CHANCE" percent="10"/>
+		<condition type="SECTOR_HAZARD_PRESENT">
+			<condition_param hazard="EMP"/>
+			<condition_param hazard="FIRE"/>
+			<condition_param hazard="STORM"/>
+			<condition_param hazard="HULL_DAMAGE"/>
+		</condition>
+		<event_param random_chain_event="1"/>
+		<event_param chain_event="ADD_DILITHIUM"/>
+		<event_param chain_event="ADD_AURBOLLITE"/>
+		<event_param chain_event="ADD_CHADIUM"/>
+		<event_param chain_event="ADD_IGOTE"/>
+		<event_param chain_event="ADD_PALLADIUM"/>
+	</event>
+	<event type="GROUP" name="ORES20">
+		<event_param any_condition="1"/>
+		<condition type="CHANCE" percent="20"/>
+		<condition type="SECTOR_HAZARD_PRESENT">
+			<condition_param hazard="EMP"/>
+			<condition_param hazard="FIRE"/>
+			<condition_param hazard="STORM"/>
+			<condition_param hazard="HULL_DAMAGE"/>
+		</condition>
+		<event_param random_chain_event="1"/>
+		<event_param chain_event="ADD_AXAULITE"/>
+		<event_param chain_event="ADD_BAULITE"/>
+		<event_param chain_event="ADD_RICHUSIDE"/>
+		<event_param chain_event="ADD_ROMURINE"/>
+		<event_param chain_event="ADD_CRAWFIZITE"/>
+		<event_param chain_event="ADD_TRILITE"/>
+		<event_param chain_event="ADD_QUORINE"/>
+		<event_param chain_event="ADD_GIPIDE"/>
+		<event_param chain_event="ADD_ROSILIDE"/>
+	</event>
+	<event type="GROUP" name="ORES30">
+		<event_param any_condition="1"/>
+		<condition type="CHANCE" percent="30"/>
+		<condition type="SECTOR_HAZARD_PRESENT">
+			<condition_param hazard="EMP"/>
+			<condition_param hazard="FIRE"/>
+			<condition_param hazard="STORM"/>
+			<condition_param hazard="HULL_DAMAGE"/>
+		</condition>
+		<event_param random_chain_event="1"/>
+		<event_param chain_event="ADD_PLULIDE"/>
+		<event_param chain_event="ADD_THORIUM"/>
+		<event_param chain_event="ADD_EXIUM"/>
+		<event_param chain_event="ADD_ZOILINE"/>
+		<event_param chain_event="ADD_BLETOTE"/>
+		<event_param chain_event="ADD_BLUHITE"/>
+		<event_param chain_event="ADD_EFUOLIDE"/>
+		<event_param chain_event="ADD_GRAHILITE"/>
+		<event_param chain_event="ADD_IONUOBITE"/>
+		<event_param chain_event="ADD_IOSUM"/>
+		<event_param chain_event="ADD_ITIRINE"/>
+		<event_param chain_event="ADD_KINNOLINE"/>
+		<event_param chain_event="ADD_LINELLYON"/>
+		<event_param chain_event="ADD_NUOLITE"/>
+		<event_param chain_event="ADD_NIKYLINE"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="ADD_PALLADIUM">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="PALLADIUM"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_THORIUM">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="THORIUM"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_AURBOLLITE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="AURBOLLITE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_IGOTE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="IGOTE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_CHADIUM">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="CHADIUM"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_AXAULITE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="AXAULITE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_BAULITE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="BAULITE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_RICHUSIDE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="RICHUSIDE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_ROMURINE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="ROMURINE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_ROSILIDE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="ROSILIDE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_CRAWFIZITE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="CRAWFIZITE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_TRILITE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="TRILITE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_QUORINE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="QUORINE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_GIPIDE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="GIPIDE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_DILITHIUM">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="DILITHIUM"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_EXIUM">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="EXIUM"/>
+	</event>	
+	<event type="MODIFY_SHIP" name="ADD_PLULIDE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="PLULIDE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_ZOILINE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="ZOILINE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_BLETOTE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="BLETOTE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_BLUHITE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="BLUHITE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_EFUOLIDE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="EFUOLIDE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_GRAHILITE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="GRAHILITE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_IONUOBITE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="IONUOBITE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_IOSUM">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="IOSUM"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_ITIRINE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="ITIRINE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_KINNOLINE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="KINNOLINE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_LINELLYON">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="LINELLYON"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_NUOLITE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="NUOLITE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_NIKYLINE">
+		<event_param nonstop="1" />
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<event_param add_system_model_to_cargo="NIKYLINE"/>
+	</event>
+	
+	<event type="GROUP" name="EXTRA_RICH_ASTEROID_SECTORS">
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_T"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_B"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_L"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_R"/>
+	</event>
+	<event type="GROUP" name="EXTRA_RICH_ASTEROID_SECTORS_T">
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_T42"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_T43"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_T44"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_T45"/>
+	</event>
+	<event type="GROUP" name="EXTRA_RICH_ASTEROID_SECTORS_B">
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_B42"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_B43"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_B44"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_B45"/>
+	</event>
+	<event type="GROUP" name="EXTRA_RICH_ASTEROID_SECTORS_L">
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_L42"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_L43"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_L44"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_L45"/>
+	</event>
+	<event type="GROUP" name="EXTRA_RICH_ASTEROID_SECTORS_R">
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_R42"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_R43"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_R44"/>
+		<event_param chain_event="EXTRA_RICH_ASTEROID_SECTORS_R45"/>
+	</event>
+
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_T42">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="0:0"/>
+		<event_param area_end="99:5"/>
+		<event_param sector_type="42"/>
+	</event>
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_T43">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="0:0"/>
+		<event_param area_end="99:5"/>
+		<event_param sector_type="43"/>
+	</event>
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_T44">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="0:0"/>
+		<event_param area_end="99:5"/>
+		<event_param sector_type="44"/>
+	</event>
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_T45">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="0:0"/>
+		<event_param area_end="99:5"/>
+		<event_param sector_type="45"/>
+	</event>
+	
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_B42">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="0:94"/>
+		<event_param area_end="99:99"/>
+		<event_param sector_type="42"/>
+	</event>
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_B43">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="0:94"/>
+		<event_param area_end="99:99"/>
+		<event_param sector_type="43"/>
+	</event>
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_B44">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="0:94"/>
+		<event_param area_end="99:99"/>
+		<event_param sector_type="44"/>
+	</event>
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_B45">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="0:94"/>
+		<event_param area_end="99:99"/>
+		<event_param sector_type="45"/>
+	</event>
+	
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_L42">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="0:0"/>
+		<event_param area_end="5:99"/>
+		<event_param sector_type="42"/>
+	</event>
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_L43">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="0:0"/>
+		<event_param area_end="5:99"/>
+		<event_param sector_type="43"/>
+	</event>
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_L44">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="0:0"/>
+		<event_param area_end="5:99"/>
+		<event_param sector_type="44"/>
+	</event>
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_L45">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="0:0"/>
+		<event_param area_end="5:99"/>
+		<event_param sector_type="45"/>
+	</event>
+
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_R42">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="94:0"/>
+		<event_param area_end="99:99"/>
+		<event_param sector_type="42"/>
+	</event>
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_R43">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="94:0"/>
+		<event_param area_end="99:99"/>
+		<event_param sector_type="43"/>
+	</event>
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_R44">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="94:0"/>
+		<event_param area_end="99:99"/>
+		<event_param sector_type="44"/>
+	</event>
+	<event type="MODIFY_SECTOR" name="EXTRA_RICH_ASTEROID_SECTORS_R45">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="5"/>
+		<event_param max_event_qty="5"/>
+		<event_param random_sector="1"/>
+		<event_param area_start="94:0"/>
+		<event_param area_end="99:99"/>
+		<event_param sector_type="45"/>
+	</event>
+
+</events>

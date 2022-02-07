@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialogues>
+    <dialogue name="TUNNER" start="M0">
+        <message id="M0" text="Yo wassup fella! Wanna give your bird a new paint job? A new tag maybe? Only VAR(TUNNING_PRICE) scrap.">
+            <reply id="1" text="Uh, I'm a bit low on scrap at the moment.">
+                <condition qty="VAR(TUNNING_PRICE)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="R2" next="M1" text="No, thanks." />
+            <reply id="R3" next="M2" text="Yeah, i wanna change the name of my ship.">
+                <condition qty="VAR(TUNNING_PRICE)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="R4" next="M3" text="Yeah, i wanna change the color of my ship.">
+                <condition qty="VAR(TUNNING_PRICE)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+        </message>
+        <message id="M2" text="Just type the name that you want your ship to have.">
+            <reply id="N1" next="M4" regex="^[a-zA-Z0-9 -']+$" text="[INPUT](Input new ship name)" />
+        </message>
+        <message id="M3" text="ALright. I have a few colors out of which you can choose.">
+            <reply id="R5" next="M5" text="Green" />
+            <reply id="R6" next="M6" text="Yellow" />
+            <reply id="R7" next="M8" text="Red" />
+            <reply id="R8" next="M9" text="Blue" />
+        </message>
+        <message id="M4" text="Great! It's a pleasure doing business with you">
+            <event id="INPUT_ShipName" target="PLAYER" />
+            <event id="TAKE_SCRAP_FOR_TUNNING" target="PLAYER"/>
+            <event id="TUNNING_NEW_NAME" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="M5" text="Green it is then!">
+            <event id="TAKE_SCRAP_FOR_TUNNING" target="PLAYER"/>
+            <event id="TUNNING_Green" target="PLAYER" />
+            <reply id="B1" next="M1" text="Thanks" />
+        </message>
+        <message id="M6" text="Yellow it is then!">
+            <event id="TAKE_SCRAP_FOR_TUNNING" target="PLAYER"/>
+            <event id="TUNNING_Yellow" target="PLAYER" />
+            <reply id="B2" next="M1" text="Thanks." />
+        </message>
+        <message id="M8" text="Red it is then!">
+            <event id="TAKE_SCRAP_FOR_TUNNING" target="PLAYER"/>
+            <event id="TUNNING_Red" target="PLAYER" />
+            <reply id="B3" next="M1" text="Thanks." />
+        </message>
+        <message id="M9" text="Blue it is then!">
+            <event id="TAKE_SCRAP_FOR_TUNNING" target="PLAYER"/>
+            <event id="TUNNING_Blue" target="PLAYER" />
+            <reply id="B4" next="M1" text="Thanks." />
+        </message>
+    </dialogue>
+    <dialogue name="TUNNER_FF" start="M0">
+        <message id="M0" text="Yo Yo Yo Fella, you wann freshen up your ship you go and call me from the bridge.">
+            <reply id="R2" next="M1" text="Alright." />
+        </message>
+    </dialogue>
+</dialogues>

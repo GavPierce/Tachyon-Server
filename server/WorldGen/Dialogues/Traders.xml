@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialogues>
+    <dialogue name="GUN_TRADER_LP" start="M0">
+        <message id="44" text="[ACTION]is tapping their foot, sitting in a fold-up chair with a military crate next to them">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="45" text="Good luck">
+            <event id="BUY_LASER_PISTOL" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_LP)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_LP)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_LP)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]A clearly eccentric person in a blindingly colorful, albeit cheesily stylish suit,">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Hey buddy! Pally! Buddyohpallyohbuddy, how about a Laser pistol for your hands?">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+    </dialogue>
+    <dialogue name="GUN_TRADER_LP2" start="M0">
+        <message id="44" text="[ACTION]clearly surplus military boxes, too small to fit any long guns in them">
+            <reply id="1" next="48" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="45" text="Great, if you need more, you know where to find me">
+            <event id="BUY_LASER_PISTOL" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_LP)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_LP)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_LP)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]A person is lugging around a small wheeled train of worn,">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="and I need to clear stock immediately!">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="Hey, you! Buy a Laser Pistol! Please! I accidentally bought 2000 units">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]" />
+        </message>
+    </dialogue>
+    <dialogue name="GUN_TRADER_LR" start="M0">
+        <message id="44" text="[ACTION]and though you can't tell who they are because their visor is tinted,">
+            <reply id="1" next="48" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="45" text="Ery noice">
+            <event id="BUY_LASER_RIFLE" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_LR)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_LR)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_LR)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]A person in an EVA suit is trying to grab your attention,">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Psst, hey, you look like you could use a brand new Laser rifle, how about it?">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="[ACTION]your keen eyes can see what's clearly a large firearm">
+            <reply id="1" next="49" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="49" text="[ACTION]semi-decently concealed in their belongings">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]" />
+        </message>
+    </dialogue>
+    <dialogue name="GUN_TRADER_LR2" start="M0">
+        <message id="44" text="[ACTION]with nothing out of the ordinary, except an odd,">
+            <reply id="1" next="48" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="45" text="Okay, now scram">
+            <event id="BUY_LASER_RIFLE" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_LR)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_LR)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_LR)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]You notice someone darting to and from storage compartments, corners and so on,">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Psst. You want Laser rifles? I got Laser rifles. You don't want em? Forget I was ever here">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="[ACTION]dull metallic jingling reminiscent of firearms in a bag">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]" />
+        </message>
+    </dialogue>
+    <dialogue name="GUN_TRADER_PP" start="M0">
+        <message id="44" text="[ACTION]and someone on the other side of the comms,">
+            <reply id="1" next="48" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="45" text="Thank you, may it serve you well.">
+            <event id="BUY_PLASMA_PISTOL" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_PP)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_PP)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_PP)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]You see an officer with their back to you, arguing both to their crew">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="that our IDIOT QUARTERMASTER added an extra zero to, please help us sell them?">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="[ACTION]loosely holding a Plasma pistol in their hand, clearly infuriated about something.">
+            <reply id="1" next="50" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="49" text="[ACTION]The officer turns around to face you">
+            <reply id="1" next="51" text="Hello" />
+        </message>
+        <message id="50" text="Can someone please explain, WHY WE BOUGHT SO MANY OF THESE PISTO...">
+            <reply id="1" next="49" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="51" text="Oh! Sorry, we have a surplus of backup Plasma pistols">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]" />
+        </message>
+    </dialogue>
+    <dialogue name="GUN_TRADER_PP2" start="M0">
+        <message id="44" text="[ACTION]with multiple crates of plasma cells piled behind them">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="45" text="Good trade friend">
+            <event id="BUY_PLASMA_PISTOL" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_PP)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_PP)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_PP)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]Someone seems to have set up a gun stall in this place,">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Need more room clearing? I've got some right here. A good ol Plasma pistol">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+    </dialogue>
+    <dialogue name="GUN_TRADER_PR" start="M0">
+        <message id="44" text="[ACTION]plasma mist still coming off of one of the plasma rifles in their hand">
+            <reply id="1" next="48" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="45" text="Well this went a lot better than the last time">
+            <event id="BUY_PLASMA_RIFLE" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_PR)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_PR)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_PR)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]A scientist in a lab coat's swearing quietly to themselves,">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="well... Lets not talk about their atomized remains...">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="We've got a surplus of Plasma rifles that our last buyer did not pick up because, uh...">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]" />
+        </message>
+    </dialogue>
+    <dialogue name="GUN_TRADER_GR" start="M0">
+        <message id="44" text="[ACTION]types, looming next to a particularly large weapons crate.">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="45" text="Good luck">
+            <event id="BUY_GRENADES" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_GR)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_GR)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_GR)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]You see a hulking behemoth person with an uncomfortable amount of grenades of differing">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="HEY YOU! WANT TO BUY SOME GRENADES?, GUARANTEED TO REMOVE LIMBS OR YOUR MONEY BACK!">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+    </dialogue>
+    <dialogue name="GUN_TRADER_MR" start="M0">
+        <message id="44" text="[ACTION]as always with an excited storekeep who doesn't seem to be aware">
+            <reply id="1" next="48" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="45" text="Alright, remember to not stand too close to the impact zone.">
+            <event id="BUY_MINI_ROCKET" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_MR)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_MR)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="WHOA! I don't have that much on me. What are you selling tanks?!">
+                <condition qty="VAR(PRICE_MR)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]Another Boaris store was set up here,">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Welcome to Boaris's Home of Guns and Highly Illegal Weaponry! All stock is 0% off!">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="[ACTION]of what's going on around them, apart from if someone wants to buy a gun">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]" />
+        </message>
+    </dialogue>
+    <dialogue name="GUN_TRADER_SC" start="M0">
+        <message id="44" text="[ACTION]a strange device poking out of the back of their vest">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="45" text="Good, good... yes, very good.">
+            <event id="BUY_SONIC_CROWBAR" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_SC)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_SC)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_SC)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]Your eye's drawn to a shady person leaning against a wall,">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Hey, c'mere, yeah closer, want something that can pry open doors and helmets with ease?">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+    </dialogue>
+
+    <dialogue name="CGUN_TRADER_QL" start="M0">
+        <message id="44" text="[ACTION]Several boxes of cyborg weapons are neatly stacked nearby">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_PRESENT" />
+            </reply>
+            <reply id="2" next="48" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_ABSENT" />
+            </reply>
+        </message>
+        <message id="45" text="Transaction complete">
+            <event id="BUY_QUANTUM_LASER" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_QL)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_QL)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="WHOA! I don't have that much on me. What are you selling nukes?!">
+                <condition qty="VAR(PRICE_QL)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]You see a cyborg in a standart trader outfit">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Greetings, I am selling Quantum Laser equipment. Would you like to aquire?">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="Greetings, I am selling cyborg combat upgrades. Unfortunately they will not fit you.">
+            <reply id="1" text="Ok" />
+        </message>
+    </dialogue>
+    <dialogue name="CGUN_TRADER_RL" start="M0">
+        <message id="44" text="[ACTION]Several boxes of cyborg weapons are neatly stacked nearby">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_PRESENT" />
+            </reply>
+            <reply id="2" next="48" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_ABSENT" />
+            </reply>
+        </message>
+        <message id="45" text="Transaction complete">
+            <event id="BUY_RED_LASER" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_RL)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_RL)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_RL)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]You see a cyborg in a standart trader outfit">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Greetings, I am selling Red Laser equipment. Would you like to aquire?">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="Greetings, I am selling cyborg combat upgrades. Unfortunately they will not fit you.">
+            <reply id="1" text="Ok" />
+        </message>
+    </dialogue>
+    <dialogue name="CGUN_TRADER_GL" start="M0">
+        <message id="44" text="[ACTION]Several boxes of cyborg weapons are neatly stacked nearby">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_PRESENT" />
+            </reply>
+            <reply id="2" next="48" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_ABSENT" />
+            </reply>
+        </message>
+        <message id="45" text="Transaction complete">
+            <event id="BUY_GAMMA_LASER" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_GL)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_GL)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_GL)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]You see a cyborg in a standart trader outfit">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Greetings, I am selling Gamma Laser equipment. Would you like to aquire?">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="Greetings, I am selling cyborg combat upgrades. Unfortunately they will not fit you.">
+            <reply id="1" text="Ok" />
+        </message>
+    </dialogue>
+    <dialogue name="CGUN_TRADER_XRL" start="M0">
+        <message id="44" text="[ACTION]Several boxes of cyborg weapons are neatly stacked nearby">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_PRESENT" />
+            </reply>
+            <reply id="2" next="48" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_ABSENT" />
+            </reply>
+        </message>
+        <message id="45" text="Transaction complete">
+            <event id="BUY_XRAY_LASER" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_XRL)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_XRL)" target_player="1" type="MOB_SCRAP_PRESENT"/>
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_XRL)" target_player="1" type="MOB_SCRAP_ABSENT"/>
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]You see a cyborg in a standart trader outfit">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Greetings, I am selling X-RAY Laser equipment. Would you like to aquire?">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="Greetings, I am selling cyborg combat upgrades. Unfortunately they will not fit you.">
+            <reply id="1" text="Ok" />
+        </message>
+    </dialogue>
+    <dialogue name="CGUN_TRADER_PA" start="M0">
+        <message id="44" text="[ACTION]Several boxes of raw ores are neatly stacked nearby">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_PRESENT" />
+            </reply>
+            <reply id="2" next="48" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_ABSENT" />
+            </reply>
+        </message>
+        <message id="45" text="Ok bye!">
+            <event id="BUY_PICKAXE" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_PA)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_PA)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_PA)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]You see a cyborg with a cube shaped head in a strange looking miner outfit">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Greetings, I am selling Pickaxes. Would you like to aquire?">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="Greetings, I am selling cyborg combat upgrades. Unfortunately they will not fit you.">
+            <reply id="1" text="Ok" />
+        </message>
+    </dialogue>
+    <dialogue name="CGUN_TRADER_UVL" start="M0">
+        <message id="44" text="[ACTION]Several boxes of cyborg weapons are neatly stacked nearby">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_PRESENT" />
+            </reply>
+            <reply id="2" next="48" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_ABSENT" />
+            </reply>
+        </message>
+        <message id="45" text="Transaction complete">
+            <event id="BUY_UV_LASER" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_UVL)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_UVL)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_UVL)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]You see a cyborg in a standart trader outfit">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Greetings, I am selling UV Laser equipment. Would you like to aquire?">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="Greetings, I am selling cyborg combat upgrades. Unfortunately they will not fit you.">
+            <reply id="1" text="Ok" />
+        </message>
+    </dialogue>
+    <dialogue name="CGUN_TRADER_BL" start="M0">
+        <message id="44" text="[ACTION]Several boxes of cyborg weapons are neatly stacked nearby">
+            <reply id="1" next="47" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_PRESENT" />
+            </reply>
+            <reply id="2" next="48" text="[SKIP]...[AUTO]">
+                <condition race="CYBORG" target_player="1" type="MOB_RACE_ABSENT" />
+            </reply>
+        </message>
+        <message id="45" text="Transaction complete">
+            <event id="BUY_BLUE_LASER" target="PLAYER" />
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="46" text="VAR(PRICE_BL)">
+            <reply id="1" next="45" text="I'll take it.">
+                <condition qty="VAR(PRICE_BL)" target_player="1" type="MOB_SCRAP_PRESENT" />
+            </reply>
+            <reply id="2" text="Sorry I don't have that much at the moment.">
+                <condition qty="VAR(PRICE_BL)" target_player="1" type="MOB_SCRAP_ABSENT" />
+            </reply>
+            <reply id="3" text="No thanks." />
+        </message>
+        <message id="M0" text="[ACTION]You see a cyborg in a standart trader outfit">
+            <reply any_condition="1" id="1" next="44" text="[SKIP]...[AUTO]">
+                <condition type="SERVER_VARIABLE_SMALLER" var_name="TUT_PROG" var_value="1" />
+            </reply>
+        </message>
+        <message id="47" text="Greetings, I am selling Blue Laser equipment. Would you like to aquire?">
+            <reply id="1" next="46" text="How much?" />
+            <reply id="2" text="No thanks." />
+        </message>
+        <message id="48" text="Greetings, I am selling cyborg combat upgrades. Unfortunately they will not fit you.">
+            <reply id="1" text="Ok" />
+        </message>
+    </dialogue>
+
+    <dialogue name="NO_REMOTE" start="M0">
+        <message id="M0" text="You can't remotely interact with this person"/>
+    </dialogue>
+
+</dialogues>

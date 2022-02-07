@@ -1,0 +1,8 @@
+name=Unknown
+image=unknown
+range=3
+damage=75
+door_damage=30
+system_damage=150
+reload=60
+projectile=psi

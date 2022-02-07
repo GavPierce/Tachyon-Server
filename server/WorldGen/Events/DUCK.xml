@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="SPAWN_SHIP" name="SPAWN_DEF_PLATFORM_10">
+		<event_param chain_event="PREP_DEF_PLATFORM"/>
+		<event_param chain_event="DEF_PLAT_NUM_INC"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param ship_model="def_platform"/>
+			<ship_param ship_owner="[SHIP_OWNER]"/>
+			<ship_param ship_name="Defense Platform VAR(DEF_PLAT_NUM)"/>
+			<ship_param pos="[PROJ_POS]"/>
+			<ship_param min_health="3"/>
+			<ship_param max_health="3"/>
+		</add_ship>
+	</event>
+
+	<event type="SPAWN_SHIP" name="SPAWN_DEF_PLATFORM_15">
+		<event_param chain_event="PREP_DEF_PLATFORM"/>
+		<event_param chain_event="DEF_PLAT_NUM_INC"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param ship_owner="[SHIP_OWNER]"/>
+			<ship_param ship_model="def_platform"/>
+			<ship_param ship_name="Defense Platform VAR(DEF_PLAT_NUM)"/>
+			<ship_param pos="[PROJ_POS]"/>
+			<ship_param min_health="15"/>
+			<ship_param max_health="15"/>
+		</add_ship>
+	</event>
+
+	<event type="SPAWN_SHIP" name="SPAWN_DEF_PLATFORM_20">
+		<event_param chain_event="PREP_DEF_PLATFORM"/>
+		<event_param chain_event="DEF_PLAT_NUM_INC"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param ship_owner="[SHIP_OWNER]"/>
+			<ship_param ship_model="def_platform"/>
+			<ship_param ship_name="Defense Platform VAR(DEF_PLAT_NUM)"/>
+			<ship_param pos="[PROJ_POS]"/>
+			<ship_param min_health="20"/>
+			<ship_param max_health="20"/>
+		</add_ship>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="PREP_DEF_PLATFORM">
+	    <event_param install_system_model_direct="PLATFORM_REACTOR:1:1"/>
+		<event_param install_system_model_direct="PLATFORM_REACTOR:6:1"/>
+		<event_param set_owner="[SHIP_OWNER]"/>
+		<ship_ai type="AUTOREPAIR" crewless="1"/>
+		<ship_ai type="SENTRY" crewless="1" ignore_unowned="1" ai_id="SENTRY"/>
+		<event_param chain_events_to_modified="1"/>
+		<event_param chain_event="ADD_PLATFORM_WEAPONS_INSTALLER_AI"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_PLATFORM_WEAPONS_INSTALLER_AI">
+		<event_param remove_ship_ai_id="PLATFORM_WEAPONS_INSTALLER_AI"/>
+		<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="10" ai_id="PLATFORM_WEAPONS_INSTALLER_AI">
+			<ship_ai_param EVENT="DEF_PLATFORM_EJECT"/>
+			<ship_ai_param EVENT="DEF_PLATFORM_INSTALL"/>
+		</ship_ai>	
+	</event>
+
+	<event type="MODIFY_SHIP" name="DEF_PLATFORM_INSTALL">
+		<event_param any_condition="1"/>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="LASER_WEAPONS"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="BEAM_WEAPONS"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="MISSILE_WEAPONS"/>
+			<condition_param qty="1"/>
+		</condition>
+		<event_param install_from_cargo="1:3:1"/>
+		<event_param remove_ship_ai_id="PLATFORM_WEAPONS_INSTALLER_AI"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="DEF_PLATFORM_EJECT">
+		<event_param any_condition="1"/>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="SHIELDS"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="CAPACITOR"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="CLOAKING"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="DOOR_CONTROL"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="OXYGEN"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="REPAIR"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="TELEPORT"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="ENGINES"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="HYPERDRIVE"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="MEDICAL"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="PILOTING"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="REACTOR"/>
+			<condition_param qty="1"/>
+		</condition>
+		<condition type="SHIP_CARGO_PRESENT">
+			<condition_param cargo_type="SHIP_SYSTEM"/>
+			<condition_param system_type="WEAPONS_CONTROL"/>
+			<condition_param qty="1"/>
+		</condition>
+		<event_param eject_all_cargo="1"/>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="DEF_PLAT_NUM_INC">
+		<event_param var_name="DEF_PLAT_NUM"/>
+		<event_param var_value="++"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="REMOVE_DPL">
+		<event_param remove_all_systems="0"/>
+		<event_param remove_system_model="DPL"/>
+	</event>
+	<event type="MODIFY_SHIP" name="REMOVE_DPL2">
+		<event_param remove_all_systems="0"/>
+		<event_param remove_system_model="DPL2"/>
+	</event>
+	<event type="MODIFY_SHIP" name="REMOVE_DPL3">
+		<event_param remove_all_systems="0"/>
+		<event_param remove_system_model="DPL3"/>
+	</event>
+
+</events>

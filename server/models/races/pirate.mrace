@@ -1,0 +1,9 @@
+name=PIRATE
+sprite=PIRATE
+health=2000
+oxygen=1500
+no_oxygen_damage=30
+oxygen_consum_speed=4
+weapon=Laser rifle
+repair_power = 8
+fireman_power = 4

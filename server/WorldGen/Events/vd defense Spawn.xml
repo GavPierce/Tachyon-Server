@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="SPAWN_SHIP" name="SPAWN_VOID_DEF">
+		<event_param chain_events_to_created="1" />
+		<event_param chain_event="PREP_DEFENDER" />
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<event_param chain_event="VD_DEF_PLAT_SOUND"/>
+		<add_ship>
+			<ship_param ship_model="VDDEF"/>
+			<ship_param ship_name="VAR(VOID_DEF_PLAT_NAME)"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_health="10"/>
+			<ship_param max_health="15"/>
+			<ship_param ship_owner="VAR(VOID_OWNER)"/>
+			<ship_ai type="SENTRY" crewless="1"/>
+			<ship_ai type="AUTOREPAIR" crewless="1"/>
+		</add_ship>
+	</event>
+	<event type="MODIFY_SHIP" name="PREP_DEFENDER">
+		<event_param install_system_model="VD_DEF_REACTOR" />
+		<event_param install_system_model="VD_DEF_REACTOR" />
+		<ship_randomizer>
+			<ship_randomizer_param ship_level_min="30"/>
+			<ship_randomizer_param ship_level_max="0"/>
+			<ship_randomizer_param random_weapon="VD_BEAM"/>
+			<ship_randomizer_param random_weapon="VD_BR"/>
+			<ship_randomizer_param random_weapon="VD_DLASER"/>
+			<ship_randomizer_param random_weapon="VD_DLASER2"/>
+			<ship_randomizer_param random_weapon="VD_DLASER3"/>
+			<ship_randomizer_param random_weapon="VD_EMP_CANNON"/>
+			<ship_randomizer_param random_weapon="VD_LASER"/>
+			<ship_randomizer_param random_weapon="VD_LASER2"/>
+			<ship_randomizer_param random_weapon="VD_LASER3"/>
+			<ship_randomizer_param random_weapon="VD_LASER4"/>
+			<ship_randomizer_param random_weapon="VD_LASER5"/>
+			<ship_randomizer_param random_weapon="VD_LASER6"/>
+			<ship_randomizer_param random_weapon="VD_MELT"/>
+			<ship_randomizer_param random_weapon="VD_SL"/>
+			<ship_randomizer_param random_weapon="VD_SUF"/>
+		</ship_randomizer>
+	</event>
+	 
+	<event type="MODIFY_SHIP" name="PAY_FOR_VOID_DEF_PLATFORM">
+		<event_param take_scrap="VAR(VOID_DEF_PLAT_PRICE)"/>
+	</event>
+
+	<event type="PLAY_AUDIO" name="VD_DEF_PLAT_SOUND">
+		<event_param track="vd_def_plat"/>
+		<event_param music="0"/>
+		<event_param sector="[SECTOR]"/>
+	</event>
+
+</events>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="SERVER_VARIABLE" name="EXPLAIN_INT_DEP">
+		<event_param var_name="EXPLAIN_INT_DEP_[PLAYER_NAME]" /> 
+		<event_param var_value="1" /> 
+	</event>
+	
+	<event type="MODIFY_SHIP" name="DECRYPT_NAV_MODULES">
+		<event_param chain_events_to_modified="1"/>
+		<event_param for_ship_name="VAR([PLAYER_NAME]_input_ship_name)"/>
+		<event_param chain_event="CLEAR_DECRYPT_LAST_RESULT"/>
+		<event_param chain_event="REMOVE_NAV_MODULE"/>
+		<event_param chain_event="REMOVE_NAV_MODULE_BRKN"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="REMOVE_NAV_MODULE_BRKN">
+		<condition type="SHIP_CARGO_PRESENT" cargo_type="SHIP_SYSTEM" system_model="NAV_MODULE_BRKN" qty="1"/>
+		<event_param remove_system_model_from_cargo="NAV_MODULE_BRKN"/>
+		<event_param remove_all_systems="0"/>
+		<event_param chain_events_to_modified="1"/>
+		<event_param chain_event="DECRYPT_NAV_MODULE_BRKN"/>
+		<event_param chain_event="REMOVE_NAV_MODULE_BRKN"/>
+	</event>
+	<event type="MODIFY_SHIP" name="REMOVE_NAV_MODULE">
+		<condition type="SHIP_CARGO_PRESENT" cargo_type="SHIP_SYSTEM" system_model="NAV_MODULE" qty="1"/>
+		<event_param remove_system_model_from_cargo="NAV_MODULE"/>
+		<event_param remove_all_systems="0"/>
+		<event_param chain_events_to_modified="1"/>
+		<event_param chain_event="DECRYPT_NAV_MODULE"/>
+		<event_param chain_event="REMOVE_NAV_MODULE"/>
+	</event>
+
+	<event type="GROUP" name="DECRYPT_NAV_MODULE_BRKN">
+		<condition type="CHANCE">
+			<condition_param percent="3"/>
+		</condition>
+		<event_param chain_event="DECRYPT_NAV_MODULE_SUCCESS"/>
+	</event>
+	<event type="GROUP" name="DECRYPT_NAV_MODULE">
+		<condition type="CHANCE">
+			<condition_param percent="90"/>
+		</condition>
+		<event_param chain_event="DECRYPT_NAV_MODULE_SUCCESS"/>
+	</event>
+	
+	<event type="GROUP" name="DECRYPT_NAV_MODULE_SUCCESS">
+		<event_param chain_event="SET_TEMP_VD_SEC"/>
+		<event_param chain_event="ADD_TO_DECRYPT_LAST_RESULT"/>
+		<event_param chain_event="SET_TO_DECRYPT_LAST_RESULT"/>
+		<event_param chain_event="SAVE_DECRYPT_LAST_RESULT"/>
+	</event>
+	
+	<event type="SERVER_VARIABLE" name="ADD_TO_DECRYPT_LAST_RESULT">
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="DECRYPT_LAST_RESULT" any_value="1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="TEMP_VD_SEC" any_value="1"/>
+		<event_param var_name="DECRYPT_LAST_RESULT"/>
+		<event_param var_value="VAR(DECRYPT_LAST_RESULT), VAR(TEMP_VD_SEC)"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SET_TO_DECRYPT_LAST_RESULT">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="DECRYPT_LAST_RESULT" any_value="1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="TEMP_VD_SEC" any_value="1"/>
+		<event_param var_name="DECRYPT_LAST_RESULT"/>
+		<event_param var_value="VAR(TEMP_VD_SEC)"/>
+	</event>
+	
+	<event type="SERVER_VARIABLE" name="CLEAR_DECRYPT_LAST_RESULT">
+		<event_param var_name="DECRYPT_LAST_RESULT"/>
+		<event_param var_value=""/>
+	</event>
+	
+	<event type="GROUP" name="SAVE_DECRYPT_LAST_RESULT">
+		<event_param chain_event="COPY_DECRYPT_LAST_RESULT_TO_TEMP"/>
+		<event_param chain_event="ADD_TO_DECRYPT_RESULTS_ALL"/>
+		<event_param chain_event="SET_TO_DECRYPT_RESULTS_ALL"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="COPY_DECRYPT_LAST_RESULT_TO_TEMP">
+		<event_param var_name="TEMP"/>
+		<event_param var_value="VAR(DECRYPT_LAST_RESULT)"/>
+	</event>
+	<event type="GROUP" name="ADD_TO_DECRYPT_RESULTS_ALL">
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="DECRYPT_RESULTS_ALL" any_value="1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="TEMP" any_value="1"/>
+		<event_param chain_event="SELECT_FIRST_FROM_TEMP"/>
+		<event_param chain_event="REMOVE_FIRST_FROM_TEMP"/>
+		<event_param chain_event="ADD_SELECTED_TO_DECRYPT_RESULTS_ALL"/>
+		<event_param chain_event="ADD_TO_DECRYPT_RESULTS_ALL"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SELECT_FIRST_FROM_TEMP">
+		<event_param var_name="SELECTED_FROM_TEMP"/>
+		<event_param value_expr="1"/>
+		<event_param var_value="'VAR(TEMP)'.split(', ')[0]"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="REMOVE_FIRST_FROM_TEMP">
+		<event_param var_name="TEMP"/>
+		<event_param value_expr="1"/>
+		<event_param var_value="'VAR(TEMP)'.split(', ').length===1 ? '' : 'VAR(TEMP)'.split(', ').splice(1).join(', ')"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="ADD_SELECTED_TO_DECRYPT_RESULTS_ALL">
+		<event_param var_name="DECRYPT_RESULTS_ALL"/>
+		<event_param value_expr="1"/>
+		<event_param var_value="'VAR(DECRYPT_RESULTS_ALL)'+ ('VAR(DECRYPT_RESULTS_ALL)'.indexOf('VAR(SELECTED_FROM_TEMP)')===-1 ? ', VAR(SELECTED_FROM_TEMP)' : '')"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SET_TO_DECRYPT_RESULTS_ALL">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="DECRYPT_RESULTS_ALL" any_value="1"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="DECRYPT_LAST_RESULT" any_value="1"/>
+		<event_param var_name="DECRYPT_RESULTS_ALL"/>
+		<event_param var_value="VAR(DECRYPT_LAST_RESULT)"/>
+	</event>
+	
+	<event type="SERVER_VARIABLE" name="VD_SECTOR_BASE_COORDS_NOT_FOUND">
+		<event_param var_name="VD_SECTOR_BASE_COORDS_FOUND"/>
+		<event_param var_value="0"/>
+	</event>
+	
+	<event type="SPAWN_NPC" name="SPAWN_INT_DEP_CHIEF">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<spawn_npc>
+			<npc_param npc_qty="1"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Intel Dpt. Chief"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="SHIELDS"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_dialogue="INTEL"/>
+			<npc_param npc_remote_dialogue="INTEL"/>
+			<npc_ai type="NPC_LIFESUPPORT" heal_at_percent="95" oxygen_at_percent="95"/>
+			<npc_ai type="NPC_FIREMAN"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:PILOTING"/>
+				<npc_ai_param WORK_TIME="30"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+</events>

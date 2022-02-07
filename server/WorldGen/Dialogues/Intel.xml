@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialogues>
+    <dialogue name="INTEL" start="M0">
+        <message id="22" text="Unfortunately we couldn't extract any useful information.">
+            <reply id="1" text="Oh well, maybe next time." />
+        </message>
+        <message id="M0" text="Greetings [PLAYER_NAME].">
+            <reply id="1" next="1" text="[SKIP]...[AUTO]">
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_PRESENT" var_name="EXPLAIN_INT_DEP_[PLAYER_NAME]" var_value="" />
+            </reply>
+            <reply id="R1" next="2" text="[SKIP]...[AUTO]">
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_ABSENT" var_name="EXPLAIN_INT_DEP_[PLAYER_NAME]" var_value="" />
+            </reply>
+        </message>
+        <message id="M1" text="Please tell me the name of the ship that has the items.">
+            <reply id="R1" next="M2" regex="^[a-zA-Z0-9 -']+$" text="[INPUT](Input ship name)" />
+        </message>
+        <message id="M2" text="Please wait while we find the ship and check it's cargo hold.">
+            <event id="INPUT_ShipName" target="PLAYER" />
+            <reply id="1" next="20" text="[SKIP]DECRYPTION[AUTO]">
+                <condition owner="[PLAYER_NAME]" qty="1" ship_name="VAR([PLAYER_NAME]_input_ship_name)" target_player="1" type="SECTOR_SHIPS_PRESENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="NAV_MODULE" target_player="1" type="SHIP_CARGO_PRESENT" />
+            </reply>
+            <reply id="2" next="20" text="[SKIP]IN PROGRESS[AUTO]">
+                <condition owner="[PLAYER_NAME]" qty="1" ship_name="VAR([PLAYER_NAME]_input_ship_name)" target_player="1" type="SECTOR_SHIPS_PRESENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="NAV_MODULE_BRKN" target_player="1" type="SHIP_CARGO_PRESENT" />
+            </reply>
+            <reply any_condition="1" id="3" next="M7" text="[SKIP]...[AUTO]">
+                <condition owner="[PLAYER_NAME]" qty="1" ship_name="VAR([PLAYER_NAME]_input_ship_name)" target_player="1" type="SECTOR_SHIPS_ABSENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="NAV_MODULE" target_player="1" type="SHIP_CARGO_ABSENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="NAV_MODULE_BRKN" target_player="1" type="SHIP_CARGO_ABSENT" />
+            </reply>
+        </message>
+        <message id="M7" text="Something's wrong, either there's no ship or it doens't have the items we need.">
+            <reply id="R6" next="M1" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="10" text="Not to mention that almost no meaningful salvage remains after the explosion.">
+            <reply id="1" next="11" text="That's bad." />
+        </message>
+        <message id="11" text="It is. Best things we've gotten so far are some broken Navigation modules.">
+            <reply id="1" next="12" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="12" text="And there's little chance of getting any info from a broken thing.">
+            <reply id="1" next="13" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="13" text="Now if someone was able to board the enemy ship, hack into their cargo hold ">
+            <reply id="1" next="14" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="14" text="and jettisson an intact Nav module. I think we'd have better chances decrypting it.">
+            <reply id="1" next="15" text="Sounds hard." />
+        </message>
+        <message id="15" text="Well, if you manage to get your hands on any Nav modules, please bring them to me.">
+            <event id="EXPLAIN_INT_DEP" target="PLAYER" />
+            <reply id="1" text="Got it." />
+        </message>
+        <message id="16" text="I see, well let me know if you do.">
+            <reply id="1" text="Sure thing." />
+        </message>
+        <message id="17" text="Sure thing. So far we were able to extract these coordinates:">
+            <reply id="1" next="19" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="19" text="[ACTION]VAR(DECRYPT_RESULTS_ALL)">
+            <reply id="1" next="23" text="[SKIP]...[AUTO]">
+				<condition any_value="1" target_player="1" type="SERVER_VARIABLE_PRESENT" var_name="NO_MERCY"/>
+            </reply>
+            <reply id="2" text="Thanks."/>
+        </message>
+        <message id="23" text="[ACTION]Void Dweller main carrier was found at VAR(VDS)">
+            <reply id="1" text="Thanks."/>
+        </message>
+        <message id="1" text="Did you manage to find anything useful?">
+            <reply id="1" next="16" text="No, not yet." />
+            <reply id="2" next="17" text="Not yet. Can you show me the results we have uncovered so far?">
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_PRESENT" var_name="DECRYPT_RESULTS_ALL"/>
+            </reply>
+            <reply id="3" next="M1" text="Yes, I have some things you might be interested in." />
+        </message>
+        <message id="2" text="I've been expecting your visit.">
+            <reply id="1" next="3" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="3" text="You know who I am, and I know who you are, so let's cut to the chase.">
+            <reply id="1" next="4" text="Right." />
+        </message>
+        <message id="4" text="The Intelligence department is tasked with finding Void Dwellers bases.">
+            <reply id="1" next="5" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="5" text="We could use your help, and that's why you're here.">
+            <reply id="1" next="6" text="Indeed, so what's the plan?" />
+        </message>
+        <message id="6" text="Apart from sifting through space, our forces are trying to extract information">
+            <reply id="1" next="7" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="7" text="from the enemy ships. However it's proving to be quite difficult.">
+            <reply id="1" next="8" text="How so?" />
+        </message>
+        <message id="8" text="As soon as our boarding crew manages to wipe out the enemy forces, it triggers">
+            <reply id="1" next="9" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="9" text="an automatic self destruct sequence on the ship. And we are unable to stop it.">
+            <reply id="1" next="10" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="20" text="Alright, now let's have a look at those Nav modules">
+            <event id="DECRYPT_NAV_MODULES" target="PLAYER" />
+            <reply id="1" next="21" text="[SKIP]Yes[AUTO]">
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_PRESENT" var_name="DECRYPT_LAST_RESULT"/>
+            </reply>
+            <reply id="2" next="22" text="[SKIP]No[AUTO]">
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_ABSENT" var_name="DECRYPT_LAST_RESULT"/>
+            </reply>
+        </message>
+        <message id="21" text="Looks like we've got something interesting: VAR(DECRYPT_LAST_RESULT)">
+            <reply id="1" text="Great." />
+        </message>
+    </dialogue>
+</dialogues>

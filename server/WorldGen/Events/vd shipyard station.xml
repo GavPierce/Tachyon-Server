@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="SPAWN_SHIP" name="SPAWN_SHIPYARD_STATION">
+		<event_param chain_events_to_created="1" />
+		<event_param chain_event="PREPARE_SHIPYARD_STATION"/>
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<event_param chain_event="ADD_VD_SEC"/>
+		<event_param chain_event="ADD_VD_BLD"/>
+		<add_ship>
+			<ship_param random_pos="1"/>
+			<ship_param ship_model="VDST"/>
+			<ship_param ship_name="VAR(VOID_BUILD_NAME)"/>
+			<ship_param min_health="15"/>
+			<ship_param max_health="30"/>
+			<ship_param ship_owner="VAR(VOID_OWNER)"/>
+			<ship_param death_event="REMOVE_VD_SEC"/>			
+			<ship_param death_event="REMOVE_VD_BLD"/>			
+			<ship_ai type="EVENT_TRIGGER" TIMER="7200">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="500" />
+				</ship_ai_condition>
+				<ship_ai_param EVENT="SPAWN_WARSHIP_GROUP"/>
+				<ship_ai_param EVENT="VD_ATTACK_SOUND"/>	
+			</ship_ai>
+			<ship_ai type="LEVEL_LOADER" CREWLESS="1"/>	
+			<ship_ai type="SENTRY"/>
+			<ship_ai type="LIFE_SUPPORT"/>
+			<ship_ai type="EVENT_TRIGGER" CREWLESS="1" CREWLESS_ONLY="1">
+				<ship_ai_param TIMER="1800"/>
+				<ship_ai_param EVENT="SPAWN_VOID_CREW_CONS"/>
+			</ship_ai>	
+			<ship_ai type="EVENT_TRIGGER" TIMER="30">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(VOID_DEF_PLAT_PRICE)"/>
+				</ship_ai_condition>
+				<ship_ai_condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="VAR(VOID_DEF_PLAT_NAME)"/>
+					<condition_param qty="4"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="SPAWN_VOID_DEF"/>
+				<ship_ai_param EVENT="PAY_FOR_VOID_DEF_PLATFORM"/>
+			</ship_ai>
+		</add_ship>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="PREPARE_SHIPYARD_STATION">
+		<event_param install_system_model_direct="VD_DLASER3:4:4" />
+		<event_param install_system_model="VD_CONS_REACTOR" />
+	  	<event_param install_system_model="VD_CONS_CAPACITOR"/>
+		<event_param install_system_model="VD_CONS_SHIELDS" />
+		<event_param install_system_model="VD_CONS_DOOR_CONTROL" />
+		<event_param install_system_model="VD_CONS_MEDICAL" />
+		<event_param install_system_model="VD_CONS_PILOTING" />
+		<event_param install_system_model="VD_CONS_SENSORS" />
+		<event_param install_system_model="VD_CONS_WEAPONS_CONTROL" />
+	</event>
+
+	<event type="MODIFY_SHIP" name="PREPARE_ATTACKER">
+		<event_param chain_event="SET_VD_SHIP_TARGET"/>
+		<event_param death_event="CLEAN_UP_VD_SHIP_TARGET"/>			
+		<ship_ai type="LEVEL_LOADER"/>	
+		<ship_ai type="SECTOR_FINDER" ai_id="F1" TARGET="VAR([SHIP_NAME]_TARGET)">
+			<ship_ai_condition type="SERVER_VARIABLE_SMALLER" var_name="VDS_ALERT_TIMER" var_value="1"/>
+			<ship_ai_condition type="SECTOR_SHIPS_ABSENT" ship_class="STATION" qty="1"/>
+		</ship_ai>
+		<ship_ai type="EVENT_TRIGGER" TIMER="60" ai_id="F2" EVENT="VD_REDIRECT_TO_SINGU">
+			<ship_ai_param EVENT="REMOVE_VD_TARGET"/>
+			<ship_ai_condition type="SECTOR_COORDS_PRESENT" coords="VAR([SHIP_NAME]_TARGET)"/>
+			<ship_ai_condition type="SECTOR_SHIPS_ABSENT" ship_class="STATION" qty="1"/>
+		</ship_ai>
+	</event>
+	<event type="GROUP" name="SPAWN_VD_BS_ATTACKER">
+		<event_param chain_events_to_created_by_children="1"/>
+		<event_param chain_event="SPAWN_VD_BS"/>
+		<event_param chain_event="PREPARE_ATTACKER"/>
+	</event>
+	<event type="GROUP" name="SPAWN_VD_CRUS_ATTACKER">
+		<event_param chain_events_to_created_by_children="1"/>
+		<event_param chain_event="SPAWN_VD_CRUS"/>
+		<event_param chain_event="PREPARE_ATTACKER"/>
+	</event>
+	<event type="GROUP" name="SPAWN_VD_CORV_ATTACKER">
+		<event_param chain_events_to_created_by_children="1"/>
+		<event_param chain_event="SPAWN_VD_CORV"/>
+		<event_param chain_event="PREPARE_ATTACKER"/>
+	</event>
+	<event type="GROUP" name="SPAWN_VD_SCOUT_ATTACKER">
+		<event_param chain_events_to_created_by_children="1"/>
+		<event_param chain_event="SPAWN_VD_SCOUT"/>
+		<event_param chain_event="PREPARE_ATTACKER"/>
+	</event>
+
+	<event type="SPAWN_SHIP" name="SPAWN_VD_BS">
+		<event_param chain_events_to_created="1" />
+		<event_param chain_event="PREPARE_WARSHIP"/>
+		<event_param chain_event="VD_FORCE_NUM_INC"/>
+		<add_ship>
+			<ship_param random_pos="1"/>
+			<ship_param ship_model="VDW1"/>
+			<ship_param ship_name="Void Dweller Battleship XVAR(VD_FORCE_NUM)"/>
+			<ship_param min_health="25"/>
+			<ship_param max_health="30"/>
+			<ship_randomizer>
+				<ship_randomizer_param ship_level_min="20"/>
+				<ship_randomizer_param ship_level_max="0"/>
+				<ship_randomizer_param random_sheld="VD_WS_SHIELDS4"/>
+				<ship_random_systems type="HYPERDRIVE">
+					<ship_random_systems_param mandatory="1"/>
+					<ship_random_systems_param model="VD_WS_HYPERDRIVE3"/>
+				</ship_random_systems>
+			</ship_randomizer>
+			<spawn_npc_on_ship>
+				<npc_param npc_qty="3"/>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_name="Void dweller"/>
+				<npc_param npc_race="VOID"/>
+				<npc_param npc_home_system="PILOTING"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_ai type="NPC_LIFESUPPORT"/>
+				<npc_ai type="NPC_DEFENDER"/>
+	 			<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_WORKER" SYSTEMS="PILOTING:SENSORS:WEAPONS_CONTROL" WORK_TIME="10"/>
+			</spawn_npc_on_ship>
+			<spawn_npc_on_ship>
+				<npc_param npc_qty="3"/>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_name="Void dweller"/>
+				<npc_param npc_race="VOID"/>
+				<npc_param npc_home_system="ENGINES"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_ai type="NPC_LIFESUPPORT"/>
+				<npc_ai type="NPC_DEFENDER"/>
+	 			<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_WORKER" SYSTEMS="SHIELDS:ENGINES:HYPERDRIVE:REACTOR:CAPACITOR" WORK_TIME="12"/>
+			</spawn_npc_on_ship>			
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_VD_CRUS">
+		<event_param chain_events_to_created="1" />
+		<event_param chain_event="PREPARE_WARSHIP"/>
+		<event_param chain_event="VD_FORCE_NUM_INC"/>
+		<add_ship>
+			<ship_param random_pos="1"/>
+			<ship_param ship_model="VDW2"/>
+			<ship_param ship_name="Void Dweller Cruiser ZVAR(VD_FORCE_NUM)"/>
+			<ship_param min_health="20"/>
+			<ship_param max_health="25"/>
+			<ship_randomizer>
+				<ship_randomizer_param ship_level_min="20"/>
+				<ship_randomizer_param ship_level_max="0"/>
+				<ship_randomizer_param random_sheld="VD_WS_SHIELDS3"/>
+				<ship_random_systems type="HYPERDRIVE">
+					<ship_random_systems_param mandatory="1"/>
+					<ship_random_systems_param model="VD_WS_HYPERDRIVE3"/>
+				</ship_random_systems>
+			</ship_randomizer>
+			<spawn_npc_on_ship>
+				<npc_param npc_qty="2"/>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_name="Void dweller"/>
+				<npc_param npc_race="VOID"/>
+				<npc_param npc_home_system="PILOTING"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_ai type="NPC_LIFESUPPORT"/>
+				<npc_ai type="NPC_DEFENDER"/>
+	 			<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_WORKER" SYSTEMS="PILOTING:SENSORS:WEAPONS_CONTROL" WORK_TIME="10"/>
+			</spawn_npc_on_ship>
+			<spawn_npc_on_ship>
+				<npc_param npc_qty="3"/>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_name="Void dweller"/>
+				<npc_param npc_race="VOID"/>
+				<npc_param npc_home_system="ENGINES"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_ai type="NPC_LIFESUPPORT"/>
+				<npc_ai type="NPC_DEFENDER"/>
+	 			<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_WORKER" SYSTEMS="SHIELDS:ENGINES:HYPERDRIVE:REACTOR:CAPACITOR" WORK_TIME="12"/>
+			</spawn_npc_on_ship>
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_VD_CORV">
+		<event_param chain_events_to_created="1" />
+		<event_param chain_event="PREPARE_WARSHIP"/>
+		<event_param chain_event="VD_FORCE_NUM_INC"/>
+		<add_ship>
+			<ship_param random_pos="1"/>
+			<ship_param ship_model="VDW3"/>
+			<ship_param ship_name="Void Dweller Corvette YVAR(VD_FORCE_NUM)"/>
+			<ship_param min_health="15"/>
+			<ship_param max_health="20"/>
+			<ship_randomizer>
+				<ship_randomizer_param ship_level_min="20"/>
+				<ship_randomizer_param ship_level_max="0"/>
+				<ship_randomizer_param random_sheld="VD_WS_SHIELDS2"/>
+				<ship_random_systems type="HYPERDRIVE">
+					<ship_random_systems_param mandatory="1"/>
+					<ship_random_systems_param model="VD_WS_HYPERDRIVE2"/>
+				</ship_random_systems>
+			</ship_randomizer>
+			<spawn_npc_on_ship>
+				<npc_param npc_qty="2"/>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_name="Void dweller"/>
+				<npc_param npc_race="VOID"/>
+				<npc_param npc_home_system="PILOTING"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_ai type="NPC_LIFESUPPORT"/>
+				<npc_ai type="NPC_DEFENDER"/>
+	 			<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_WORKER" SYSTEMS="PILOTING:SENSORS:WEAPONS_CONTROL" WORK_TIME="10"/>
+			</spawn_npc_on_ship>
+			<spawn_npc_on_ship>
+				<npc_param npc_qty="2"/>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_name="Void dweller"/>
+				<npc_param npc_race="VOID"/>
+				<npc_param npc_home_system="ENGINES"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_ai type="NPC_LIFESUPPORT"/>
+				<npc_ai type="NPC_DEFENDER"/>
+	 			<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_WORKER" SYSTEMS="SHIELDS:ENGINES:HYPERDRIVE:REACTOR:CAPACITOR" WORK_TIME="12"/>
+			</spawn_npc_on_ship>			
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_VD_SCOUT">
+		<event_param chain_events_to_created="1" />
+		<event_param chain_event="PREPARE_WARSHIP"/>
+		<event_param chain_event="VD_FORCE_NUM_INC"/>
+		<add_ship>
+			<ship_param random_pos="1"/>
+			<ship_param ship_model="VDW4"/>
+			<ship_param ship_name="Void Dweller Scout AVAR(VD_FORCE_NUM)"/>
+			<ship_param min_health="10"/>
+			<ship_param max_health="15"/>
+			<ship_randomizer>
+				<ship_randomizer_param ship_level_min="20"/>
+				<ship_randomizer_param ship_level_max="0"/>
+				<ship_randomizer_param random_sheld="VD_WS_SHIELDS1"/>
+				<ship_random_systems type="HYPERDRIVE">
+					<ship_random_systems_param mandatory="1"/>
+					<ship_random_systems_param model="VD_WS_HYPERDRIVE1"/>
+				</ship_random_systems>
+			</ship_randomizer>
+			<spawn_npc_on_ship>
+				<npc_param npc_qty="1"/>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_name="Void dweller"/>
+				<npc_param npc_race="VOID"/>
+				<npc_param npc_home_system="PILOTING"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_ai type="NPC_LIFESUPPORT"/>
+				<npc_ai type="NPC_DEFENDER"/>
+	 			<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_WORKER" SYSTEMS="PILOTING:SENSORS:WEAPONS_CONTROL" WORK_TIME="10"/>
+			</spawn_npc_on_ship>
+			<spawn_npc_on_ship>
+				<npc_param npc_qty="2"/>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_name="Void dweller"/>
+				<npc_param npc_race="VOID"/>
+				<npc_param npc_home_system="ENGINES"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_ai type="NPC_LIFESUPPORT"/>
+				<npc_ai type="NPC_DEFENDER"/>
+	 			<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_WORKER" SYSTEMS="SHIELDS:ENGINES:HYPERDRIVE:REACTOR:CAPACITOR" WORK_TIME="12"/>
+			</spawn_npc_on_ship>
+		</add_ship>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="PREPARE_WARSHIP">
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<event_param chain_event="ADD_VD_SELF_DESTRUCT"/>
+		<event_param set_owner="VAR(VOID_OWNER)"/>
+		<event_param no_sector_events="1"/>
+		<event_param add_system_model_to_cargo="NAV_MODULE"/>
+		<event_param death_event="BREAK_NAV_MODULE"/>			
+		<ship_ai type="SENTRY"/>
+		<ship_ai type="LIFE_SUPPORT"/>
+		<ship_ai type="EVADER"/>
+		<ship_ai type="SECTOR_FINDER" TARGET="VAR(VDS)">
+			<ship_ai_condition type="SERVER_VARIABLE_BIGGER" var_name="VDS_ALERT_TIMER" var_value="0"/>
+		</ship_ai>
+		<event_param give_missiles="20"/>
+		<ship_randomizer>
+			<ship_randomizer_param ship_level_min="30"/>
+			<ship_randomizer_param ship_level_max="10"/>
+			<ship_randomizer_param random_weapon="VD_BEAM"/>
+			<ship_randomizer_param random_weapon="VD_BR"/>
+			<ship_randomizer_param random_weapon="VD_DLASER"/>
+			<ship_randomizer_param random_weapon="VD_DLASER2"/>
+			<ship_randomizer_param random_weapon="VD_DLASER3"/>
+			<ship_randomizer_param random_weapon="VD_EMP_CANNON"/>
+			<ship_randomizer_param random_weapon="VD_LASER"/>
+			<ship_randomizer_param random_weapon="VD_LASER2"/>
+			<ship_randomizer_param random_weapon="VD_LASER3"/>
+			<ship_randomizer_param random_weapon="VD_LASER4"/>
+			<ship_randomizer_param random_weapon="VD_LASER5"/>
+			<ship_randomizer_param random_weapon="VD_LASER6"/>
+			<ship_randomizer_param random_weapon="VD_MELT"/>
+			<ship_randomizer_param random_weapon="VD_SUF"/>
+			<ship_randomizer_param random_weapon="VD_ML"/>
+			<ship_randomizer_param random_weapon="VD_ML2"/>
+			<ship_randomizer_param random_weapon="VD_DPL"/>
+			<ship_random_systems type="PILOTING">
+				<ship_random_systems_param mandatory="1"/>
+				<ship_random_systems_param model="VD_WS_PILOTING"/>
+			</ship_random_systems>
+			<ship_random_systems type="REACTOR">
+				<ship_random_systems_param mandatory="1"/>
+				<ship_random_systems_param model="VD_WS_REACTOR"/>
+			</ship_random_systems>
+			<ship_random_systems type="DOOR_CONTROL">
+				<ship_random_systems_param mandatory="1"/>
+				<ship_random_systems_param model="VD_WS_DOORS1"/>
+				<ship_random_systems_param model="VD_WS_DOORS2"/>
+				<ship_random_systems_param model="VD_WS_DOORS3"/>
+				<ship_random_systems_param model="VD_WS_DOORS4"/>
+			</ship_random_systems>
+			<ship_random_systems type="ENGINES">
+				<ship_random_systems_param mandatory="1"/>
+				<ship_random_systems_param model="VD_WS_ENGINES1"/>
+				<ship_random_systems_param model="VD_WS_ENGINES2"/>
+				<ship_random_systems_param model="VD_WS_ENGINES3"/>
+				<ship_random_systems_param model="VD_WS_ENGINES4"/>
+			</ship_random_systems>
+			<ship_random_systems type="WEAPONS_CONTROL">
+				<ship_random_systems_param mandatory="0"/>
+				<ship_random_systems_param model="VD_WS_WEAP_CON"/>
+			</ship_random_systems>
+			<ship_random_systems type="SENSORS">
+				<ship_random_systems_param mandatory="0"/>
+				<ship_random_systems_param model="VD_WS_SENSORS"/>
+			</ship_random_systems>
+			<ship_random_systems type="CAPACITOR">
+				<ship_random_systems_param mandatory="0"/>
+				<ship_random_systems_param model="VD_WS_CAPACITOR1"/>
+				<ship_random_systems_param model="VD_WS_CAPACITOR2"/>
+				<ship_random_systems_param model="VD_WS_CAPACITOR3"/>
+				<ship_random_systems_param model="VD_WS_CAPACITOR4"/>
+			</ship_random_systems>
+			<ship_random_systems type="MEDICAL">
+				<ship_random_systems_param mandatory="0"/>
+				<ship_random_systems_param model="VD_WS_MEDICAL"/>
+			</ship_random_systems>
+			<ship_random_systems type="CLOAKING">
+				<ship_random_systems_param mandatory="0"/>
+				<ship_random_systems_param model="VD_WS_CLOAK"/>
+			</ship_random_systems>
+		</ship_randomizer>
+	</event>
+
+	<event type="MODIFY_SHIP" name="BREAK_NAV_MODULE">
+		<condition type="SHIP_CARGO_PRESENT" cargo_type="SHIP_SYSTEM" system_model="NAV_MODULE" qty="1"/>
+		<event_param remove_system_model_from_cargo="NAV_MODULE"/>
+		<event_param take_missiles="1000"/>
+		<event_param chain_event="ADD_BROKEN_NAV_MODULE"/>
+	</event>
+	<event type="MODIFY_SHIP" name="ADD_BROKEN_NAV_MODULE">
+		<condition type="SECTOR_SHIPS_ABSENT" ship_name="VAR(SINGU_NAME)" qty="1"/>
+		<event_param add_system_model_to_cargo="NAV_MODULE_BRKN"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="VD_REDIRECT_TO_SINGU">
+		<event_param remove_ship_ai_id="F1"/>
+		<event_param remove_ship_ai_id="F2"/>
+		<ship_ai type="SECTOR_FINDER" ai_id="F3" TARGET="VAR(LAST_STAND_SECTOR)">
+			<ship_ai_condition type="SECTOR_SHIPS_ABSENT" ship_class="STATION" qty="1"/>
+		</ship_ai>
+	</event>
+	<event type="SERVER_VARIABLE" name="CLEAN_UP_VD_SHIP_TARGET" var_name="[SHIP_NAME]_TARGET" var_value=""/>
+	
+	<event type="GROUP" name="SPAWN_WARSHIP_GROUP" random_chain_event="1">
+		<event_param chain_event="SPAWN_WARSHIP_GROUP_EASY"/>
+		<event_param chain_event="SPAWN_WARSHIP_GROUP_HARD"/>
+	</event>
+	<event type="GROUP" name="SPAWN_WARSHIP_GROUP_EASY" random_chain_event="1">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="VD_NO_MERCY" any_value="1"/>
+		<event_param chain_event="WARSHIP_GROUP1"/>
+		<event_param chain_event="WARSHIP_GROUP2"/>
+		<event_param chain_event="WARSHIP_GROUP3"/>
+		<event_param chain_event="WARSHIP_GROUP4"/>
+	</event>
+	<event type="GROUP" name="SPAWN_WARSHIP_GROUP_HARD" random_chain_event="1">
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="VD_NO_MERCY" any_value="1"/>
+		<event_param chain_event="WARSHIP_GROUP1"/>
+		<event_param chain_event="WARSHIP_GROUP2"/>
+		<event_param chain_event="WARSHIP_GROUP3"/>
+		<event_param chain_event="WARSHIP_GROUP4"/>
+		<event_param chain_event="WARSHIP_GROUP5"/>
+		<event_param chain_event="WARSHIP_GROUP6"/>
+		<event_param chain_event="WARSHIP_GROUP7"/>
+		<event_param chain_event="WARSHIP_GROUP8"/>
+		<event_param chain_event="WARSHIP_GROUP9"/>
+		<event_param chain_event="WARSHIP_GROUP10"/>
+		<event_param chain_event="WARSHIP_GROUP11"/>
+		<event_param chain_event="WARSHIP_GROUP12"/>
+	</event>
+	
+	<event type="GROUP" name="WARSHIP_GROUP1">
+		<event_param clear_created_by_children="1"/>
+		<event_param chain_event="SET_TEMP_VD_TARGET"/>
+		<event_param chain_event="SPAWN_VD_BS_ATTACKER"/>
+		<event_param chain_event="TAKE_SCRAP_FOR_VD_WARSHIPS"/>
+	</event>
+	<event type="GROUP" name="WARSHIP_GROUP2">
+		<event_param clear_created_by_children="1"/>
+		<event_param chain_event="SET_TEMP_VD_TARGET"/>
+		<event_param chain_event="SPAWN_VD_CRUS_ATTACKER"/>
+		<event_param chain_event="TAKE_SCRAP_FOR_VD_WARSHIPS"/>
+	</event>
+	<event type="GROUP" name="WARSHIP_GROUP3">
+		<event_param clear_created_by_children="1"/>
+		<event_param chain_event="SET_TEMP_VD_TARGET"/>
+		<event_param chain_event="SPAWN_VD_CORV_ATTACKER"/>
+		<event_param chain_event="TAKE_SCRAP_FOR_VD_WARSHIPS"/>
+	</event>
+	<event type="GROUP" name="WARSHIP_GROUP4">
+		<event_param clear_created_by_children="1"/>
+		<event_param chain_event="SET_TEMP_VD_TARGET"/>
+		<event_param chain_event="SPAWN_VD_SCOUT_ATTACKER"/>
+		<event_param chain_event="TAKE_SCRAP_FOR_VD_WARSHIPS"/>
+	</event>
+
+	<event type="GROUP" name="WARSHIP_GROUP5">
+		<event_param clear_created_by_children="1"/>
+		<event_param chain_event="SET_TEMP_VD_TARGET"/>
+		<event_param chain_event="SPAWN_VD_SCOUT_ATTACKER"/>
+		<event_param chain_event="SPAWN_VD_SCOUT_ATTACKER"/>
+		<event_param chain_event="TAKE_SCRAP_FOR_VD_WARSHIPS"/>
+	</event>
+	<event type="GROUP" name="WARSHIP_GROUP6">
+		<event_param clear_created_by_children="1"/>
+		<event_param chain_event="SET_TEMP_VD_TARGET"/>
+		<event_param chain_event="SPAWN_VD_CORV_ATTACKER"/>
+		<event_param chain_event="SPAWN_VD_SCOUT_ATTACKER"/>
+		<event_param chain_event="TAKE_SCRAP_FOR_VD_WARSHIPS"/>
+	</event>
+	<event type="GROUP" name="WARSHIP_GROUP7">
+		<event_param clear_created_by_children="1"/>
+		<event_param chain_event="SET_TEMP_VD_TARGET"/>
+		<event_param chain_event="SPAWN_VD_CRUS_ATTACKER"/>
+		<event_param chain_event="SPAWN_VD_SCOUT_ATTACKER"/>
+		<event_param chain_event="TAKE_SCRAP_FOR_VD_WARSHIPS"/>
+	</event>
+	<event type="GROUP" name="WARSHIP_GROUP8">
+		<event_param clear_created_by_children="1"/>
+		<event_param chain_event="SET_TEMP_VD_TARGET"/>
+		<event_param chain_event="SPAWN_VD_BS_ATTACKER"/>
+		<event_param chain_event="SPAWN_VD_SCOUT_ATTACKER"/>
+		<event_param chain_event="TAKE_SCRAP_FOR_VD_WARSHIPS"/>
+	</event>
+	<event type="GROUP" name="WARSHIP_GROUP9">
+		<event_param clear_created_by_children="1"/>
+		<event_param chain_event="SET_TEMP_VD_TARGET"/>
+		<event_param chain_event="SPAWN_VD_BS_ATTACKER"/>
+		<event_param chain_event="SPAWN_VD_CRUS_ATTACKER"/>
+		<event_param chain_event="TAKE_SCRAP_FOR_VD_WARSHIPS"/>
+	</event>
+	<event type="GROUP" name="WARSHIP_GROUP10">
+		<event_param clear_created_by_children="1"/>
+		<event_param chain_event="SET_TEMP_VD_TARGET"/>
+		<event_param chain_event="SPAWN_VD_CORV_ATTACKER"/>
+		<event_param chain_event="SPAWN_VD_CRUS_ATTACKER"/>
+		<event_param chain_event="TAKE_SCRAP_FOR_VD_WARSHIPS"/>
+	</event>
+	<event type="GROUP" name="WARSHIP_GROUP11">
+		<event_param clear_created_by_children="1"/>
+		<event_param chain_event="SET_TEMP_VD_TARGET"/>
+		<event_param chain_event="SPAWN_VD_CORV_ATTACKER"/>
+		<event_param chain_event="SPAWN_VD_CORV_ATTACKER"/>
+		<event_param chain_event="TAKE_SCRAP_FOR_VD_WARSHIPS"/>
+	</event>
+	<event type="GROUP" name="WARSHIP_GROUP12">
+		<event_param clear_created_by_children="1"/>
+		<event_param chain_event="SET_TEMP_VD_TARGET"/>
+		<event_param chain_event="SPAWN_VD_SCOUT_ATTACKER"/>
+		<event_param chain_event="SPAWN_VD_SCOUT_ATTACKER"/>
+		<event_param chain_event="SPAWN_VD_SCOUT_ATTACKER"/>
+		<event_param chain_event="TAKE_SCRAP_FOR_VD_WARSHIPS"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="TAKE_SCRAP_FOR_VD_WARSHIPS">
+		<event_param nonstop="1"/>
+		<event_param take_scrap="500"/>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="VD_FORCE_NUM_INC" var_name="VD_FORCE_NUM" var_value="++"/>
+
+	<event type="SERVER_VARIABLE" name="SET_VD_SHIP_TARGET" var_name="[SHIP_NAME]_TARGET" var_value="VAR(TEMP_VD_TARGET)"/>
+
+	<event type="GROUP" name="VD_ATTACK_SOUND">
+		<event_param random_chain_event="1"/>
+		<event_param chain_event="VD_ATTACK_SOUND1"/>
+		<event_param chain_event="VD_ATTACK_SOUND2"/>
+	</event>
+	<event type="PLAY_AUDIO" name="VD_ATTACK_SOUND1">
+		<event_param track="vd_att1"/>
+		<event_param music="0"/>
+		<event_param all_players="1"/>
+	</event>
+	<event type="PLAY_AUDIO" name="VD_ATTACK_SOUND2">
+		<event_param track="vd_att2"/>
+		<event_param music="0"/>
+		<event_param all_players="1"/>
+	</event>
+
+</events>

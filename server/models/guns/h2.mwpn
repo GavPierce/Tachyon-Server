@@ -1,0 +1,8 @@
+name=Laser pistol
+image=laser_pistol
+range=2
+damage=40
+door_damage=30
+system_damage=120
+reload=55
+projectile=laser

@@ -1,0 +1,8 @@
+name=Pickaxe
+image=pickaxe
+range=1
+damage=20
+door_damage=50
+system_damage=100
+reload=30
+projectile=swing

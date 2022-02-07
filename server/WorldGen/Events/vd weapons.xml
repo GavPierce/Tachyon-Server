@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="MODIFY_SHIP" name="VD_MIN_BEAM_HIT" give_scrap="1">
+		<condition type="SHIP_CLASS_PRESENT" check_target_ship="1" ship_class="ASTEROID"/>
+	</event>
+	
+	<event type="SPAWN_NPC" name="SPAWN_VDS">
+		<spawn_npc>
+			<npc_param npc_name="Void_Shadow"/>
+			<npc_param npc_race="VOID_SHADOW"/>
+			<npc_param npc_pos="[PROJ_POS]"/>
+			<npc_ai type="NPC_EVENT_TRIGGER" BLOCKER="0" TIMER="30" EVENT="REMOVE_VDS"/>
+			<npc_ai type="NPC_BOARDER" attack_unowned="1"/>
+		</spawn_npc>
+	</event>
+	
+	<event type="SPAWN_NPC" name="SPAWN_VDP">
+		<spawn_npc>
+			<npc_param npc_name="Void_Dweller"/>
+			<npc_param npc_race="VOID"/>
+			<npc_param npc_pos="[PROJ_POS]"/>
+			<npc_ai type="NPC_EVENT_TRIGGER" BLOCKER="0" TIMER="120" EVENT="REMOVE_VDS"/>
+			<npc_ai type="NPC_BOARDER" attack_unowned="1"/>
+		</spawn_npc>
+	</event>
+	
+	<event type="MODIFY_MOB" name="REMOVE_VDS">
+		<event_param take_health="9999"/>
+	</event>
+	
+</events>

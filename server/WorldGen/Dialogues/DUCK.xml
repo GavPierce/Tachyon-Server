@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialogues>
+    <dialogue name="DUCK_MANAGER">
+        <start>M1</start>
+        <message id="M1" text="Please input the number of the platform that you want to change">
+            <reply id="R1" text="[INPUT](Input platform number)" regex="^[0-9]+$" next="M4"/>
+			<reply id="R2" text="I want to enable Sentry mode on all platforms." next="M11"/>
+			<reply id="R3" text="I want to disable Sentry mode on all platforms." next="M12"/>
+            <reply id="R4" text="Another time"/>
+        </message>
+        <message id="M4" text="[ACTION]Searching...">
+            <event id="INPUT_ShipName" target="PLAYER"/>
+            <reply id="R3" text="[SKIP]...[AUTO]" next="M2">
+                <condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param ship_name="Defense Platform VAR([PLAYER_NAME]_input_ship_name)"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param owner="[PLAYER_NAME]"/>
+					<condition_param qty="1"/>
+				</condition>
+            </reply>
+            <reply id="R6" text="[SKIP]...[AUTO]" next="M33">
+                <condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param target_player="1"/>
+					<condition_param ship_name="Defense Platform VAR([PLAYER_NAME]_input_ship_name)"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param owner="[PLAYER_NAME]"/>
+					<condition_param qty="1"/>
+				</condition>
+            </reply>
+        </message>
+
+        <message id="M33" text="I can't find your platform with that name.">
+            <reply id="R3" text="[SKIP]..." next="M1"/>
+		</message>
+		<message id="M333" text="I don't see the player with this name in this sector.">
+            <reply id="R1" text="[SKIP]..." next="M1"/>
+        </message>
+		
+        <message id="M2" text="Platform found. What would you like to do?">
+            <reply id="1" text="I want to eject all missiles, drones, scrap and cargo." next="M5"/>
+            <reply id="2" text="I want to uninstall and eject the weapon." next="M7"/>
+            <reply id="3" text="I want to give this platform to another player." next="M10"/>
+            <reply id="4" text="I want to enable asteroid mining on it." next="Z1"/>
+            <reply id="5" text="I want to disable asteroid mining on it." next="Z2"/>
+            <reply id="6" text="I want to set it to Guard mode." next="G1"/>
+            <reply id="7" text="I want to disable Guard mode." next="G3"/>
+            <reply id="8" text="I want to set it to Sentry mode." next="S1"/>
+            <reply id="9" text="I want to disable Sentry mode." next="S2"/>
+        </message>
+
+        <message id="M5" text="Contents ejected.">
+            <event id="PLATFORM_EJECT_ALL" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M1"/>
+        </message>
+		<message id="M11" text="Enabled Sentry mode on all owned platforms.">
+            <event id="PLATFORM_ADD_SENTRY_ALL" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M1"/>
+        </message>
+		<message id="M12" text="Disabled Sentry mode on all owned platforms">
+            <event id="PLATFORM_REMOVE_SENTRY_ALL" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M1"/>
+        </message>
+		<message id="M7" text="Platform disarmed.">
+            <event id="PLATFORM_DISARM" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M1"/>
+        </message>
+		<message id="Z1" text="Asteroid mining enabled.">
+            <event id="PLATFORM_ENABLE_MINING" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M1"/>
+        </message>
+		<message id="Z2" text="Asteroid mining disabled.">
+            <event id="PLATFORM_DISABLE_MINING" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M1"/>
+        </message>
+		<message id="G1" text="Please, enter the Guard target name.">
+            <reply id="R1" text="[INPUT](Input Target Ship/Station name)" regex="^[a-zA-Z0-9 -']+$" next="G2"/>
+        </message>
+		<message id="G2" text="Guard mode enabled.">
+            <event id="INPUT_SELECTED_PLATFORM_DEF" target="PLAYER"/>
+            <event id="PLATFORM_ENABLE_DEFENDER" target="PLAYER"/>
+			<reply id="1" text="[SKIP]..." next="M1"/>
+        </message>
+		<message id="G3" text="Guard mode disabled.">
+            <event id="PLATFORM_DISABLE_MINING" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M1"/>
+        </message>
+		<message id="S1" text="Sentry mode enabled.">
+            <event id="PLATFORM_ENABLE_SENTRY" target="PLAYER"/>
+			<reply id="1" text="[SKIP]..." next="M1"/>
+        </message>
+		<message id="S2" text="Sentry mode disabled.">
+            <event id="PLATFORM_DISABLE_SENTRY" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M1"/>
+        </message>
+		
+		<message id="M10" text="Please, enter player name">
+            <reply id="R1" text="[INPUT](Input player name)" regex="^[a-zA-Z0-9 -']+$" next="M91"/>
+        </message>
+		<message id="M91" text="[ACTION]Searching...">
+            <event id="INPUT_PLAYER_NAME" target="PLAYER"/>
+            <reply id="R3" text="[SKIP]...[AUTO]" next="M92">
+                <condition type="SECTOR_PLAYERS_PRESENT">
+                    <condition_param target_player="1"/>
+					<condition_param name="VAR([PLAYER_NAME]_input_player_name)"/>
+					<condition_param qty="1"/>
+				</condition>
+            </reply>
+            <reply id="R6" text="[SKIP]...[AUTO]" next="M333">
+                <condition type="SECTOR_PLAYERS_ABSENT">
+                    <condition_param target_player="1"/>
+					<condition_param name="VAR([PLAYER_NAME]_input_player_name)"/>
+					<condition_param qty="1"/>
+				</condition>
+            </reply>
+        </message>
+		<message id="M92" text="Owner changed">
+            <reply id="R1" text="[SKIP]..." next="M1"/>
+            <event id="SET_NEW_SHIP_OWNER" target="PLAYER"/>
+        </message>
+		
+	</dialogue>
+</dialogues>

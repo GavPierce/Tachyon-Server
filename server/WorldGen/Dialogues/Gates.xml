@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dialogues>
+	<dialogue name="GATE_OPERATOR">
+		<start>M0</start>
+		<message id="M0" text="Stargate operator online">
+			<reply id="R2" text="[INPUT]Set Stargate Destination coords" regex="^[0-9:]+$" next="SET_DEST_COORDS">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="8"/>
+				</condition>
+			</reply>
+			<reply id="R4" text="[INPUT]Set Home coords" regex="^[0-9:]+$" next="SET_HOME_COORDS">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="8"/>
+				</condition>
+			</reply>
+			<reply id="R5" text="Activate Stargate to [VAR([SECTOR_COORDS]_GATE_DEST)]" next="ACTIVATE_STAR_GATE_PRE">
+				<condition type="SERVER_VARIABLE_PRESENT">
+					<condition_param var_name="[SECTOR_COORDS]_GATE_DEST"/>
+					<condition_param any_value="1"/>
+					<condition_param target_player="1"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="8"/>
+				</condition>
+			</reply>
+			<reply id="H1" text="Activate Stargate to Home: [VAR([PLAYER_NAME]_HOME_COORDS)]" next="ACTIVATE_STAR_GATE_HOME_PRE">
+				<condition type="SERVER_VARIABLE_PRESENT">
+					<condition_param var_name="[PLAYER_NAME]_HOME_COORDS"/>
+					<condition_param any_value="1"/>
+					<condition_param target_player="1"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="8"/>
+				</condition>
+			</reply>
+			
+			<reply id="R9" text="[ACTION]Build Stargate piece" next="NO_SCRAP_TO_BUILD_STAR_GATE">
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="8"/>
+				</condition>
+				<condition type="MOB_SCRAP_ABSENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_BUILD_PRICE)"/>
+				</condition>							
+			</reply>
+			<reply id="R10" text="[ACTION]Build Stargate piece" next="SPAWN_STAR_GATE_1">
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="1"/>
+				</condition>
+				<condition type="MOB_SCRAP_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_BUILD_PRICE)"/>
+				</condition>
+			</reply>
+			<reply id="R11" text="[ACTION]Build Stargate piece" next="SPAWN_STAR_GATE_2">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="1"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="2"/>
+				</condition>
+				<condition type="MOB_SCRAP_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_BUILD_PRICE)"/>
+				</condition>
+			</reply>
+			<reply id="R12" text="[ACTION]Build Stargate piece" next="SPAWN_STAR_GATE_3">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="2"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="3"/>
+				</condition>
+				<condition type="MOB_SCRAP_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_BUILD_PRICE)"/>
+				</condition>
+			</reply>
+			<reply id="R13" text="[ACTION]Build Stargate piece" next="SPAWN_STAR_GATE_4">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="3"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="4"/>
+				</condition>
+				<condition type="MOB_SCRAP_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_BUILD_PRICE)"/>
+				</condition>
+			</reply>
+			<reply id="R14" text="[ACTION]Build Stargate piece" next="SPAWN_STAR_GATE_5">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="4"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="5"/>
+				</condition>
+				<condition type="MOB_SCRAP_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_BUILD_PRICE)"/>
+				</condition>
+			</reply>
+			<reply id="R15" text="[ACTION]Build Stargate piece" next="SPAWN_STAR_GATE_6">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="5"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="6"/>
+				</condition>
+				<condition type="MOB_SCRAP_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_BUILD_PRICE)"/>
+				</condition>
+			</reply>
+			<reply id="R16" text="[ACTION]Build Stargate piece" next="SPAWN_STAR_GATE_7">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="6"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="7"/>
+				</condition>
+				<condition type="MOB_SCRAP_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_BUILD_PRICE)"/>
+				</condition>
+			</reply>
+			<reply id="R17" text="[ACTION]Build Stargate complete" next="SPAWN_STAR_GATE_FULL">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="7"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="8"/>
+				</condition>
+				<condition type="MOB_SCRAP_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_BUILD_PRICE)"/>
+				</condition>
+			</reply>
+		</message>
+
+		<message id="ACTIVATE_STAR_GATE_PRE" text="[ACTION]Checking...">
+			<reply id="R1" text="[SKIP]...[AUTO]" next="ACTIVATE_STAR_GATE">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param sector="VAR([SECTOR_COORDS]_GATE_DEST)"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="8"/>
+				</condition>
+				<condition type="MOB_SCRAP_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_ACTIVATION_PRICE)"/>
+				</condition>				
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="Star_Gate_Inhibitor"/>
+					<condition_param sector="VAR([SECTOR_COORDS]_GATE_DEST)"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="1"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param pos_area_start="6500:6500"/>
+					<condition_param pos_area_end="8000:8000"/>
+					<condition_param qty="1"/>
+				</condition>
+				<condition type="SECTOR_COORDS_ABSENT">
+					<condition_param coords="VAR([SECTOR_COORDS]_GATE_DEST)"/>
+				</condition>
+			</reply>
+			<reply id="R6" text="[SKIP]...[AUTO]" next="ACTIVATE_STAR_GATE_FAILED" any_condition="1">
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param sector="VAR([SECTOR_COORDS]_GATE_DEST)"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="8"/>
+				</condition>
+				<condition type="MOB_SCRAP_ABSENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_ACTIVATION_PRICE)"/>
+				</condition>				
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param ship_name="Star_Gate_Inhibitor"/>
+					<condition_param sector="VAR([SECTOR_COORDS]_GATE_DEST)"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="1"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param pos_area_start="6500:6500"/>
+					<condition_param pos_area_end="8000:8000"/>
+					<condition_param qty="1"/>
+				</condition>
+				<condition type="SECTOR_COORDS_PRESENT">
+					<condition_param coords="VAR([SECTOR_COORDS]_GATE_DEST)"/>
+				</condition>
+			</reply>
+		</message>
+		<message id="ACTIVATE_STAR_GATE_HOME_PRE" text="[ACTION]Checking...">
+			<reply id="R1" text="[SKIP]...[AUTO]" next="ACTIVATE_STAR_GATE_HOME">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param sector="VAR([PLAYER_NAME]_HOME_COORDS)"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="8"/>
+				</condition>
+				<condition type="MOB_SCRAP_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_ACTIVATION_PRICE)"/>
+				</condition>				
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param target_player="1"/>
+					<condition_param ship_name="Star_Gate_Inhibitor"/>
+					<condition_param sector="VAR([PLAYER_NAME]_HOME_COORDS)"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="1"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param pos_area_start="6500:6500"/>
+					<condition_param pos_area_end="8000:8000"/>
+					<condition_param qty="1"/>
+				</condition>
+				<condition type="SECTOR_COORDS_ABSENT">
+					<condition_param target_player="1"/>
+					<condition_param coords="VAR([PLAYER_NAME]_HOME_COORDS)"/>
+				</condition>
+			</reply>
+			<reply id="R6" text="[SKIP]...[AUTO]" next="ACTIVATE_STAR_GATE_FAILED" any_condition="1">
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param target_player="1"/>
+					<condition_param ship_name="Star_Gate"/>
+					<condition_param race="ALL"/>
+					<condition_param sector="VAR([PLAYER_NAME]_HOME_COORDS)"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="8"/>
+				</condition>
+				<condition type="MOB_SCRAP_ABSENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_ACTIVATION_PRICE)"/>
+				</condition>				
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param ship_name="Star_Gate_Inhibitor"/>
+					<condition_param sector="VAR([PLAYER_NAME]_HOME_COORDS)"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="1"/>
+				</condition>
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param pos_area_start="6500:6500"/>
+					<condition_param pos_area_end="8000:8000"/>
+					<condition_param qty="1"/>
+				</condition>
+				<condition type="SECTOR_COORDS_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param coords="VAR([PLAYER_NAME]_HOME_COORDS)"/>
+				</condition>
+			</reply>
+		</message>
+	
+		<message id="SPAWN_STAR_GATE_1" text="[ACTION]Done">
+			<event id="Take Stargate construction price from player" target="PLAYER"/>
+			<event id="Spawn Stargate 1" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M0"/>
+		</message>
+		<message id="SPAWN_STAR_GATE_2" text="[ACTION]Done">
+			<event id="Take Stargate construction price from player" target="PLAYER"/>
+			<event id="Spawn Stargate 2" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M0"/>
+		</message>
+		<message id="SPAWN_STAR_GATE_3" text="[ACTION]Done">
+			<event id="Take Stargate construction price from player" target="PLAYER"/>
+			<event id="Spawn Stargate 3" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M0"/>
+		</message>
+		<message id="SPAWN_STAR_GATE_4" text="[ACTION]Done">
+			<event id="Take Stargate construction price from player" target="PLAYER"/>
+			<event id="Spawn Stargate 4" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M0"/>
+		</message>
+		<message id="SPAWN_STAR_GATE_5" text="[ACTION]Done">
+			<event id="Take Stargate construction price from player" target="PLAYER"/>
+			<event id="Spawn Stargate 5" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M0"/>
+		</message>
+		<message id="SPAWN_STAR_GATE_6" text="[ACTION]Done">
+			<event id="Take Stargate construction price from player" target="PLAYER"/>
+			<event id="Spawn Stargate 6" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M0"/>
+		</message>
+		<message id="SPAWN_STAR_GATE_7" text="[ACTION]Done">
+			<event id="Take Stargate construction price from player" target="PLAYER"/>
+			<event id="Spawn Stargate 7" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M0"/>
+		</message>
+		<message id="SPAWN_STAR_GATE_FULL" text="[ACTION]Done">
+			<event id="Take Stargate construction price from player" target="PLAYER"/>
+			<event id="Spawn Stargate Full" target="PLAYER"/>
+			<reply id="R1" text="[SKIP]..." next="M0"/>
+		</message>
+
+		<message id="NO_SCRAP_TO_BUILD_STAR_GATE" text="You need VAR(GATE_BUILD_PRICE) Scrap to build the next Stargate part.">
+			<reply id="R1" text="[SKIP]..." next="M0"/>
+		</message>
+
+		<message id="ACTIVATE_STAR_GATE_FAILED" text="Stargate activation failed. Possible reasons:">
+			<reply id="R1" text="[SKIP]...[AUTO]" next="ACTIVATE_STAR_GATE_FAILED_R1"/>
+		</message>
+		<message id="ACTIVATE_STAR_GATE_FAILED_R1" text="1. There is no Stargate in the destination sector.">
+			<reply id="R1" text="[SKIP]...[AUTO]" next="ACTIVATE_STAR_GATE_FAILED_R2"/>
+		</message>
+		<message id="ACTIVATE_STAR_GATE_FAILED_R2" text="2. There is a Stargate inhibitor in the destination sector.">
+			<reply id="R1" text="[SKIP]...[AUTO]" next="ACTIVATE_STAR_GATE_FAILED_R3"/>
+		</message>
+		<message id="ACTIVATE_STAR_GATE_FAILED_R3" text="3. You don't have VAR(GATE_ACTIVATION_PRICE) Scrap to activate the Stargate.">
+			<reply id="R1" text="[SKIP]...[AUTO]" next="ACTIVATE_STAR_GATE_FAILED_R4"/>
+		</message>
+		<message id="ACTIVATE_STAR_GATE_FAILED_R4" text="4. You are already in the destination sector.">
+			<reply id="R1" text="[SKIP]...[AUTO]" next="ACTIVATE_STAR_GATE_FAILED_R5"/>
+		</message>
+		<message id="ACTIVATE_STAR_GATE_FAILED_R5" text="5. There are no ships in the Stargate.">
+			<reply id="R1" text="[SKIP]...[AUTO]" next="M0"/>
+		</message>
+		
+		<message id="ACTIVATE_STAR_GATE" text="[ACTION]Stargate activated to [VAR([SECTOR_COORDS]_GATE_DEST)]">
+			<event id="Take Stargate activation price from player" target="PLAYER"/>
+			<event id="Activate Stargate" target="PLAYER"/>
+		</message>
+		<message id="ACTIVATE_STAR_GATE_HOME" text="[ACTION]Stargate activated. Home destination coords: [VAR([PLAYER_NAME]_HOME_COORDS)]">
+			<event id="Take Stargate activation price from player" target="PLAYER"/>
+			<event id="Activate Stargate home" target="PLAYER"/>
+		</message>
+		
+		<message id="SET_HOME_COORDS" text="[ACTION]Home coords set to VAR([PLAYER_NAME]_HOME_COORDS)">
+			<reply id="R0" text="[SKIP]...[AUTO]" next="M0"/>
+			<event id="SET_PLAYER_HOME" target="PLAYER"/>
+		</message>
+		<message id="SET_DEST_COORDS" text="[ACTION]Destination coords set to VAR([SECTOR_COORDS]_GATE_DEST)">
+			<reply id="R0" text="[SKIP]...[AUTO]" next="M0"/>
+			<event id="SET_DEST_COORDS" target="PLAYER"/>
+		</message>
+
+	</dialogue>	
+
+	<dialogue name="Stargate_operator_seller">
+		<start>M0</start>
+		<message id="M0" text="Hello, would you like to purchase a Stargate Builder for just VAR(GATE_OPERATOR_PRICE)?">
+			<reply id="R1" text="Yes please." next="D7">
+				<condition type="MOB_SCRAP_PRESENT" target_player="1" qty="VAR(GATE_OPERATOR_PRICE)"/>
+			</reply>
+			<reply id="R2" text="Sorry I don't have that much at the moment.">
+				<condition type="MOB_SCRAP_ABSENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_OPERATOR_PRICE)"/>
+				</condition>
+			</reply>
+			<reply id="R3" text="No thanks."/>
+		</message>
+
+
+        <message id="D7" text="Please, input your ship's name.">
+            <reply id="R4" text="[INPUT](Input ship name)" regex="^[a-zA-Z0-9 -']+$" next="D4"/>
+        </message>
+        <message id="D4" text="One second please...">
+            <event id="INPUT_ShipName" target="PLAYER"/>
+            <reply id="R3" text="[SKIP]...[AUTO]" next="D8">
+				<condition type="MOB_SCRAP_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param qty="VAR(GATE_OPERATOR_PRICE)"/>
+				</condition>
+                <condition type="SECTOR_SHIPS_PRESENT">
+                    <condition_param target_player="1"/>
+                    <condition_param ship_name="VAR([PLAYER_NAME]_input_ship_name)"/>
+                    <condition_param owner="[PLAYER_NAME]"/>
+                    <condition_param qty="1"/>
+                </condition>
+            </reply>
+            <reply id="R6" text="[SKIP]...[AUTO]" next="D2" any_condition="1">
+                <condition type="SECTOR_SHIPS_ABSENT">
+                    <condition_param target_player="1"/>
+                    <condition_param ship_name="VAR([PLAYER_NAME]_input_ship_name)"/>
+                    <condition_param owner="[PLAYER_NAME]"/>
+                    <condition_param qty="1"/>
+                </condition>
+				<condition type="MOB_SCRAP_ABSENT">
+                    <condition_param target_player="1"/>
+                    <condition_param qty="VAR(GATE_OPERATOR_PRICE)"/>
+                </condition>
+            </reply>
+        </message>
+        <message id="D2" text="Either there's no such ship, or you don't have the scrap.">
+			<reply id="R6" text="[SKIP]..." next="D7"/>
+		</message>
+        <message id="D8" text="Transaction is successful. Stargate Builder was transfered to your ship.">
+            <reply id="1" text="Thanks."/>
+            <event id="TAKE_SCRAP_FOR_STARGATE_OPERATOR" target="PLAYER"/>
+			<event id="SPAWN_STARGATE_BUILDER" target="PLAYER"/>
+        </message>
+	</dialogue>	
+	
+	<dialogue name="Stargate_builder">
+		<start>M0</start>
+		<message id="M0" text="Do you want to build the Stargate in this sector?">
+			<reply id="R1" text="Yes" next="BUILD_STARGATE_PLATFORM">
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="Stargate_Operator_platform"/>
+					<condition_param qty="1"/>
+				</condition>
+			</reply>
+			<reply id="R2" text="I want you to teleport on the existing platform." next="BUILD_STARGATE_PLATFORM">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="Stargate_Operator_platform"/>
+					<condition_param qty="1"/>
+				</condition>
+			</reply>
+			<reply id="R3" text="No"/>
+		</message>
+
+		<message id="BUILD_STARGATE_PLATFORM" text="Done">
+			<event id="REMOVE_MOB" target="NPC" />
+			<event id="Spawn Stargate Operator" />
+		</message>
+
+	</dialogue>	
+	
+	<dialogue name="Inhibitor">
+		<start>MO</start>
+		<message id="MO" text="How can I help you [PLAYER_NAME]?">
+			<reply id="R1" text="[ACTION]Tell me how Inhibitors work" next="EXPLAIN"/>
+			<reply id="R2" text="[ACTION]Spawn Stargate Inhibitor" next="SPAWN_STAR_GATE_InhibiTOR">
+				<condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param target_player="1"/>
+					<condition_param ship_name="Star_Gate_Inhibitor"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="1"/>
+				</condition>
+			</reply>
+			<reply id="R3" text="[ACTION]Remove Stargate Inhibitor" next="REMOVE_STAR_GATE_INHIBITOR">
+				<condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param target_player="1"/>
+					<condition_param ship_name="Star_Gate_Inhibitor"/>
+					<condition_param ship_class="PLATFORM"/>
+					<condition_param qty="1"/>
+				</condition>
+			</reply>
+		</message>
+		
+		<message id="SPAWN_STAR_GATE_INHIBITOR" text="Inhibitor spawned">
+			<event id="Spawn Stargate Inhibitor" target="PLAYER"/>
+			<event id="Take Inhibitor construction price from player" target="PLAYER"/>
+		</message>
+		
+		<message id="REMOVE_STAR_GATE_INHIBITOR" text="Inhibitor removed">
+			<event id="Remove Stargate Inhibitor" target="PLAYER"/>
+		</message>		
+		
+		<message id="EXPLAIN" text="It's quite easy. Inhibitor doesn't let anyone (including you) teleport in the sector using a Stargate.">
+			<reply id="R4" text="OK. Thank you." next="Goodbye">
+			</reply>
+		</message>	
+		
+		<message id="Goodbye" text="Goodbye.">
+			<reply id="R5" text="OK. Thank you."/>
+		</message>
+	</dialogue>
+	
+</dialogues>

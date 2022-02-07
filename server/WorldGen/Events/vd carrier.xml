@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>	
+	<event type="SPAWN_SHIP" name="SPAWN_VD_CARRIER">
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="VDS" any_value="1"/>
+		<event_param chain_events_to_created="1"/>
+		<event_param chain_event="PREP_VD_CARRIER"/>
+		<event_param chain_event="Constr Ships Qty"/>
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<event_param chain_event="VD_SOUND"/>
+		<event_param sector="VAR(VDS)"/>
+		<add_ship>
+			<!-- <ship_param free_doors="1"/> -->
+			<!-- <ship_param free_med="1"/> -->
+			<!-- <ship_param free_oxygen="1"/> -->
+			<!-- <ship_param free_sensors="1"/> -->
+			<ship_param ship_model="VDMAIN"/>
+			<ship_param ship_name="VAR(VOID_CARRIER_NAME)"/>
+			<ship_param ship_owner="VAR(VOID_OWNER)"/>
+			<ship_param pos="VAR(VOID_CARRIER_POS)"/>
+			<ship_param min_health="3000"/>
+			<ship_param max_health="3000"/>
+			<ship_param damage_event="VD_NO_MERCY"/>
+			<ship_param damage_event="RESET_VDS_ALERT_TIMER"/>
+			<ship_ai type="AUTOREPAIR" CREWLESS="1" CREWLESS_ONLY="1"/>
+			<ship_ai type="LIFE_SUPPORT"/>
+			<ship_ai type="SENTRY" CREWLESS="1"/>
+			<ship_ai type="LEVEL_LOADER"/>
+			<ship_ai type="EVENT_TRIGGER" TIMER="60" CREWLESS="1">
+				<ship_ai_condition type="SHIP_CARGO_ABSENT">
+					<condition_param cargo_type="SHIP_SYSTEM"/>
+					<condition_param system_model="VD_GRAULIDE_CAPACITOR"/>
+					<condition_param qty="4"/>
+				</ship_ai_condition>
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(GRAULIDE_CAPACITOR_PRICE)"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="Generate_GRAULIDE_CAPACITOR"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" TIMER="130" CREWLESS="1">
+				<ship_ai_condition type="SERVER_VARIABLE_SMALLER">
+					<condition_param var_name="cons_qty"/>
+					<condition_param var_value="VAR(MAX_VD_CONS)"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="Spawn_Construction"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" TIMER="180" CREWLESS="1">
+				<ship_ai_condition type="SHIP_CARGO_PRESENT">
+					<condition_param cargo_type="SHIP_SYSTEM"/>
+					<condition_param system_model="VD_GRAULIDE_CAPACITOR"/>
+					<condition_param qty="4"/>
+				</ship_ai_condition>
+				<ship_ai_condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="VAR(VOID_CONS_NAME)"/>
+					<condition_param owner="VAR(VOID_OWNER)"/>
+					<condition_param pos_area_start="VAR(VOID_CONS_PICKUP_POS1)"/>
+					<condition_param pos_area_end="VAR(VOID_CONS_PICKUP_POS2)"/>
+					<condition_param qty="1"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="EJECT_4_SYSTEMS_FOR_CONSTRUCTION"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" TIMER="1800" CREWLESS="1" CREWLESS_ONLY="1">
+				<ship_ai_param EVENT="SPAWN_VOID_CREW_MAIN"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" TIMER="150" CREWLESS="1">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT" qty="VAR(VD_CARGO_SIZE)"/>
+				<ship_ai_condition type="SERVER_VARIABLE_PRESENT" var_name="VD_BLD" any_value="1"/>
+				<ship_ai_param EVENT="TAKE_SCRAP_FOR_CARGO"/>
+				<ship_ai_param EVENT="BLD_CARGO_SHIP_SPAWN"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" TIMER="30" CREWLESS="1">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(VOID_DEF_PLAT_PRICE)"/>
+				</ship_ai_condition>
+				<ship_ai_condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="VAR(VOID_DEF_PLAT_NAME)"/>
+					<condition_param qty="8"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="SPAWN_VOID_DEF"/>
+				<ship_ai_param EVENT="PAY_FOR_VOID_DEF_PLATFORM"/>
+				<ship_ai_param EVENT="CLEAR_CONS_SPACE"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" TIMER="3600" EVENT="VOID_RESUPLY"/>
+		</add_ship>
+	</event>
+
+	<event type="MODIFY_SHIP" name="VOID_RESUPLY" give_scrap="VAR(VOID_RESUPLY_SIZE)"/>
+	<event type="MODIFY_SHIP" name="CLEAR_CONS_SPACE">
+		<event_param chain_event="CLEAR_CONS_SPACE2"/>
+		<event_param for_pos_area_start="VAR(VOID_CONS_PICKUP_POS1)"/>
+		<event_param for_pos_area_end="VAR(VOID_CONS_PICKUP_POS2)"/>
+		<event_param random_pos="1"/>
+	</event>
+	<event type="MODIFY_SHIP" name="CLEAR_CONS_SPACE2">
+		<event_param for_pos_area_start="VAR(VOID_CONS_PICKUP_POS1)"/>
+		<event_param for_pos_area_end="VAR(VOID_CONS_PICKUP_POS2)"/>
+		<event_param pos="0:0"/>
+	</event>
+	
+	<event type="SERVER_VARIABLE" name="VDS">
+		<condition type="SECTOR_SHIPS_ABSENT" qty="1"/>
+		<event_param chain_event="CREATE_VOID_SPAWN"/>
+		<event_param var_name="VDS"/>
+		<event_param var_value="[SECTOR]"/>
+		<!-- <event_param var_value="12:33"/> -->
+	</event>
+
+	<event type="MODIFY_SHIP" name="PREP_VD_CARRIER">
+		<event_param give_scrap="20000"/>
+		<event_param give_missiles="20000"/>
+		<event_param install_system_model_direct="VD_MAIN_PILOTING:12:13"/>
+		<event_param install_system_model_direct="VD_MAIN_DOOR_CONTROL:12:17"/>
+		<event_param install_system_model_direct="VD_MAIN_ENGINES:11:21"/>
+		<event_param install_system_model_direct="VD_MAIN_ENGINES:13:21"/>
+		<event_param install_system_model_direct="VD_MAIN_TELEPORT:11:11"/>
+		<event_param install_system_model_direct="VD_MAIN_TELEPORT:13:11"/>
+		<event_param install_system_model="VD_MAIN_REPAIR"/>
+		<event_param install_system_model="VD_MAIN_SENSORS"/>
+		<event_param install_system_model="VD_MAIN_MEDICAL"/>
+		<event_param install_system_model="VD_MAIN_MEDICAL"/>
+		<event_param install_system_model="VD_MAIN_MEDICAL"/>
+		<event_param install_system_model="VD_MAIN_REACTOR"/>
+		<event_param install_system_model="VD_MAIN_CAPACITOR"/>
+		<event_param install_system_model="VD_MAIN_CAPACITOR"/>
+		<event_param install_system_model="VD_MAIN_HD"/>
+		<event_param install_system_model="VD_MAIN_SHIELDS"/>
+		<event_param install_system_model="VD_MAIN_SHIELDS"/>
+		<event_param install_system_model="VD_BEAM"/>
+		<event_param install_system_model="VD_BR"/>
+		<event_param install_system_model="VD_DLASER3"/>
+		<event_param install_system_model="VD_EMP_CANNON"/>
+		<event_param install_system_model="VD_LASER6"/>
+		<event_param install_system_model="VD_MELT"/>
+		<event_param install_system_model="VD_SL"/>
+		<event_param install_system_model="VD_SUF"/>
+		<event_param install_system_model="VD_DPL"/>
+		<event_param install_system_model="VD_ML2"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="Generate_GRAULIDE_CAPACITOR">
+		<event_param take_scrap="VAR(GRAULIDE_CAPACITOR_PRICE)"/>
+		<event_param add_system_model_to_cargo="VD_GRAULIDE_CAPACITOR"/>	
+	</event>
+	
+	<event type="REMOVE_SHIP" name="CLEANUP_VDS_SELECTOR">
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="VDS" any_value="1"/>
+	</event>
+	
+	<event type="SPAWN_SHIP" name="SPAWN_VDS_SELECTOR">
+		<event_param sector="0:0"/>
+		<add_ship>
+			<ship_param ship_model="EMPTY"/>
+			<ship_param ship_name="VDS_SELECTOR"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_health="100"/>
+			<ship_param max_health="100"/>
+			<ship_param safe_zone="1"/>
+			<ship_ai type="LEVEL_LOADER"/>
+			<ship_ai type="EVENT_TRIGGER" CREWLESS="1">
+				<ship_ai_param TIMER="5"/>
+				<ship_ai_param EVENT="SELECT_RANDOM_VDS"/>
+				<ship_ai_param EVENT="CLEANUP_VDS_SELECTOR"/>
+				<ship_ai_param EVENT="HIDE_VD_SECTOR"/>
+				<ship_ai_param EVENT="SPAWN_VD_CARRIER"/>
+			</ship_ai>
+		</add_ship>
+	</event>
+
+	<event type="MODIFY_SECTOR" name="HIDE_VD_SECTOR">
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="VDS" any_value="1"/>
+		<event_param sector="VAR(VDS)"/>
+		<event_param sector_type="0"/>
+	</event>
+
+	<event type="MODIFY_SECTOR" name="VD_SECTOR_TYPE">
+		<condition type="SECTOR_TYPE_ABSENT" sector_type="40"/>
+		<event_param sector_type="40"/>
+	</event>
+
+	<event type="MODIFY_SECTOR" name="SELECT_RANDOM_VDS">
+		<event_param chain_event="VDS"/>
+		<event_param random_sector="1"/>
+	</event>
+	
+	<event type="START_LOCATION" name="CREATE_VOID_SPAWN">
+		<event_param sector="VAR(VDS)"/>
+		<event_param pos="VAR(VOID_CARRIER_POS)"/>
+		<event_param location_name="Main spawn for VOID"/>
+		<event_param race="VOID"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="EJECT_4_SYSTEMS_FOR_CONSTRUCTION">
+		<event_param eject_direction="DOWN"/>
+		<event_param eject_all_cargo="1"/>
+	</event>
+	
+	<event type="PLAY_AUDIO" name="VD_SOUND">
+		<event_param track="vd_arr"/>
+		<event_param music="0"/>
+		<event_param all_players="1"/>
+	</event>
+
+	<event type="SPAWN_NPC" name="SPAWN_VOID_CREW1">
+		<spawn_npc>
+			<npc_param npc_qty="1"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_race="VOID"/>
+			<npc_param npc_name="Void dweller"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_home_system="SHIELDS"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_FIREMAN"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_WORKER" SYSTEMS="WEAPONS_CONTROL:SHIELDS:PILOTING" WORK_TIME="30"/>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_VOID_CREW2">
+		<spawn_npc>
+			<npc_param npc_qty="1"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_race="VOID"/>
+			<npc_param npc_name="Void dweller"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_home_system="ENGINES"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_FIREMAN"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_WORKER" SYSTEMS="SHIELDS:ENGINES:HYPERDRIVE:REACTOR:CAPACITOR" WORK_TIME="12"/>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_VOID_CREW3">
+		<spawn_npc>
+			<npc_param npc_qty="1"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Void dweller"/>
+			<npc_param npc_race="VOID"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_home_system="PILOTING"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_FIREMAN"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_WORKER" SYSTEMS="PILOTING:SENSORS:WEAPONS_CONTROL" WORK_TIME="10"/>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_VOID_CREW4">
+		<spawn_npc>
+			<npc_param npc_qty="1"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Void dweller"/>
+			<npc_param npc_race="VOID"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_home_system="SHIELDS"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_FIREMAN"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_WORKER" SYSTEMS="WEAPONS_CONTROL:SHIELDS:PILOTING" WORK_TIME="30"/>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_VOID_CREW5">
+		<spawn_npc>
+			<npc_param npc_qty="1"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Void dweller"/>
+			<npc_param npc_race="VOID"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_home_system="MEDICAL"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_FIREMAN"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_WORKER" SYSTEMS="DOOR_CONTROL:SHIELDS:MEDICAL" WORK_TIME="30"/>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_VOID_CREW6">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<spawn_npc>
+			<npc_param npc_qty="1"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Void dweller"/>
+			<npc_param npc_race="VOID"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_home_system="CAPACITOR"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_FIREMAN"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_WORKER" SYSTEMS="SHIELDS:REACTOR:CAPACITOR" WORK_TIME="15"/>
+		</spawn_npc>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_VOID_CREW7">
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>
+		<spawn_npc>
+			<npc_param npc_qty="1"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Void dweller"/>
+			<npc_param npc_race="VOID"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_home_system="REACTOR"/>
+			<npc_ai type="NPC_LIFESUPPORT"/>
+			<npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_FIREMAN"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_WORKER" SYSTEMS="REACTOR:SHIELDS:CAPACITOR" WORK_TIME="30"/>
+		</spawn_npc>
+	</event>
+
+	<event type="GROUP" name="SPAWN_VOID_CREW_CONS">
+		<event_param chain_event="SPAWN_VOID_CREW1"/>
+		<event_param chain_event="SPAWN_VOID_CREW2"/>
+		<event_param chain_event="SPAWN_VOID_CREW5"/>
+	</event>
+	
+	<event type="GROUP" name="SPAWN_VOID_CREW_MIN">
+		<event_param chain_event="SPAWN_VOID_CREW6"/>
+		<event_param chain_event="SPAWN_VOID_CREW6"/>
+		<event_param chain_event="SPAWN_VOID_CREW7"/>
+	</event>
+	
+	<event type="GROUP" name="SPAWN_VOID_CREW_MAIN">
+		<event_param chain_event="SPAWN_VOID_CREW1"/>
+		<event_param chain_event="SPAWN_VOID_CREW2"/>
+		<event_param chain_event="SPAWN_VOID_CREW3"/>
+		<event_param chain_event="SPAWN_VOID_CREW4"/>
+		<event_param chain_event="SPAWN_VOID_CREW5"/>
+	</event>
+	
+	<event type="SPAWN_SHIP" name="BLD_CARGO_SHIP_SPAWN">
+		<event_param chain_events_to_created="1"/>
+		<event_param chain_event="PREPARE_VD_CARGO"/>
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<event_param chain_event="LOOP_VD_BLD_TARGET"/>
+		<event_param chain_event="SET_VD_BLD_CARGO_TARGET"/>
+		<event_param chain_event="VD_BLD_CARGO_NUM_INC"/>
+		<add_ship>
+			<ship_param death_event="CLEAN_UP_VD_SHIP_TARGET"/>			
+			<ship_param random_pos="1"/>
+			<ship_param no_sector_events="1"/>
+			<ship_param ship_model="VDCARGO"/>
+			<ship_param ship_name="VAR(VOID_CARGO_NAME) VAR(VD_BLD_CARGO_NUM)"/>
+			<ship_param min_health="10"/>
+			<ship_param max_health="20"/> 
+			<ship_param ship_owner="VAR(VOID_OWNER)"/>
+			<ship_ai type="EXPLORER" CREWLESS="1">
+				<ship_ai_param DELAY="5"/>
+				<ship_ai_condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="VAR(VOID_CARRIER_NAME)"/>
+					<condition_param qty="1"/>
+				</ship_ai_condition>
+			</ship_ai>
+			<ship_ai type="SCAVENGER" CREWLESS="1"/>
+			<ship_ai type="SECTOR_FINDER" CREWLESS="1">
+				<ship_ai_condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param ship_name="VAR(VOID_CARRIER_NAME)"/>
+					<condition_param qty="1"/>
+				</ship_ai_condition>
+				<ship_ai_param TARGET="VAR([SHIP_NAME]_TARGET)"/>
+			</ship_ai>
+			<ship_ai type="LEVEL_LOADER" CREWLESS="1"/>
+			<ship_ai type="EVENT_TRIGGER" CREWLESS="1">
+				<ship_ai_condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="VAR(VOID_BUILD_NAME)"/>
+					<condition_param qty="1"/>
+				</ship_ai_condition>
+				<ship_ai_param TIMER="10"/>
+				<ship_ai_param EVENT="DELIVER_SCRAP_TO_VD_BLD"/>
+				<ship_ai_param EVENT="CLEAN_UP_VD_SHIP_TARGET"/>
+				<ship_ai_param EVENT="REMOVE_SELF"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" CREWLESS="1" TIMER="60" EVENT="VDS_ALERT_TIMER"/>
+		</add_ship>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="DELIVER_SCRAP_TO_VD_BLD">
+		<event_param nonstop="1"/>
+		<event_param give_scrap="500"/>
+		<event_param for_ship_name="VAR(VOID_BUILD_NAME)"/>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="VD_BLD_CARGO_NUM_INC" var_name="VD_BLD_CARGO_NUM" var_value="++"/>
+
+	<event type="SERVER_VARIABLE" name="SET_VD_BLD_CARGO_TARGET" var_name="[SHIP_NAME]_TARGET" var_value="VAR(TEMP_VD_BLD_TARGET)"/>
+
+	<event type="SERVER_VARIABLE" name="VD_NO_MERCY" var_name="VD_NO_MERCY" var_value="1">
+		<condition type="SERVER_VARIABLE_ABSENT" var_name="VD_NO_MERCY" any_value="1"/>
+		<event_param chain_event="INC_MAX_VD_CONS"/>
+		<event_param chain_event="NEW_THREAT_SPIKE"/>
+	</event>
+	
+	<event type="SECTOR_ENTER" name="ENTERING_VDS">
+		<condition type="SECTOR_SHIPS_PRESENT" ship_name="VAR(VOID_CARRIER_NAME)" qty="1"/>
+		<event_param nonstop="1"/>
+		<event_param chain_event="START_VD_BOSS_MUSIC"/>
+		<event_param chain_event="SPAWN_VD_INHIBITORS"/>
+		<event_param chain_event="VD_SECTOR_TYPE"/>
+		<event_param level="0"/>
+		<event_param chance="110"/>
+		<event_param trigger_message="IT'S HERE!!! BATTLESTATIONS!!!"/>
+		<event_param broadcast_message="A new ship has entered this sector"/>
+	</event>
+	
+	<event type="GROUP" name="SPAWN_VD_INHIBITORS">
+		<event_param nonstop="1"/>
+		<condition type="SECTOR_SHIPS_ABSENT">
+			<condition_param ship_name="VAR(VOID_INHIBITOR_NAME)"/>
+			<condition_param owner="VAR(VOID_OWNER)"/>
+			<condition_param race="VOID"/>
+			<condition_param ship_class="PLATFORM"/>
+			<condition_param qty="2"/>
+		</condition>
+		<event_param chain_event="SPAWN_VOID_HYPER_INH"/>
+		<event_param chain_event="SPAWN_VOID_JUMP_INH"/>
+	</event>
+
+	<event type="PLAY_AUDIO" name="START_VD_BOSS_MUSIC">
+		<event_param nonstop="1"/>
+		<event_param track="TOL_A:TOL_B:1"/>
+		<event_param music="1"/>
+	</event>
+	
+	<event type="SERVER_VARIABLE" name="RESET_VDS_ALERT_TIMER">
+        <event_param var_name="VDS_ALERT_TIMER"/>
+        <event_param var_value="5"/>
+    </event>
+
+	<event type="SERVER_VARIABLE" name="VDS_ALERT_TIMER">
+		<condition type="SERVER_VARIABLE_BIGGER" var_name="VDS_ALERT_TIMER" var_value="0"/>
+        <event_param var_name="VDS_ALERT_TIMER"/>
+        <event_param var_value="--"/>
+    </event>
+
+	<event type="THREAT_SPIKE" name="NEW_THREAT_SPIKE">
+		<event_param radius_min="30"/>
+		<event_param radius_max="30"/>
+		<event_param threat_min="30"/>
+		<event_param threat_max="30"/>
+	</event>
+
+</events>

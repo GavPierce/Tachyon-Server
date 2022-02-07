@@ -1,0 +1,8 @@
+name=Plasma pistol
+image=plasma_pistol
+range=3
+damage=50
+door_damage=30
+system_damage=150
+reload=45
+projectile=plasma

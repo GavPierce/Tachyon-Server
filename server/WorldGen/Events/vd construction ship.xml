@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>	
+	<event type="SPAWN_SHIP" name="Spawn_Construction">
+		<event_param chain_event="VD_CONS_SOUND"/>
+		<event_param chain_event="VD_PREP_CONS"/>
+		<event_param chain_event="ADD_VOID_IMUNITY"/>
+		<event_param chain_event="Constr Ships Qty inc"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param ship_owner="VAR(VOID_OWNER)"/>
+			<ship_param free_doors="1"/>
+			<ship_param free_med="1"/>
+			<ship_param free_oxygen="1"/>
+			<ship_param free_sensors="1"/>
+			<ship_param death_event="Constr Ships Qty dec"/>			
+			<ship_param ship_model="VDCONS"/>
+			<ship_param ship_name="VAR(VOID_CONS_NAME)"/>
+			<ship_param pos="VAR(VOID_CONS_PICKUP_POS)"/>
+			<ship_param min_missile_ammo="10"/>
+			<ship_param max_missile_ammo="20"/>
+			<ship_param min_drone_ammo="6"/>
+			<ship_param max_drone_ammo="12"/>
+			<ship_param min_scrap="0"/>
+			<ship_param max_scrap="0"/>
+			<ship_param no_sector_events="1"/>
+			<ship_param min_health="50"/>
+			<ship_param max_health="50"/>
+			<ship_ai type="LIFE_SUPPORT" CREWLESS="0"/>
+			<ship_ai type="LEVEL_LOADER"/>
+			<ship_ai type="POSITIONER" CREWLESS="0">
+				<ship_ai_condition type="SECTOR_SHIPS_PRESENT">
+					<condition_param ship_name="VAR(VOID_CARRIER_NAME)"/>
+					<condition_param qty="1"/>
+				</ship_ai_condition>
+				<ship_ai_param TARGET="VAR(VOID_CONS_PICKUP_POS)"/>
+				<ship_ai_param LEEWAY="100"/>
+			</ship_ai>	 
+			<ship_ai type="EXPLORER" CREWLESS="0">
+				<ship_ai_param DELAY="180"/>
+				<ship_ai_condition type="SHIP_CARGO_PRESENT">
+					<condition_param cargo_type="SHIP_SYSTEM"/>
+					<condition_param system_model="VD_GRAULIDE_CAPACITOR"/>
+					<condition_param qty="1"/>
+				</ship_ai_condition>
+			</ship_ai>
+			<ship_ai type="SECTOR_FINDER" CREWLESS="0">
+				<ship_ai_condition type="SHIP_CARGO_ABSENT">
+					<condition_param cargo_type="SHIP_SYSTEM"/>
+					<condition_param system_model="VD_GRAULIDE_CAPACITOR"/>
+					<condition_param qty="1"/>
+				</ship_ai_condition>
+				<ship_ai_param TARGET="VAR(VDS)"/>
+			</ship_ai>
+			<ship_ai type="ENEMY_SHOOTER" CREWLESS="0"/>
+			<ship_ai type="EVENT_TRIGGER" CREWLESS="0">
+				<ship_ai_condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param race="VOID"/>
+					<condition_param qty="2"/>
+				</ship_ai_condition>
+				<ship_ai_condition type="SHIP_CARGO_PRESENT">
+					<condition_param cargo_type="SHIP_SYSTEM"/>
+					<condition_param system_model="VD_GRAULIDE_CAPACITOR"/>
+					<condition_param qty="1"/>
+				</ship_ai_condition>
+				<ship_ai_condition type="SECTOR_TYPE_PRESENT">
+					<condition_param sector_type="1"/>
+					<condition_param sector_type="2"/>
+					<condition_param sector_type="3"/>
+					<condition_param sector_type="4"/>
+				</ship_ai_condition>
+				<ship_ai_param TIMER="5"/>
+				<ship_ai_param EVENT="SPAWN_MINER"/>
+				<ship_ai_param EVENT="SPEND_GR_CAP"/>
+				<ship_ai_param EVENT="VD_MIN_SOUND"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" CREWLESS="0">
+				<ship_ai_condition type="SECTOR_SHIPS_ABSENT">
+					<condition_param race="VOID"/>
+					<condition_param qty="2"/>
+				</ship_ai_condition>
+				<ship_ai_condition type="SHIP_CARGO_PRESENT">
+					<condition_param cargo_type="SHIP_SYSTEM"/>
+					<condition_param system_model="VD_GRAULIDE_CAPACITOR"/>
+					<condition_param qty="1"/>
+				</ship_ai_condition>
+				<ship_ai_condition type="SECTOR_HAZARD_PRESENT">
+					<condition_param hazard="EMP"/>
+					<condition_param hazard="FIRE"/>
+					<condition_param hazard="STORM"/>
+					<condition_param hazard="HULL_DAMAGE"/>
+				</ship_ai_condition>
+				<ship_ai_param TIMER="5"/>
+				<ship_ai_param EVENT="SPAWN_SHIPYARD_STATION"/>
+				<ship_ai_param EVENT="SPEND_GR_CAP"/>
+				<ship_ai_param EVENT="VD_BLD_SOUND"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" CREWLESS="0" TIMER="300">
+				<ship_ai_condition type="SECTOR_SHIPS_ABSENT" race="VOID" qty="2"/>
+				<ship_ai_condition type="SHIP_CARGO_PRESENT" cargo_type="SHIP_SYSTEM" system_model="VD_GRAULIDE_CAPACITOR" qty="1"/>
+				<ship_ai_condition type="CHANCE" percent="5"/>
+				<ship_ai_param EVENT="SPAWN_SHIPYARD_STATION"/>
+				<ship_ai_param EVENT="SPEND_GR_CAP"/>
+				<ship_ai_param EVENT="VD_BLD_SOUND"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" CREWLESS="1" CREWLESS_ONLY="1">
+				<ship_ai_param TIMER="600"/>
+				<ship_ai_param EVENT="SPAWN_VOID_CREW_CONS"/>
+			</ship_ai>		
+		</add_ship>
+	</event>
+
+	<event type="MODIFY_SHIP" name="VD_PREP_CONS">
+		<event_param install_system_model="VD_CONS_REACTOR"/>
+		<event_param install_system_model="VD_CONS_HD"/>
+		<event_param install_system_model="VD_CONS_ENGINES"/>
+		<event_param install_system_model="VD_CONS_SHIELDS"/>
+		<event_param install_system_model="VD_CONS_MEDICAL"/>
+		<event_param install_system_model="VD_CONS_SENSORS"/>
+		<event_param install_system_model="VD_CONS_DOOR_CONTROL"/>
+		<event_param install_system_model_direct="VD_CONS_PILOTING:3:4"/>
+		<ship_randomizer>
+			<ship_randomizer_param ship_level_min="30"/>
+			<ship_randomizer_param ship_level_max="0"/>
+			<ship_randomizer_param random_weapon="VD_BEAM"/>
+			<ship_randomizer_param random_weapon="VD_BR"/>
+			<ship_randomizer_param random_weapon="VD_DLASER"/>
+			<ship_randomizer_param random_weapon="VD_DLASER2"/>
+			<ship_randomizer_param random_weapon="VD_DLASER3"/>
+			<ship_randomizer_param random_weapon="VD_EMP_CANNON"/>
+			<ship_randomizer_param random_weapon="VD_LASER"/>
+			<ship_randomizer_param random_weapon="VD_LASER2"/>
+			<ship_randomizer_param random_weapon="VD_LASER3"/>
+			<ship_randomizer_param random_weapon="VD_LASER4"/>
+			<ship_randomizer_param random_weapon="VD_LASER5"/>
+			<ship_randomizer_param random_weapon="VD_LASER6"/>
+			<ship_randomizer_param random_weapon="VD_MELT"/>
+			<ship_randomizer_param random_weapon="VD_SL"/>
+			<ship_randomizer_param random_weapon="VD_SUF"/>
+		</ship_randomizer>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="Constr Ships Qty">
+		<event_param var_name="cons_qty"/>
+		<event_param var_value="0"/>
+	</event>
+
+    <event type="SERVER_VARIABLE" name="Constr Ships Qty inc">
+		<event_param var_name="cons_qty"/>
+		<event_param var_value="++"/>
+	</event>
+
+    <event type="SERVER_VARIABLE" name="Constr Ships Qty dec">
+		<event_param var_name="cons_qty"/>
+		<event_param var_value="--"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="SPEND_GR_CAP">
+		<event_param remove_all_systems="0"/>
+		<event_param remove_system_model_from_cargo="VD_GRAULIDE_CAPACITOR"/>
+	</event>
+	
+	<event type="PLAY_AUDIO" name="VD_CONS_SOUND">
+		<event_param track="vd_cons"/>
+		<event_param music="0"/>
+		<event_param all_players="1"/>
+	</event>
+	
+	<event type="PLAY_AUDIO" name="VD_BLD_SOUND">
+		<event_param track="vd_bld"/>
+		<event_param music="0"/>
+		<event_param all_players="1"/>
+	</event>
+	
+	<event type="PLAY_AUDIO" name="VD_MIN_SOUND">
+		<event_param track="vd_min"/>
+		<event_param music="0"/>
+		<event_param all_players="1"/>
+	</event>
+
+</events>

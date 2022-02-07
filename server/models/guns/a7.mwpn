@@ -1,0 +1,8 @@
+name=Quantum Laser
+image=qlaser
+range=5
+damage=250
+door_damage=150
+system_damage=500
+reload=200
+projectile=qlaser

@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="SPAWN_SHIP" name="SPAWN_PSTATION1_1/3">
+		<condition type="SECTOR_TYPE_PRESENT">
+			<condition_param sector_type="5"/>
+			<condition_param sector_type="6"/>
+			<condition_param sector_type="7"/>
+			<condition_param sector_type="8"/>
+		</condition>
+		<event_param chain_event="PREP_BUILD_SITE"/>
+		<event_param chain_event="SPAWN_BIG_SHACK_FOREMAN"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param ship_model="STATION021"/>
+			<ship_param ship_name="Station Build Site"/>
+			<ship_param pos="[PROJ_POS]"/>
+			<ship_param min_health="50"/>
+			<ship_param max_health="50"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="10">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(SCRAP_FOR_BIG_SHACK_UPGRADE)"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="KILL_MOB"/>
+				<ship_ai_param EVENT="REMOVE_SELF"/>
+				<ship_ai_param EVENT="SPAWN_PSTATION1_2/3"/>
+			</ship_ai>	
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_PSTATION1_2/3">
+		<event_param chain_event="PREP_BUILD_SITE"/>
+		<event_param chain_event="SPAWN_BIG_SHACK_FOREMAN"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param ship_model="STATION022"/>
+			<ship_param ship_name="Station Build Site"/>
+			<ship_param pos="[SHIP_POS]"/>
+			<ship_param min_health="50"/>
+			<ship_param max_health="50"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="10">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(SCRAP_FOR_BIG_SHACK_UPGRADE)"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="KILL_MOB"/>
+				<ship_ai_param EVENT="REMOVE_SELF"/>
+				<ship_ai_param EVENT="SPAWN_PSTATION1_3/3"/>
+			</ship_ai>	
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_PSTATION1_3/3">
+		<event_param chain_event="ADD_VD_TARGET"/>
+		<event_param chain_event="PREP_SHACK"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="STATION02"/>
+			<ship_param random_ship_name="1"/>
+			<ship_param pos="[SHIP_POS]"/>
+			<ship_param min_health="100"/>
+			<ship_param max_health="200"/>
+			<ship_param jump_event="ADD_VD_TARGET_SETTER_AI"/>
+			<ship_param death_event="REMOVE_VD_TARGET"/>
+		</add_ship>
+	</event>
+
+	<event type="SPAWN_SHIP" name="SPAWN_PSTATION2_1/3">
+		<condition type="SECTOR_TYPE_PRESENT">
+			<condition_param sector_type="5"/>
+			<condition_param sector_type="6"/>
+			<condition_param sector_type="7"/>
+			<condition_param sector_type="8"/>
+		</condition>
+		<event_param chain_event="PREP_BUILD_SITE"/>
+		<event_param chain_event="SPAWN_BIG_SHACK_FOREMAN"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param ship_model="STATION031"/>
+			<ship_param ship_name="Station Build Site"/>
+			<ship_param pos="[PROJ_POS]"/>
+			<ship_param min_health="50"/>
+			<ship_param max_health="50"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="10">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(SCRAP_FOR_BIG_SHACK_UPGRADE)"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="KILL_MOB"/>
+				<ship_ai_param EVENT="REMOVE_SELF"/>
+				<ship_ai_param EVENT="SPAWN_PSTATION2_2/3"/>
+			</ship_ai>	
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_PSTATION2_2/3">
+		<event_param chain_event="PREP_BUILD_SITE"/>
+		<event_param chain_event="SPAWN_BIG_SHACK_FOREMAN"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param ship_model="STATION032"/>
+			<ship_param ship_name="Station Build Site"/>
+			<ship_param pos="[SHIP_POS]"/>
+			<ship_param min_health="50"/>
+			<ship_param max_health="50"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="10">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(SCRAP_FOR_BIG_SHACK_UPGRADE)"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="KILL_MOB"/>
+				<ship_ai_param EVENT="REMOVE_SELF"/>
+				<ship_ai_param EVENT="SPAWN_PSTATION2_3/3"/>
+			</ship_ai>
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_PSTATION2_3/3">
+		<event_param chain_event="ADD_VD_TARGET"/>
+		<event_param chain_event="PREP_SHACK"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="STATION03"/>
+			<ship_param random_ship_name="1"/>
+			<ship_param pos="[SHIP_POS]"/>
+			<ship_param min_health="100"/>
+			<ship_param max_health="200"/>
+			<ship_param jump_event="ADD_VD_TARGET_SETTER_AI"/>
+			<ship_param death_event="REMOVE_VD_TARGET"/>			
+		</add_ship>
+	</event>
+	
+	<event type="SPAWN_SHIP" name="SPAWN_PSTATION3_1/3">
+		<condition type="SECTOR_TYPE_PRESENT">
+			<condition_param sector_type="5"/>
+			<condition_param sector_type="6"/>
+			<condition_param sector_type="7"/>
+			<condition_param sector_type="8"/>
+		</condition>
+		<event_param chain_event="PREP_BUILD_SITE"/>
+		<event_param chain_event="SPAWN_SMALL_SHACK_FOREMAN"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param ship_model="STATION101"/>
+			<ship_param ship_name="Station Build Site"/>
+			<ship_param pos="[PROJ_POS]"/>
+			<ship_param min_health="75"/>
+			<ship_param max_health="75"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="10">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(SCRAP_FOR_SMALL_SHACK_UPGRADE)"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="KILL_MOB"/>
+				<ship_ai_param EVENT="REMOVE_SELF"/>
+				<ship_ai_param EVENT="SPAWN_PSTATION3_2/3"/>
+			</ship_ai>	
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_PSTATION3_2/3">
+		<event_param chain_event="PREP_BUILD_SITE"/>
+		<event_param chain_event="SPAWN_SMALL_SHACK_FOREMAN"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param ship_model="STATION102"/>
+			<ship_param ship_name="Station Build Site"/>
+			<ship_param pos="[SHIP_POS]"/>
+			<ship_param min_health="75"/>
+			<ship_param max_health="75"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="10">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(SCRAP_FOR_SMALL_SHACK_UPGRADE)"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="KILL_MOB"/>
+				<ship_ai_param EVENT="REMOVE_SELF"/>
+				<ship_ai_param EVENT="SPAWN_PSTATION3_3/3"/>
+			</ship_ai>	
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_PSTATION3_3/3">
+		<event_param chain_event="ADD_VD_TARGET"/>
+		<event_param chain_event="PREP_SHACK"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="STATION10"/>
+			<ship_param random_ship_name="1"/>
+			<ship_param pos="[SHIP_POS]"/>
+			<ship_param min_health="75"/>
+			<ship_param max_health="150"/>
+			<ship_param jump_event="ADD_VD_TARGET_SETTER_AI"/>
+			<ship_param death_event="REMOVE_VD_TARGET"/>			
+		</add_ship>
+	</event>
+	
+	<event type="SPAWN_SHIP" name="SPAWN_PSTATION4_1/3">
+		<condition type="SECTOR_TYPE_PRESENT">
+			<condition_param sector_type="5"/>
+			<condition_param sector_type="6"/>
+			<condition_param sector_type="7"/>
+			<condition_param sector_type="8"/>
+		</condition>
+		<event_param chain_event="PREP_BUILD_SITE"/>
+		<event_param chain_event="SPAWN_SMALL_SHACK_FOREMAN"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param ship_model="STATION111"/>
+			<ship_param ship_name="Station Build Site"/>
+			<ship_param pos="[PROJ_POS]"/>
+			<ship_param min_health="50"/>
+			<ship_param max_health="50"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="10">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(SCRAP_FOR_SMALL_SHACK_UPGRADE)"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="KILL_MOB"/>
+				<ship_ai_param EVENT="REMOVE_SELF"/>
+				<ship_ai_param EVENT="SPAWN_PSTATION4_2/3"/>
+			</ship_ai>	
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_PSTATION4_2/3">
+		<event_param chain_event="PREP_BUILD_SITE"/>
+		<event_param chain_event="SPAWN_SMALL_SHACK_FOREMAN"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param ship_model="STATION112"/>
+			<ship_param ship_name="Station Build Site"/>
+			<ship_param pos="[SHIP_POS]"/>
+			<ship_param min_health="50"/>
+			<ship_param max_health="50"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="10">
+				<ship_ai_condition type="SHIP_SCRAP_PRESENT">
+					<condition_param qty="VAR(SCRAP_FOR_SMALL_SHACK_UPGRADE)"/>
+				</ship_ai_condition>
+				<ship_ai_param EVENT="KILL_MOB"/>
+				<ship_ai_param EVENT="REMOVE_SELF"/>
+				<ship_ai_param EVENT="SPAWN_PSTATION4_3/3"/>
+			</ship_ai>	
+		</add_ship>
+	</event>
+	<event type="SPAWN_SHIP" name="SPAWN_PSTATION4_3/3">
+		<event_param chain_event="ADD_VD_TARGET"/>
+		<event_param chain_event="PREP_SHACK"/>
+		<event_param chain_events_to_created="1"/>
+		<add_ship>
+			<ship_param gen_ship_model="STATION11"/>
+			<ship_param random_ship_name="1"/>
+			<ship_param pos="[SHIP_POS]"/>
+			<ship_param min_health="75"/>
+			<ship_param max_health="150"/>
+			<ship_param jump_event="ADD_VD_TARGET_SETTER_AI"/>
+			<ship_param death_event="REMOVE_VD_TARGET"/>			
+		</add_ship>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="PREP_BUILD_SITE">
+		<event_param install_system_model="SHACK_REACTOR"/>
+		<event_param install_system_model="SHACK_O2"/>
+		<event_param install_system_model="SHACK_DOORS"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="REMOVE_VD_TARGET_SETTER_AI">
+		<event_param remove_ship_ai_id="VD_TARGET_SETTER_AI"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="ADD_VD_TARGET_SETTER_AI">
+		<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="60" ai_id="VD_TARGET_SETTER_AI">
+			<ship_ai_param EVENT="ADD_VD_TARGET"/>
+			<ship_ai_param EVENT="REMOVE_VD_TARGET_SETTER_AI"/>
+		</ship_ai>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="PREP_SHACK">
+		<event_param install_system_model="START_PILOTING"/>
+	</event>
+	
+	<event type="SPAWN_NPC" name="SPAWN_SMALL_SHACK_FOREMAN">
+        <spawn_npc>
+			<npc_param npc_home_system="OXYGEN"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Foreman drone"/>
+			<npc_param npc_race="CYBORG"/>
+			<npc_param npc_dialogue="SMALL_SHACK_FOREMAN"/>
+			<npc_param npc_remote_dialogue="SMALL_SHACK_FOREMAN"/>
+        </spawn_npc>
+    </event>
+	
+	<event type="SPAWN_NPC" name="SPAWN_BIG_SHACK_FOREMAN">
+        <spawn_npc>
+			<npc_param npc_home_system="OXYGEN"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Foreman drone"/>
+			<npc_param npc_race="CYBORG"/>
+			<npc_param npc_dialogue="BIG_SHACK_FOREMAN"/>
+			<npc_param npc_remote_dialogue="BIG_SHACK_FOREMAN"/>
+        </spawn_npc>
+    </event>
+	
+	<event type="MODIFY_SHIP" name="REMOVE_PSTATION_GUN1">
+		<condition type="SECTOR_TYPE_PRESENT">
+			<condition_param sector_type="5"/>
+			<condition_param sector_type="6"/>
+			<condition_param sector_type="7"/>
+			<condition_param sector_type="8"/>
+		</condition>
+		<event_param remove_all_systems="0"/>
+		<event_param remove_system_model="PSTATION1"/>
+	</event>
+	<event type="MODIFY_SHIP" name="REMOVE_PSTATION_GUN2">
+		<condition type="SECTOR_TYPE_PRESENT">
+			<condition_param sector_type="5"/>
+			<condition_param sector_type="6"/>
+			<condition_param sector_type="7"/>
+			<condition_param sector_type="8"/>
+		</condition>
+		<event_param remove_all_systems="0"/>
+		<event_param remove_system_model="PSTATION2"/>
+	</event>
+	<event type="MODIFY_SHIP" name="REMOVE_PSTATION_GUN3">
+		<condition type="SECTOR_TYPE_PRESENT">
+			<condition_param sector_type="5"/>
+			<condition_param sector_type="6"/>
+			<condition_param sector_type="7"/>
+			<condition_param sector_type="8"/>
+		</condition>
+		<event_param remove_all_systems="0"/>
+		<event_param remove_system_model="PSTATION3"/>
+	</event>
+	<event type="MODIFY_SHIP" name="REMOVE_PSTATION_GUN4">
+		<condition type="SECTOR_TYPE_PRESENT">
+			<condition_param sector_type="5"/>
+			<condition_param sector_type="6"/>
+			<condition_param sector_type="7"/>
+			<condition_param sector_type="8"/>
+		</condition>
+		<event_param remove_all_systems="0"/>
+		<event_param remove_system_model="PSTATION4"/>
+	</event>
+	
+	<event type="MODIFY_MOB" name="KILL_MOB">
+		<event_param take_health="50000"/>
+	</event>
+
+	<event type="GROUP" name="SPAWN_SHACK_INSTRUCTOR_ON_TRADER">
+		<condition type="SERVER_VARIABLE_PRESENT">
+			<condition_param var_name="NEW_THREAT"/>
+			<condition_param any_value="1"/>
+		</condition>
+		<condition type="CHANCE" percent="20"/>
+		<event_param chain_event="SPAWN_SHACK_INSTRUCTOR"/>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_SHACK_INSTRUCTOR">
+        <spawn_npc>
+            <npc_param npc_qty="1"/>
+            <npc_param npc_dialogue="SHACK_INSTRUCTOR"/>
+            <npc_param npc_remote_dialogue="SHACK_INSTRUCTOR"/>
+            <npc_param npc_is_crew="1"/>
+            <npc_param npc_name="S.H.A.C.K. Instructor"/>
+            <npc_param npc_race="HUMAN"/>
+            <npc_param npc_home_system="REACTOR"/>
+            <npc_param npc_spawn_at_home="1"/>
+            <npc_ai type="NPC_LIFESUPPORT" heal_at_percent="90" oxygen_at_percent="80"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+            <npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:PILOTING:OXYGEN:MEDICAL:DOOR_CONTROL"/>
+				<npc_ai_param WORK_TIME="27"/>
+				<npc_ai_param any_condition="0"/>
+			</npc_ai>
+        </spawn_npc>
+    </event>
+	
+	<event type="GROUP" name="SPAWN_DUCK_INSTRUCTOR_ON_TRADER">
+		<condition type="SERVER_VARIABLE_PRESENT">
+			<condition_param var_name="NEW_THREAT"/>
+			<condition_param any_value="1"/>
+		</condition>
+		<condition type="CHANCE" percent="20"/>
+		<event_param chain_event="SPAWN_DUCK_INSTRUCTOR"/>
+	</event>
+	<event type="SPAWN_NPC" name="SPAWN_DUCK_INSTRUCTOR">
+        <spawn_npc>
+            <npc_param npc_qty="1"/>
+            <npc_param npc_dialogue="DUCK_INSTRUCTOR"/>
+            <npc_param npc_remote_dialogue="DUCK_INSTRUCTOR"/>
+            <npc_param npc_is_crew="1"/>
+            <npc_param npc_name="D.U.C.K. Instructor"/>
+            <npc_param npc_race="HUMAN"/>
+            <npc_param npc_home_system="OXYGEN"/>
+            <npc_param npc_spawn_at_home="1"/>
+            <npc_ai type="NPC_LIFESUPPORT" heal_at_percent="90" oxygen_at_percent="80"/>
+            <npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:PILOTING:OXYGEN:MEDICAL:DOOR_CONTROL"/>
+				<npc_ai_param WORK_TIME="31"/>
+				<npc_ai_param any_condition="0"/>
+			</npc_ai>
+        </spawn_npc>
+    </event>
+	
+</events> 

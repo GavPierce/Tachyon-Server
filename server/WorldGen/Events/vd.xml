@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+
+	<event type="MODIFY_SHIP" name="ADD_VD_SELF_DESTRUCT">
+		<ship_ai type="EVENT_TRIGGER" CREWLESS="1" CREWLESS_ONLY="1" TIMER="10">
+			<ship_ai_param EVENT="VD_ALARM_SOUND"/>
+			<ship_ai_param EVENT="DAMAGE_1"/>
+		</ship_ai>		
+	</event>
+
+	<event type="PLAY_AUDIO" name="VD_ALARM_SOUND">
+		<event_param track="vd_alarm"/>
+		<event_param music="0"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="DAMAGE_1">
+		<event_param take_hull="1"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="ADD_VOID_IMUNITY">
+		<event_param hull_hazard_immunity="1"/>
+		<event_param emp_hazard_immunity="1"/>
+		<event_param storm_hazard_immunity="1"/>
+		<event_param fire_hazard_immunity="1"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="REPAIR_1">
+		<event_param give_hull="1"/>
+	</event>
+	
+</events>

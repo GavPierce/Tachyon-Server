@@ -1,0 +1,2 @@
+JAVA_VERSION="9.0.4"
+MODULES="java.base java.compiler java.logging jdk.dynalink jdk.internal.jvmstat java.instrument jdk.internal.ed java.xml java.prefs java.datatransfer java.desktop java.scripting jdk.scripting.nashorn jdk.internal.le jdk.scripting.nashorn.shell java.management jdk.management jdk.unsupported jdk.internal.vm.ci jdk.internal.vm.compiler jdk.internal.opt"

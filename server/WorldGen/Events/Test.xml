@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="SPAWN_SHIP" name="RUN_TEST">
+		<event_param nonstop="1"></event_param>
+		<event_param chain_event="REMOVE_EVADER_AI_BY_ID"></event_param>
+	</event>
+	
+	<event type="SERVER_VARIABLE" name="INPUT_TEST">
+		<event_param var_name="INPUT_TEST"></event_param>
+		<event_param var_value="[INPUT]"></event_param>
+	</event>
+
+	<event type="MODIFY_SHIP" name="REMOVE_EVADER_AI_BY_ID">
+		<event_param remove_ship_ai_id="d31ls"></event_param>
+		<event_param all_mob_ships="0"></event_param>
+	</event>
+	<event type="MODIFY_SHIP" name="REMOVE_LIFE_SUPPORT_AI">
+		<event_param all_mob_ships="0"></event_param>
+		<event_param remove_ship_ai_type="LIFE_SUPPORT"></event_param>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="plague_effect">
+		<event_param chain_event="plague_damage"></event_param>
+		<event_param chain_events_to_modified="1"></event_param>
+		<event_param all_mob_ships="0"></event_param>
+		<event_param ignore_passenger_access="1"></event_param>
+	</event>
+	
+	<event type="PLAY_AUDIO" name="PLAY_COUGH">
+		<event_param track="THUNDER"></event_param>
+		<event_param music="0"></event_param>
+		<event_param all_players="0"></event_param>
+	</event>
+	
+	<event type="MODIFY_MOB" name="plague_damage">
+		<event_param chain_event="PLAY_COUGH"></event_param>
+		<event_param take_health="20"></event_param>
+	</event>
+	
+</events>

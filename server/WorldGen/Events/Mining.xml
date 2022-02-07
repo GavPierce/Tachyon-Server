@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="MODIFY_SHIP" name="EXTRACTOR_HIT" give_scrap="1">
+		<condition type="SHIP_CLASS_PRESENT" check_target_ship="1" ship_class="ASTEROID"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="EXTRACTOR99_HIT" take_scrap="1">
+		<condition type="SHIP_CLASS_PRESENT" check_target_ship="1" ship_class="ASTEROID"/>
+		<event_param chain_events_to_modified="1"/>
+		<event_param chain_event="EXTRACTOR99_HIT2"/>
+	</event>
+	<event type="MODIFY_SHIP" name="EXTRACTOR99_HIT2" take_hull="1">
+		<condition type="CHANCE" percent="1"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="EXTRACTOR95_HIT" take_scrap="1">
+		<condition type="SHIP_CLASS_PRESENT" check_target_ship="1" ship_class="ASTEROID"/>
+		<event_param chain_events_to_modified="1"/>
+		<event_param chain_event="EXTRACTOR95_HIT2"/>
+	</event>
+	<event type="MODIFY_SHIP" name="EXTRACTOR95_HIT2" take_hull="1">
+		<condition type="CHANCE" percent="5"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="EXTRACTOR90_HIT" take_scrap="1">
+		<condition type="SHIP_CLASS_PRESENT" check_target_ship="1" ship_class="ASTEROID"/>
+		<event_param chain_events_to_modified="1"/>
+		<event_param chain_event="EXTRACTOR90_HIT2"/>
+	</event>
+	<event type="MODIFY_SHIP" name="EXTRACTOR90_HIT2" take_hull="1">
+		<condition type="CHANCE" percent="10"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="EXTRACTOR70_HIT" take_scrap="1">
+		<condition type="SHIP_CLASS_PRESENT" check_target_ship="1" ship_class="ASTEROID"/>
+		<event_param chain_events_to_modified="1"/>
+		<event_param chain_event="EXTRACTOR70_HIT2"/>
+	</event>
+	<event type="MODIFY_SHIP" name="EXTRACTOR70_HIT2" take_hull="1">
+		<condition type="CHANCE" percent="30"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="EXTRACTOR50_HIT" take_scrap="1">
+		<condition type="SHIP_CLASS_PRESENT" check_target_ship="1" ship_class="ASTEROID"/>
+		<event_param chain_events_to_modified="1"/>
+		<event_param chain_event="EXTRACTOR50_HIT2"/>
+	</event>
+	<event type="MODIFY_SHIP" name="EXTRACTOR50_HIT2" take_hull="1">
+		<condition type="CHANCE" percent="50"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="EXTRACTOR30_HIT" take_scrap="1">
+		<condition type="SHIP_CLASS_PRESENT" check_target_ship="1" ship_class="ASTEROID"/>
+		<event_param chain_events_to_modified="1"/>
+		<event_param chain_event="EXTRACTOR30_HIT2"/>
+	</event>
+	<event type="MODIFY_SHIP" name="EXTRACTOR30_HIT2" take_hull="1">
+		<condition type="CHANCE" percent="70"/>
+	</event>
+	
+</events>

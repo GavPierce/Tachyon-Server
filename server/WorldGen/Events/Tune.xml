@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="SPAWN_NPC" name="SPAWN_TUNING_MASTER">
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="NEW_THREAT" any_value="1"/>
+		<condition type="CHANCE" percent="30"/>
+		<event_param nonstop="1"/>
+		<event_param min_event_qty="1"/>
+		<event_param max_event_qty="1"/>		
+		<spawn_npc>
+			<npc_param npc_qty="1"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Ship Tunner"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="MEDICAL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_dialogue="TUNNER_FF"/>
+			<npc_param npc_remote_dialogue="TUNNER"/>
+			<npc_ai type="NPC_LIFESUPPORT" heal_at_percent="90" oxygen_at_percent="90"/>
+		</spawn_npc>
+	</event>
+
+	<event type="MODIFY_SHIP" name="TUNNING_NEW_NAME">
+		<event_param all_mob_ships="0"/>
+		<event_param new_name="VAR([PLAYER_NAME]_input_ship_name)"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="TUNNING_Green">
+		<event_param all_mob_ships="0"/>
+		<event_param ship_color="10:100:10"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="TUNNING_Yellow">
+		<event_param all_mob_ships="0"/>
+		<event_param ship_color="100:100:10"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="TUNNING_Red">
+		<event_param all_mob_ships="0"/>
+		<event_param ship_color="100:10:10"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="TUNNING_Blue">
+		<event_param all_mob_ships="0"/>
+		<event_param ship_color="10:10:100"/>
+	</event>
+	
+	<event type="MODIFY_MOB" name="TAKE_SCRAP_FOR_TUNNING">
+		<event_param take_scrap="VAR(TUNNING_PRICE)"/>
+	</event>
+</events>

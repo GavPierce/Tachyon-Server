@@ -1,0 +1,9 @@
+name=HUMAN
+sprite=HUMAN
+health=2200
+oxygen=1800
+no_oxygen_damage=30
+oxygen_consum_speed=4
+weapon=Blaster
+repair_power = 15
+fireman_power = 3

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialogues>
+    <dialogue name="ADMIRAL" start="M0">
+        <message id="1" text="[ACTION]on his helmet, chest plate, and shoulder pads.">
+            <reply id="1" next="2" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="2" text="[ACTION]You know this man. Everyone does. He is the Grand Commander of the Unity forces.">
+            <reply id="2" next="3" text="[SKIP]..." />
+        </message>
+        <message id="M0" text="[ACTION]You see a man in a reinforced combat armour with Seven stars engraved in gold and silver">
+            <reply id="R1" next="1" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="3" text="[PLAYER_NAME], nice to see you again.">
+            <reply id="1" next="4" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="4" text="Thanks to you, we have unlocked Singularity's full potential.">
+            <reply id="1" next="5" text="Great, so what's next?" />
+        </message>
+        <message id="5" text="Our ships are scouting the space in search of the Void Dweller main base.">
+            <reply id="1" next="6" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="6" text="If you want to help, please speak with chief of the Intelligence Department.">
+            <reply id="1" next="7" text="OK." />
+        </message>
+        <message id="7" text="By the way, you can now buy missiles and drones from our reserves, or hire crew.">
+            <reply id="1" next="8" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="8" text="And there are more station construction kits available for purchase.">
+            <reply id="1" text="Great, thanks." />
+        </message>
+    </dialogue>
+	
+	<dialogue name="SINGULARITY_UPGRADE" start="M0">
+        <message id="22" text="Only it has the conversion matrix strong enough to extract the elements from...">
+            <reply id="1" next="23" text="From what?" />
+        </message>
+        <message id="23" text="From the the last component...">
+            <reply id="1" next="24" text="[SKIP]..." />
+        </message>
+        <message id="24" text="The Heart of the Star Whale.">
+            <reply id="1" next="25" text="The what now?" />
+        </message>
+        <message id="M0" text="[ACTION]You see a man in a reinforced combat armour with Seven stars engraved in gold ">
+            <reply id="R1" next="1" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="25" text="The Star Whale, although many consider it to be only a legend or a superstition,">
+            <reply id="1" next="26" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="26" text="it is in fact real and is in fact very rare and hard to find.">
+            <reply id="1" next="27" text="Then how am I supposed to find it?" />
+        </message>
+        <message id="M2" text="Something's wrong, either there's no ship or it doens't have the items we need.">
+            <reply id="R6" next="M7" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="27" text="You will have to ask the Whale hunters about it, they might know something.">
+            <reply id="1" next="28" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="28" text="One of their stations is in this sector.">
+            <reply id="1" next="29" text="Alright, here we go on another goose chase, or whale chase...." />
+        </message>
+        <message id="M4" text="Please wait while we find the ship and check it's cargo hold.">
+            <event id="INPUT_ShipName" target="PLAYER" />
+            <reply id="R3" next="M8" text="[SKIP]...[AUTO]">
+                <condition owner="[PLAYER_NAME]" qty="1" ship_name="VAR([PLAYER_NAME]_input_ship_name)" target_player="1" type="SECTOR_SHIPS_PRESENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="CHADIUM" target_player="1" type="SHIP_CARGO_PRESENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="DILITHIUM" target_player="1" type="SHIP_CARGO_PRESENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="WHALE_HEART" target_player="1" type="SHIP_CARGO_PRESENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="EMP_Cannon" target_player="1" type="SHIP_CARGO_PRESENT" />
+            </reply>
+            <reply any_condition="1" id="R6" next="M2" text="[SKIP]...[AUTO]">
+                <condition owner="[PLAYER_NAME]" qty="1" ship_name="VAR([PLAYER_NAME]_input_ship_name)" target_player="1" type="SECTOR_SHIPS_ABSENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="CHADIUM" target_player="1" type="SHIP_CARGO_ABSENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="DILITHIUM" target_player="1" type="SHIP_CARGO_ABSENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="WHALE_HEART" target_player="1" type="SHIP_CARGO_ABSENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="EMP_Cannon" target_player="1" type="SHIP_CARGO_ABSENT" />
+            </reply>
+        </message>
+        <message id="M4X" text="Please wait while we find the ship and check it's cargo hold.">
+            <event id="INPUT_ShipName" target="PLAYER" />
+            <reply id="R3" next="M8" text="[SKIP]...[AUTO]">
+                <condition owner="[PLAYER_NAME]" qty="1" ship_name="VAR([PLAYER_NAME]_input_ship_name)" target_player="1" type="SECTOR_SHIPS_PRESENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="CHADIUM" target_player="1" type="SHIP_CARGO_PRESENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="DILITHIUM" target_player="1" type="SHIP_CARGO_PRESENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="WHALE_HEART" target_player="1" type="SHIP_CARGO_PRESENT" />
+            </reply>
+            <reply any_condition="1" id="R6" next="M2" text="[SKIP]...[AUTO]">
+                <condition owner="[PLAYER_NAME]" qty="1" ship_name="VAR([PLAYER_NAME]_input_ship_name)" target_player="1" type="SECTOR_SHIPS_ABSENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="CHADIUM" target_player="1" type="SHIP_CARGO_ABSENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="DILITHIUM" target_player="1" type="SHIP_CARGO_ABSENT" />
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="WHALE_HEART" target_player="1" type="SHIP_CARGO_ABSENT" />
+            </reply>
+        </message>
+        <message id="29" text="Good luck [PLAYER_NAME], without these materials our chances are very slim.">
+            <event id="PLAYER_EXPLAIN_SINGU" target="PLAYER" />
+            <reply id="1" text="Yeah, I got it." />
+        </message>
+        <message id="M7" text="Tell me the name of the ship that carries the items.">
+            <reply id="1" next="M4" regex="^[a-zA-Z0-9 -']+$" text="[INPUT](Input ship name)">
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="EMP_Cannon" target_player="0" type="SHIP_CARGO_ABSENT" />
+            </reply>
+            <reply id="2" next="M4X" regex="^[a-zA-Z0-9 -']+$" text="[INPUT](Input ship name)">
+                <condition all_mob_ships="1" cargo_type="SHIP_SYSTEM" qty="1" system_model="EMP_Cannon" target_player="0" type="SHIP_CARGO_PRESENT" />
+            </reply>
+        </message>
+        <message id="M8" text="Excelent! Finally, we can upgrade the station and start pushing back.">
+            <event id="TAKE_SINGU_UPGRADE_ITEMS" target="PLAYER" />
+            <reply id="1" next="32" text="So what's next?" />
+        </message>
+        <message id="30" text="Please give it the highest priority, it is very important.">
+            <reply id="1" text="Sure thing." />
+            <reply id="2" next="31" text="Can you remind me what components I'm looking for?" />
+        </message>
+        <message id="31" text="Chadium, Dilithium, EMP Cannon and Heart of the Star Whale.">
+            <reply id="1" text="Thanks." />
+        </message>
+        <message id="32" text="The upgrade will take some time. Come back later">
+            <reply id="1" next="33" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="10" text="Singularity station is the coordination center of the Unity forces.">
+            <reply id="1" next="11" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="33" text="[ACTION](you have to leave the sector)">
+            <reply id="1" next="34" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="11" text="If it falls, then Unity will crumble.">
+            <reply id="1" next="12" text="[SKIP]NEW[AUTO]" />
+        </message>
+        <message id="34" text="and we can start making plans on how to overcome the Void Dwellers.">
+            <reply id="1" text="Alright." />
+        </message>
+        <message id="12" text="Somehow the aliens have found out about this station and ever since they appeared,">
+            <reply id="1" next="13" text="[SKIP]NEW[AUTO]" />
+        </message>
+        <message id="13" text="they have not stopped their attempts at destroying it.">
+            <reply id="1" next="14" text="[SKIP]..." />
+        </message>
+        <message id="14" text="The biggest problem on our hands is that the Singularity station is not operating ">
+            <reply id="1" next="15" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="15" text="at it's full capacity.">
+            <reply id="1" next="16" text="Can it be fixed?" />
+        </message>
+        <message id="16" text="In order to fix this we need to gather rare materials,">
+            <reply id="1" next="17" text="[SKIP]NEW[AUTO]" />
+        </message>
+        <message id="17" text="some of which are extremly hard to come by.">
+            <reply id="1" next="18" text="[SKIP]NEW[AUTO]" />
+        </message>
+        <message id="18" text="As you might have guessed, we need your help in gathering these materials.">
+            <reply id="1" next="19" text="I expected as much." />
+        </message>
+        <message id="19" text="First of all we need some rare minerals, Chadium and Dilithium,">
+            <reply id="1" next="20" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="1" text="[ACTION]on his helmet and shoulder pads.">
+            <reply id="1" next="2" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="2" text="[ACTION]You know this man. Everyone does. He is the Grand Commander of the Unity forces.">
+            <reply id="1" next="3" text="[SKIP]...">
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_PRESENT" var_name="[PLAYER_NAME]_EXPLAIN_SINGU" var_value="" />
+            </reply>
+            <reply id="2" next="4" text="[SKIP]...">
+                <condition any_value="1" target_player="1" type="SERVER_VARIABLE_ABSENT" var_name="[PLAYER_NAME]_EXPLAIN_SINGU" var_value="" />
+            </reply>
+        </message>
+        <message id="3" text="[PLAYER_NAME], You're back. Did you manage to gather the necessary materials?">
+            <reply id="1" next="30" text="No, not yet." />
+            <reply id="2" next="M7" text="Yes, I have them!" />
+        </message>
+        <message id="4" text="Greetings [PLAYER_NAME], I am [NPC_NAME].">
+            <reply id="1" next="5" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="5" text="I know you might have questions, but sadly we don't have time for answers.">
+            <reply id="1" next="6" text="[SKIP]..." />
+        </message>
+        <message id="6" text="With your recent actions you have proven yourself capable,">
+            <reply id="1" next="7" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="7" text="and now we ask you to help the Unity one more time.">
+            <reply id="1" next="8" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="8" text="To cut it short, our space is under attack by a previously unknown alien race.">
+            <reply id="1" next="9" text="[SKIP]...[AUTO]" />
+        </message>
+        <message id="9" text="We do not know where they are coming from, but they are constantly attacking us.">
+            <reply id="1" next="10" text="Well, this is bad." />
+        </message>
+        <message id="20" text="which can be found in RICH asteroids at the borders of our space.">
+            <reply id="1" next="21" text="[SKIP]..." />
+        </message>
+        <message id="21" text="Second is the EMP Cannon that you used to defeat the DF prototype.">
+            <reply id="1" next="22" text="[SKIP]..." />
+        </message>
+    </dialogue>
+</dialogues>

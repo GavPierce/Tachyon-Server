@@ -1,0 +1,9 @@
+name=CYBORG
+sprite=CYBORG
+health=1200
+oxygen=2000
+no_oxygen_damage=15
+oxygen_consum_speed=3
+weapon=Green Laser
+repair_power = 30
+fireman_power = 4

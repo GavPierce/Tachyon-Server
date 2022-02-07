@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="GROUP" name="SPAWN_STATIC_WARSHIP_GROUP" random_chain_event="1">
+		<event_param chain_event="STATIC_WARSHIP_GROUP1"/>
+		<event_param chain_event="STATIC_WARSHIP_GROUP2"/>
+		<event_param chain_event="STATIC_WARSHIP_GROUP3"/>
+		<event_param chain_event="STATIC_WARSHIP_GROUP4"/>
+		<event_param chain_event="STATIC_WARSHIP_GROUP5"/>
+		<event_param chain_event="STATIC_WARSHIP_GROUP6"/>
+		<event_param chain_event="STATIC_WARSHIP_GROUP7"/>
+		<event_param chain_event="STATIC_WARSHIP_GROUP8"/>
+		<event_param chain_event="STATIC_WARSHIP_GROUP9"/>
+		<event_param chain_event="STATIC_WARSHIP_GROUP10"/>
+		<event_param chain_event="STATIC_WARSHIP_GROUP11"/>
+		<event_param chain_event="STATIC_WARSHIP_GROUP12"/>
+	</event>
+	<event type="GROUP" name="STATIC_WARSHIP_GROUP1">
+		<event_param chain_event="SPAWN_VD_BS"/>
+	</event>
+	<event type="GROUP" name="STATIC_WARSHIP_GROUP2">
+		<event_param chain_event="SPAWN_VD_CRUS"/>
+	</event>
+	<event type="GROUP" name="STATIC_WARSHIP_GROUP3">
+		<event_param chain_event="SPAWN_VD_CORV"/>
+	</event>
+	<event type="GROUP" name="STATIC_WARSHIP_GROUP4">
+		<event_param chain_event="SPAWN_VD_SCOUT"/>
+	</event>
+	<event type="GROUP" name="STATIC_WARSHIP_GROUP5">
+		<event_param chain_event="SPAWN_VD_SCOUT"/>
+		<event_param chain_event="SPAWN_VD_SCOUT"/>
+	</event>
+	<event type="GROUP" name="STATIC_WARSHIP_GROUP6">
+		<event_param chain_event="SPAWN_VD_CORV"/>
+		<event_param chain_event="SPAWN_VD_SCOUT"/>
+	</event>
+	<event type="GROUP" name="STATIC_WARSHIP_GROUP7">
+		<event_param chain_event="SPAWN_VD_CRUS"/>
+		<event_param chain_event="SPAWN_VD_SCOUT"/>
+	</event>
+	<event type="GROUP" name="STATIC_WARSHIP_GROUP8">
+		<event_param chain_event="SPAWN_VD_BS"/>
+		<event_param chain_event="SPAWN_VD_SCOUT"/>
+	</event>
+	<event type="GROUP" name="STATIC_WARSHIP_GROUP9">
+		<event_param chain_event="SPAWN_VD_BS"/>
+		<event_param chain_event="SPAWN_VD_CRUS"/>
+	</event>
+	<event type="GROUP" name="STATIC_WARSHIP_GROUP10">
+		<event_param chain_event="SPAWN_VD_CORV"/>
+		<event_param chain_event="SPAWN_VD_CRUS"/>
+	</event>
+	<event type="GROUP" name="STATIC_WARSHIP_GROUP11">
+		<event_param chain_event="SPAWN_VD_CORV"/>
+		<event_param chain_event="SPAWN_VD_CORV"/>
+	</event>
+	<event type="GROUP" name="STATIC_WARSHIP_GROUP12">
+		<event_param chain_event="SPAWN_VD_SCOUT"/>
+		<event_param chain_event="SPAWN_VD_SCOUT"/>
+		<event_param chain_event="SPAWN_VD_SCOUT"/>
+	</event>
+
+	<event type="SECTOR_EVENT" name="VOIDS_ATTACK_TRADER_S!1-4">
+		<event_param level="10"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="NEW_THREAT" any_value="1"/>
+		<event_param chance="40"/>
+		<event_param chain_event="SPAWN_STATIC_WARSHIP_GROUP"/>
+		<event_param chain_event="RANDOM_SHIP_LEVEL_SECTOR_THREAT"/>
+		<event_param chain_event="SPAWN_H_TRADER"/>
+		<event_param trigger_message="You have run into some Void Dwellers attacking a trader."/>
+		<event_param broadcast_message="Sensors indicate that new ships entered this sector."/>
+		<condition type="SECTOR_TYPE_ABSENT">
+			<condition_param sector_type="1"/>
+			<condition_param sector_type="2"/>
+			<condition_param sector_type="3"/>
+			<condition_param sector_type="4"/>
+		</condition>
+		<condition type="SECTOR_SHIPS_ABSENT">
+			<condition_param qty="2"/>
+		</condition>
+	</event>
+	<event type="SECTOR_EVENT" name="VOIDS_FIGHTING_PIRATES_S_FORCE_SANY">
+		<event_param level="10"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="NEW_THREAT" any_value="1"/>
+		<event_param chance="40"/>
+		<event_param chain_event="SPAWN_STATIC_WARSHIP_GROUP"/>
+		<event_param chain_event="SPAWN_RANDOM_S_FORCE"/>
+		<event_param trigger_message="You have run into a fight between Void Dwellers and pirates."/>
+		<event_param trigger_message="Pick your side."/>
+		<event_param broadcast_message="Sensors have detected new ships, fighting each other."/>
+		<condition type="SECTOR_SHIPS_ABSENT">
+			<condition_param qty="2"/>
+		</condition>
+	</event>
+	<event type="SECTOR_EVENT" name="VOIDS_FIGHTING_PIRATES_B_FORCE_SANY">
+		<event_param level="10"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="NEW_THREAT" any_value="1"/>
+		<event_param chance="40"/>
+		<event_param chain_event="SPAWN_STATIC_WARSHIP_GROUP"/>
+		<event_param chain_event="SPAWN_RANDOM_B_FORCE"/>
+		<event_param trigger_message="You have run into a fight between Void Dwellers and pirates."/>
+		<event_param trigger_message="Pick your side."/>
+		<event_param broadcast_message="Sensors have detected new ships, fighting each other."/>
+		<condition type="SECTOR_SHIPS_ABSENT">
+			<condition_param qty="2"/>
+		</condition>
+	</event>
+	<event type="SECTOR_EVENT" name="VOIDS_FIGHTING_UNITY_SANY">
+		<event_param level="10"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="NEW_THREAT" any_value="1"/>
+		<event_param chance="50"/>
+		<event_param chain_event="SPAWN_STATIC_WARSHIP_GROUP"/>
+		<event_param chain_event="RANDOM_SHIP_LEVEL_SECTOR_THREAT"/>
+		<event_param chain_event="SPAWN_UNITY_GUARD"/>
+		<event_param chain_event="SPAWN_UNITY_GUARD"/>
+		<event_param chain_event="SPAWN_UNITY_GUARD"/>
+		<event_param trigger_message="You have run into Unity guard force fighting Void Dwellers."/>
+		<event_param broadcast_message="Sensors indicate that new ships entered this sector"/>
+		<condition type="SECTOR_SHIPS_ABSENT">
+			<condition_param qty="2"/>
+		</condition>
+	</event>
+	<event type="SECTOR_EVENT" name="VOIDS_SCOUTS_SHAZ">
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="NEW_THREAT" any_value="1"/>
+		<event_param chance="40"/>
+		<event_param chain_event="SPAWN_STATIC_WARSHIP_GROUP"/>
+		<event_param trigger_message="You have run into a Void Dwellers scout group."/>
+		<event_param broadcast_message="Sensors indicate that new ships entered this sector."/>
+		<condition type="SECTOR_HAZARD_PRESENT">
+			<condition_param hazard="EMP"/>
+			<condition_param hazard="FIRE"/>
+			<condition_param hazard="STORM"/>
+			<condition_param hazard="HULL_DAMAGE"/>
+		</condition>
+		<condition type="SECTOR_SHIPS_ABSENT">
+			<condition_param qty="2"/>
+		</condition>
+	</event>
+	<event type="SECTOR_EVENT" name="BRAWL">
+		<event_param level="14"/>
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="NEW_THREAT" any_value="1"/>
+		<event_param chance="20"/>
+		<event_param chain_event="SPAWN_STATIC_WARSHIP_GROUP"/>
+		<event_param chain_event="SPAWN_STATIC_WARSHIP_GROUP"/>
+		<event_param chain_event="SPAWN_RANDOM_S_FORCE"/>
+		<event_param chain_event="SPAWN_RANDOM_B_FORCE"/>
+		<event_param chain_event="RANDOM_SHIP_LEVEL_SECTOR_THREAT"/>
+		<event_param chain_event="SPAWN_H_TRADER"/>
+		<event_param chain_event="SPAWN_UNITY_GUARD"/>
+		<event_param chain_event="SPAWN_UNITY_GUARD"/>
+		<event_param chain_event="SPAWN_UNITY_GUARD"/>
+		<event_param trigger_message="What is happening?! Everyone is here and everyone is shooting everyone!"/>
+		<event_param trigger_message="It is a huge mess and now you're part of it."/>
+		<event_param broadcast_message="Sensors have detected new ships, fighting each other."/>
+		<condition type="SECTOR_SHIPS_ABSENT">
+			<condition_param qty="2"/>
+		</condition>
+	</event>
+</events>

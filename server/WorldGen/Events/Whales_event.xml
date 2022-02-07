@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="SPAWN_SHIP" name="SPAWN_WHALE_HUNTER_STATION">
+		<event_param chain_events_to_created="1"/>
+		<event_param chain_event="RANDOMIZE_STATION"/>
+		<add_ship>
+			<ship_param ship_model="STATION10"/>
+			<ship_param free_doors="1"/>
+			<ship_param free_med="1"/>
+			<ship_param free_oxygen="1"/>
+			<ship_param ship_name="Whale Hunters Station"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_health="30"/>
+			<ship_param max_health="50"/>
+			<ship_ai type="LIFE_SUPPORT" crewless="1"/>
+			<ship_ai type="ENEMY_SHOOTER" crewless="1"/>
+			<ship_randomizer>
+				<ship_randomizer_param ship_level_min="[SECTOR_THREAT]"/>
+				<ship_randomizer_param ship_level_max="[SECTOR_THREAT]"/>
+				<ship_random_systems type="REACTOR">
+					<ship_random_systems_param mandatory="1"/>
+					<ship_random_systems_param model="WHALE_STAT_REACTOR"/>
+				</ship_random_systems>
+				<ship_random_systems type="TELEPORT">
+					<ship_random_systems_param mandatory="1"/>
+					<ship_random_systems_param model="WHALE_STAT_TP"/>
+				</ship_random_systems>
+			</ship_randomizer>
+			<spawn_npc_on_ship>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_name="Hunter "/>
+				<npc_param npc_random_name="1"/>
+				<npc_param npc_race="HUMAN"/>
+				<npc_param npc_home_system="REACTOR"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_param npc_dialogue="WHALE_TRADER"/>
+				<npc_param npc_remote_dialogue="WHALE_TRADER"/>
+				<npc_ai type="NPC_LIFESUPPORT"/>
+				<npc_ai type="NPC_DEFENDER"/>
+	 			<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_WORKER">
+					<npc_ai_param SYSTEMS="WEAPONS_CONTROL:MEDICAL:OXYGEN:SHIELDS:REACTOR"/>
+					<npc_ai_param WORK_TIME="56"/>
+				</npc_ai>
+			</spawn_npc_on_ship>
+			<spawn_npc_on_ship>
+				<npc_param npc_qty="4"/>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_random_name="1"/>
+				<npc_param npc_race="HUMAN"/>
+				<npc_param npc_home_system="REACTOR"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_ai type="NPC_LIFESUPPORT"/>
+				<npc_ai type="NPC_DEFENDER"/>
+	 			<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_WORKER">
+					<npc_ai_param SYSTEMS="WEAPONS_CONTROL:MEDICAL:OXYGEN:SHIELDS:REACTOR"/>
+					<npc_ai_param WORK_TIME="28"/>
+				</npc_ai>
+			</spawn_npc_on_ship>
+		</add_ship>
+	</event>
+	
+	<event type="SECTOR_EVENT" name="WHALE_HUNTERS">
+		<event_param level="0"/>
+		<event_param chance="35"/>
+		<event_param nonstop="0"/>
+		<event_param chain_event="SPAWN_WHALE_HUNTER_STATION"/>
+		<event_param trigger_message="You've stumbled upon a Whale Hunter station."/>
+		<event_param broadcast_message="Sensors detected a space station."/>
+		<condition type="SECTOR_SHIPS_ABSENT">
+			<condition_param qty="2"/>
+		</condition>
+	</event>
+	
+	<event type="SPAWN_SHIP" name="SPAWN_W1">
+		<event_param chain_events_to_created="1"/>
+		<event_param chain_event="PREP_W1"/>
+		<add_ship>
+			<ship_param hull_hazard_immunity="1"/>
+			<ship_param emp_hazard_immunity="1"/>
+			<ship_param storm_hazard_immunity="1"/>
+			<ship_param fire_hazard_immunity="1"/>
+			<ship_param no_sector_events="1"/>
+			<ship_param transparent_cells="1"/>
+			<ship_param ship_model="WHALE1"/>
+			<ship_param ship_name="Space Whale"/>
+			<ship_param random_pos="1"/>
+			<ship_param random_death_event="1"/>
+			<ship_param death_event="WHALE_DEATH_SOUND_1"/>
+			<ship_param death_event="WHALE_DEATH_SOUND_2"/>
+			<ship_param death_event="WHALE_DEATH_SOUND_3"/>
+			<ship_param min_health="14"/>
+			<ship_param max_health="20"/>
+			<ship_param min_scrap="100"/>
+			<ship_param max_scrap="150"/>
+			<ship_param ship_owner="VAR(WHALE_OWNER_NAME)"/>
+			<ship_ai type="AUTOREPAIR" CREWLESS="1"/>
+			<ship_ai type="EVADER" CREWLESS="1"/>
+			<ship_ai type="SHIP_GUARD" CREWLESS="1" GNAME="VAR(RARE_WHALE_NAME)"/>
+		</add_ship>
+	</event>
+	<event type="MODIFY_SHIP" name="PREP_W1">
+		<event_param install_system_model_direct="WHALE_LASER1:14:3"/>
+		<event_param install_system_model_direct="WHALE_REACTOR:6:2"/>
+		<event_param install_system_model_direct="WHALE_ENGINES:9:2" />
+		<event_param install_system_model_direct="WHALE_HYPERDRIVE:10:3" />
+		<event_param add_system_model_to_cargo="WHALE_HORN"/>
+	</event>		
+			
+	<event type="SPAWN_SHIP" name="SPAWN_W2">
+		<event_param chain_events_to_created="1" />
+		<event_param chain_event="PREP_W2"/>
+		<add_ship>
+			<ship_param hull_hazard_immunity="1"/>
+			<ship_param emp_hazard_immunity="1"/>
+			<ship_param storm_hazard_immunity="1"/>
+			<ship_param fire_hazard_immunity="1"/>
+			<ship_param no_sector_events="1"/>
+			<ship_param transparent_cells="1"/>
+			<ship_param ship_model="WHALE2"/>
+			<ship_param ship_name="Space Whale"/>
+			<ship_param random_pos="1"/>
+			<ship_param random_death_event="1"/>
+			<ship_param death_event="WHALE_DEATH_SOUND_1"/>
+			<ship_param death_event="WHALE_DEATH_SOUND_2"/>
+			<ship_param death_event="WHALE_DEATH_SOUND_3"/>
+			<ship_param min_health="16"/>
+			<ship_param max_health="22"/>
+			<ship_param min_scrap="100"/>
+			<ship_param max_scrap="150"/>
+			<ship_param ship_owner="VAR(WHALE_OWNER_NAME)"/>
+			<ship_ai type="AUTOREPAIR" CREWLESS="1"/>
+			<ship_ai type="EVADER" CREWLESS="1"/>
+			<ship_ai type="SHIP_GUARD" CREWLESS="1" GNAME="VAR(RARE_WHALE_NAME)"/>
+		</add_ship>
+	</event>
+	<event type="MODIFY_SHIP" name="PREP_W2">
+		<event_param install_system_model_direct="WHALE_LASER2:20:3" />
+		<event_param install_system_model_direct="WHALE_REACTOR:10:4" />
+		<event_param install_system_model_direct="WHALE_ENGINES:15:4" />
+		<event_param install_system_model_direct="WHALE_HYPERDRIVE:16:3" />
+		<event_param add_system_model_to_cargo="WHALE_EYE"/>
+	</event>
+	
+	<event type="SPAWN_SHIP" name="SPAWN_SW">
+		<event_param chain_events_to_created="1" />
+		<event_param chain_event="PREP_SW"/>
+		<event_param random_sector="1"/>
+		<add_ship>
+			<ship_param jump_event="SW_JUMP"/>			
+			<ship_param damage_event="SPAWN_SW_BACKUP"/>
+			<ship_param death_event="RARE_WHALE_DEATH_SOUND_1"/>
+			<ship_param death_event="RARE_WHALE_DEATH_SOUND_2"/>
+			<ship_param death_event="SPAWN_SW"/>
+			<ship_param transparent_cells="1"/>
+			<ship_param ship_model="WHALE3"/>
+			<ship_param ship_name="VAR(RARE_WHALE_NAME)"/>
+			<ship_param random_pos="1"/>
+			<ship_param min_health="100"/>
+			<ship_param max_health="150"/>
+			<ship_param min_scrap="8000"/>
+			<ship_param max_scrap="12000"/>
+			<ship_param no_sector_events="1"/>
+			<ship_param hull_hazard_immunity="1"/>
+			<ship_param emp_hazard_immunity="1"/>
+			<ship_param storm_hazard_immunity="1"/>
+			<ship_param fire_hazard_immunity="1"/>
+			<ship_param ship_owner="VAR(WHALE_OWNER_NAME)"/>
+			<ship_ai type="AUTOREPAIR" CREWLESS="1"/>
+			<ship_ai type="EVADER" CREWLESS="1"/>
+			<ship_ai type="LEVEL_LOADER" CREWLESS="1"/>
+			<ship_ai type="SENTRY" CREWLESS="1"/>
+			<ship_ai type="EXPLORER" CREWLESS="1" DELAY="180"/>
+			<ship_ai type="EVENT_TRIGGER" CREWLESS="1" TIMER="60" EVENT="WHALE_BACKUP_READY">
+				<ship_ai_condition type="SHIP_COMBAT_PRESENT"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" CREWLESS="1" TIMER="10" EVENT="SW_HEAL">
+				<ship_ai_condition type="SECTOR_HAZARD_PRESENT">
+					<condition_param hazard="EMP"/>
+					<condition_param hazard="FIRE"/>
+					<condition_param hazard="STORM"/>
+					<condition_param hazard="HULL_DAMAGE"/>
+				</ship_ai_condition>
+			</ship_ai>
+		</add_ship>
+	</event>
+	<event type="MODIFY_SHIP" name="PREP_SW">
+		<event_param install_system_model_direct="WHALE_LASER1:6:3" />
+		<event_param install_system_model_direct="WHALE_LASER3:3:2" />
+		<event_param install_system_model_direct="WHALE_REACTOR:14:4" />
+		<event_param install_system_model_direct="WHALE_HYPERDRIVE:12:4" />
+		<event_param install_system_model_direct="WHALE_ENGINES:9:3" />
+		<event_param install_system_model_direct="WHALE_CLOAK:10:4" />
+		<event_param add_system_model_to_cargo="WHALE_HEART"/>
+	</event>
+	<event type="MODIFY_SHIP" name="SW_HEAL">
+		<event_param give_hull="30"/>
+		<event_param charge_hd="100000"/>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="WHALE_BACKUP_READY">
+		<event_param var_name="WHALE_BACKUP_READY" /> 
+		<event_param var_value="1" /> 
+	</event>
+	<event type="SERVER_VARIABLE" name="RESET_WHALE_BACKUP_READY">
+		<event_param var_name="WHALE_BACKUP_READY" /> 
+		<event_param var_value="0" />
+	</event>
+	
+	<event type="SERVER_VARIABLE" name="SW_JUMP">
+		<event_param var_name="SW_JUMP" />
+		<event_param var_value="++" />
+		<event_param chain_event="SW_SIGHTING"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="SW_SIGHTING">
+		<condition type="SERVER_VARIABLE_BIGGER" var_name="SW_JUMP" var_value="VAR(SW_JUMP_MAX)"/>
+		<event_param var_name="SW_SIGHTING" /> 
+		<event_param var_value="[SECTOR]" /> 
+		<event_param chain_event="CLEAR_SW_JUMP"/>
+	</event>
+	<event type="SERVER_VARIABLE" name="CLEAR_SW_JUMP">
+		<event_param var_name="SW_JUMP" /> 
+		<event_param var_value="1" />
+	</event>
+	
+	<event type="SERVER_VARIABLE" name="START_EXPLAINING_WHALES">
+		<event_param var_name="EXPLAIN_WHALES_[PLAYER_NAME]" /> 
+		<event_param var_value="1" /> 
+	</event>
+	<event type="SERVER_VARIABLE" name="STOP_EXPLAINING_WHALES">
+		<event_param var_name="EXPLAIN_WHALES_[PLAYER_NAME]" /> 
+		<event_param var_value="0" />
+	</event>
+	<event type="MODIFY_SHIP" name="TAKE_HORN">
+		<event_param remove_system_model_from_cargo="WHALE_HORN"/>
+		<event_param remove_all_systems="0"/>
+		<event_param give_scrap="VAR(W_HORN_PRICE)"/>
+	</event>
+	<event type="MODIFY_SHIP" name="TAKE_EYE">
+		<event_param remove_system_model_from_cargo="WHALE_EYE"/>
+		<event_param remove_all_systems="0"/>
+		<event_param give_scrap="VAR(W_EYE_PRICE)"/>
+	</event>
+	<event type="MODIFY_SHIP" name="TAKE_HEART">
+		<event_param remove_system_model_from_cargo="WHALE_HEART"/>
+		<event_param remove_all_systems="0"/>
+		<event_param give_scrap="VAR(SW_HEART_PRICE)"/>
+	</event>
+	
+	<event type="GROUP" name="SPAWN_SW_BACKUP">
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="WHALE_BACKUP_READY" var_value="1"/>
+		<event_param random_chain_event="1"/>
+		<event_param chain_event="SW_BACKUP1"/>
+		<event_param chain_event="SW_BACKUP2"/>
+		<event_param chain_event="SW_BACKUP3"/>
+	</event>
+	<event type="GROUP" name="SW_BACKUP1">
+		<event_param chain_event="SPAWN_W1"/>
+		<event_param chain_event="RESET_WHALE_BACKUP_READY"/>
+		<event_param chain_event="RARE_WHALE_BACKUP_SOUND_1"/>
+	</event>
+	<event type="GROUP" name="SW_BACKUP2">
+		<event_param chain_event="SPAWN_W2"/>
+		<event_param chain_event="RESET_WHALE_BACKUP_READY"/>
+		<event_param chain_event="RARE_WHALE_BACKUP_SOUND_2"/>
+	</event>
+	<event type="GROUP" name="SW_BACKUP3">
+		<event_param chain_event="SPAWN_W1"/>
+		<event_param chain_event="SPAWN_W2"/>
+		<event_param chain_event="RESET_WHALE_BACKUP_READY"/>
+		<event_param chain_event="RARE_WHALE_BACKUP_SOUND_3"/>
+	</event>
+	
+	<event type="SECTOR_EVENT" name="WHALES_SECTOR_EVENT">
+		<condition type="SECTOR_SHIPS_ABSENT" qty="2"/>
+		<event_param level="0"/>
+		<event_param chance="40"/>
+		<event_param random_chain_event="1"/>
+		<event_param chain_event="SPAWN_WHALES1"/>
+		<event_param chain_event="SPAWN_WHALES2"/>
+		<event_param chain_event="SPAWN_WHALES3"/>
+		<event_param trigger_message="You've stumbled upon some Space Whales."/>
+		<event_param broadcast_message="Sensors have detected signatures of Space Whales."/>
+	</event>
+	<event type="GROUP" name="SPAWN_WHALES1">
+		<event_param chain_event="SPAWN_W1"/>
+	</event>
+	<event type="GROUP" name="SPAWN_WHALES2">
+		<event_param chain_event="SPAWN_W2"/>
+	</event>
+	<event type="GROUP" name="SPAWN_WHALES3">
+		<event_param chain_event="SPAWN_W1"/>
+		<event_param chain_event="SPAWN_W2"/>
+	</event>
+
+	<event type="MODIFY_MOB" name="TAKE_SCRAP_FOR_SW_SIGHTING_INFO">
+		<event_param take_scrap="VAR(SW_SIGHTING_INFO_PRICE)"/>
+	</event>
+	<event type="PLAY_AUDIO" name="RARE_WHALE_BACKUP_SOUND_1" track="sw_b_s1" sector="[SECTOR]" music="0"/>
+	<event type="PLAY_AUDIO" name="RARE_WHALE_BACKUP_SOUND_2" track="sw_b_s2" sector="[SECTOR]" music="0"/>
+	<event type="PLAY_AUDIO" name="RARE_WHALE_BACKUP_SOUND_3" track="sw_b_s3" sector="[SECTOR]" music="0"/>
+	<event type="PLAY_AUDIO" name="RARE_WHALE_DEATH_SOUND_1" track="sw_d1" sector="[SECTOR]" music="0"/>
+	<event type="PLAY_AUDIO" name="RARE_WHALE_DEATH_SOUND_2" track="sw_d2" all_players="1" music="0"/>
+	<event type="PLAY_AUDIO" name="WHALE_DEATH_SOUND_1" track="w_d1" sector="[SECTOR]" music="0"/>
+	<event type="PLAY_AUDIO" name="WHALE_DEATH_SOUND_2" track="w_d2" sector="[SECTOR]" music="0"/>
+	<event type="PLAY_AUDIO" name="WHALE_DEATH_SOUND_3" track="w_d3" sector="[SECTOR]" music="0"/>
+
+</events>

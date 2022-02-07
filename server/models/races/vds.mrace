@@ -1,0 +1,13 @@
+name=VOID_SHADOW
+sprite=vd
+health=300
+oxygen=100
+no_oxygen_damage=0
+oxygen_consum_speed=0
+weapon=Unknown
+repair_power=2
+fireman_power=3
+fire_resistance=100
+power_generation=-1
+oxygen_drain=50
+shade=10:10:10

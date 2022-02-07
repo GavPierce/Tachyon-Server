@@ -1,0 +1,8 @@
+name=Laser rifle
+image=laser_rifle
+range=4
+damage=20
+door_damage=10
+system_damage=50
+reload=20
+projectile=laser

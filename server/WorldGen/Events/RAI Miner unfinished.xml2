@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+    <event type="SPAWN_SHIP" name="SPAWN_AH_STATION">
+        <event_param sector="VAR(STARTING_SECTOR)" />
+        <event_param chain_events_to_created="1" />
+        <event_param chain_event="PREPARE_SHIP" />
+        <add_ship>
+            <ship_param ship_model="ah_station" />
+            <ship_param free_doors="1" />
+            <ship_param free_med="1" />
+            <ship_param free_oxygen="1" />
+            <ship_param safe_zone="1" />
+            <ship_param free_sensors="1" />
+            <ship_param ship_name="AH_STATION" />
+            <ship_param pos="1300:700" />
+            <ship_param min_health="100000" />
+            <ship_param max_health="100000" />
+            <ship_ai type="LIFE_SUPPORT" crewless="1" />
+        </add_ship>
+    </event>
+    <event type="MODIFY_SHIP" name="PREPARE_SHIP">
+        <event_param nonstop="1" />
+        <event_param install_system_model="SHIELDS4" />
+        <event_param install_system_model="SHIELDS4" />
+        <event_param install_system_model="REACTOR4" />
+        <event_param install_system_model="REACTOR4" />
+        <event_param install_system_model="MEDICAL2" />
+        <event_param install_system_model="MEDICAL2" />
+        <event_param install_system_model="OXYGEN2" />
+        <event_param install_system_model="OXYGEN2" />
+        <event_param install_system_model="HYPERDRIVE4" />
+        <event_param install_system_model="CAPACITOR2" />
+        <event_param install_system_model="CAPACITOR2" />
+        <event_param install_system_model="SENSORS2" />
+        <event_param install_system_model="DOOR_CONTROL4" />
+        <event_param install_system_model="Plasma_Cannon5" />
+        <event_param install_system_model="Plasma_Cannon5" />
+        <event_param install_system_model="Quad_laser4" />
+        <event_param install_system_model="Quad_laser4" />
+    </event>
+    <event type="SPAWN_SHIP" name="SPAWN_ASTEROID_HUNTER">
+        <event_param sector="VAR(STARTING_SECTOR)" />
+        <event_param chain_events_to_created="1" />
+        <event_param chain_event="MAKE_SHIP" />
+        <add_ship>
+            <ship_param ship_model="ah" />
+            <ship_param ship_name="ASTEROID_HUNTER" />
+            <ship_param pos="9000:7000" />
+            <ship_param min_health="100" />
+            <ship_param max_health="100" />
+            <ship_ai type="AUTOREPAIR" CREWLESS="1" />
+            <ship_ai type="SHIP_CLASS_HUNTER" CREWLESS="1">
+                <ship_ai_param TARGET="ASTEROID" />
+            </ship_ai>
+            <ship_ai type="EXPLORER">
+                <ship_ai_param DELAY="10" />
+                <ship_ai_param CREWLESS="1" />
+                <ship_ai_condition type="SHIP_SCRAP_ABSENT">
+                    <condition_param qty="10" />
+                </ship_ai_condition>
+                <ship_ai_condition type="SECTOR_SHIPS_ABSENT">
+                    <condition_param ship_class="ASTEROID" />
+                    <condition_param qty="1" />
+                </ship_ai_condition>
+                <ship_ai_condition type="SECTOR_DEBRIS_ABSENT">
+                    <condition_param qty="1" />
+                </ship_ai_condition>
+            </ship_ai>
+            <ship_ai type="SCAVENGER" CREWLESS="1" />
+            <ship_ai type="SECTOR_FINDER">
+                <ship_ai_param CREWLESS="1" />
+                <ship_ai_condition type="SHIP_SCRAP_PRESENT">
+                    <condition_param qty="10" />
+                </ship_ai_condition>
+                <ship_ai_condition type="SECTOR_SHIPS_ABSENT">
+                    <condition_param ship_class="ASTEROID" />
+                    <condition_param qty="1" />
+                </ship_ai_condition>
+                <ship_ai_condition type="SECTOR_DEBRIS_ABSENT">
+                    <condition_param qty="1" />
+                </ship_ai_condition>
+                <ship_ai_param TARGET="VAR(STARTING_SECTOR)" />
+            </ship_ai>
+            <ship_ai type="POSITIONER">
+                <ship_ai_param CREWLESS="1" />
+                <ship_ai_condition type="SHIP_SCRAP_PRESENT">
+                    <condition_param qty="10" />
+                </ship_ai_condition>
+                <ship_ai_condition type="SECTOR_COORDS_PRESENT">
+                    <condition_param coords="VAR(STARTING_SECTOR)" />
+                </ship_ai_condition>
+                <ship_ai_param TARGET="500:750" />
+                <ship_ai_param LEEWAY="100" />
+            </ship_ai>
+            <ship_ai type="EVENT_TRIGGER" CREWLESS="1" TIMER="10">
+                <ship_ai_condition type="SHIP_SCRAP_PRESENT">
+                    <condition_param qty="1" />
+                </ship_ai_condition>
+                <ship_ai_condition type="SECTOR_COORDS_PRESENT">
+                    <condition_param coords="VAR(STARTING_SECTOR)" />
+                </ship_ai_condition>
+                <ship_ai_condition type="SHIP_POSITION_PRESENT">
+                    <condition_param area_start="200:500" />
+                    <condition_param area_end="600:900" />
+                </ship_ai_condition>
+                <ship_ai_param EVENT="AH_SCRAP_EJECT" />
+            </ship_ai>
+            <ship_ai type="LEVEL_LOADER" />
+        </add_ship>
+    </event>
+    <event type="MODIFY_SHIP" name="MAKE_SHIP">
+        <event_param nonstop="1" />
+        <event_param install_system_model="SHIELDS4" />
+        <event_param install_system_model="REACTOR4" />
+        <event_param install_system_model="REACTOR4" />
+        <event_param install_system_model="MEDICAL2" />
+        <event_param install_system_model="ENGINES4" />
+        <event_param install_system_model="OXYGEN2" />
+        <event_param install_system_model="HYPERDRIVE4" />
+        <event_param install_system_model="CAPACITOR2" />
+        <event_param install_system_model="CAPACITOR2" />
+        <event_param install_system_model="SENSORS2" />
+        <event_param install_system_model="DOOR_CONTROL4" />
+        <event_param install_system_model="Plasma_Cannon5" />
+        <event_param install_system_model="Quad_laser4" />
+        <event_param install_system_model="Quad_laser4" />
+        <event_param install_system_model="PILOTING2" />
+        <event_param give_scrap="100" />
+    </event>
+    <event type="MODIFY_SHIP" name="AH_SCRAP_EJECT">
+        <event_param eject_direction="RIGHT" />
+        <event_param eject_scrap="9999" />
+    </event>
+</events>

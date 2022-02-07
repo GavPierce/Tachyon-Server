@@ -1,0 +1,8 @@
+name=Blaster
+image=blaster
+range=2
+damage=35
+door_damage=30
+system_damage=100
+reload=60
+projectile=BLASTER_PROJ

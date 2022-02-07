@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<events>
+	<event type="SERVER_VARIABLE" name="PLAYER_EXPLAIN_SINGU">
+		<event_param var_name="[PLAYER_NAME]_EXPLAIN_SINGU" /> 
+		<event_param var_value="1"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="JUMP_SHIP_TO_LAST_STAND">
+		<event_param hyper_jump="VAR(LAST_STAND_SECTOR)"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="MOVE_SHIP_TO_LAST_STAND">
+		<event_param pos="VAR(LAST_STAND_POS)"/>
+	</event>
+
+	<event type="REMOVE_SHIP" name="REMOVE_SELF"/>
+
+	<event type="MODIFY_MOB" name="TAKE_SCRAP_FOR_SINGU_WORKER">
+		<event_param take_scrap="VAR(SINGU_WORKER_PRICE)"/>
+	</event>
+	
+	<event type="PLAY_AUDIO" name="GAME_OVER_SOUND">
+		<event_param track="gameover"/>
+		<event_param music="0"/>
+		<event_param all_players="1"/>
+	</event>
+
+	<event type="SPAWN_SHIP" name="SPAWN_SINGULARITY">
+		<event_param sector="VAR(LAST_STAND_SECTOR)"/>
+		<event_param chain_event="LAST_STAND_SPIKE"/>
+		<event_param chain_events_to_created="1"/>
+		<event_param chain_event="SPAWN_SHACK_INSTRUCTOR"/>
+        <event_param chain_event="SPAWN_DUCK_INSTRUCTOR"/>
+		<event_param chain_event="Spawn_Stargate_operator_seller"/>
+		<event_param chain_event="SPAWN_WHALE_HUNTER_STATION"/>
+		<event_param chain_event="LAST_STAND_SECTOR_TYPE"/>
+		<add_ship>
+			<ship_param gen_ship_model="SINGU"/>
+			<ship_param death_event="GAME_OVER_SOUND"/>			
+			<ship_param free_doors="1"/>
+			<ship_param free_med="1"/>
+			<ship_param free_oxygen="1"/>
+			<ship_param free_sensors="1"/>
+			<ship_param ship_name="Singularity station prototype"/>
+			<ship_param pos="VAR(LAST_STAND_POS)"/>
+			<ship_param min_health="500"/>
+			<ship_param max_health="500"/>
+			<ship_ai type="LIFE_SUPPORT" crewless="1"/>
+			<ship_ai type="ENEMY_SHOOTER" crewless="1"/>
+			<ship_ai type="LEVEL_LOADER" crewless="1"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1">
+				<ship_ai_condition type="SERVER_VARIABLE_PRESENT">
+					<condition_param var_name="SINGULARITY_UPGRADE_READY"/>
+					<condition_param var_value="1"/>
+				</ship_ai_condition>
+				<ship_ai_condition type="SECTOR_PLAYERS_ABSENT">
+					<condition_param qty="1"/>
+					<condition_param online="1"/>
+				</ship_ai_condition>
+				<ship_ai_param TIMER="10"/>
+				<ship_ai_param EVENT="UPGRADE_SINGU"/>
+			</ship_ai>
+			<ship_ai type="EVENT_TRIGGER" crewless="1">
+				<ship_ai_param TIMER="300"/>
+				<ship_ai_param EVENT="UPDATE_SINGU_CODE"/>
+			</ship_ai>
+			<spawn_npc_on_ship>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_name="Admiral Breachburn"/>
+				<npc_param npc_race="HUMAN"/>
+				<npc_param npc_home_system="PILOTING"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_param npc_dialogue="SINGULARITY_UPGRADE"/>
+				<npc_param npc_remote_dialogue="SINGULARITY_UPGRADE"/>
+				<npc_ai type="NPC_LIFESUPPORT" heal_at_percent="90" oxygen_at_percent="70"/>
+				<npc_ai type="NPC_DEFENDER"/>
+				<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_WORKER">
+					<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:REACTOR"/>
+					<npc_ai_param WORK_TIME="30"/>
+				</npc_ai>
+			</spawn_npc_on_ship>
+			<spawn_npc_on_ship>
+				<npc_param npc_qty="3"/>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_name="Singularity crew"/>
+				<npc_param npc_race="HUMAN"/>
+				<npc_param npc_home_system="MEDICAL"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_ai type="NPC_LIFESUPPORT" heal_at_percent="40" oxygen_at_percent="40"/>
+				<npc_ai type="NPC_DEFENDER"/>
+				<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_WORKER">
+					<npc_ai_param SYSTEMS="SENSORS:MEDICAL:OXYGEN:DOOR_CONTROL:SHIELDS:REACTOR"/>
+					<npc_ai_param WORK_TIME="26"/>
+				</npc_ai>
+			</spawn_npc_on_ship>
+			<spawn_npc_on_ship>
+				<npc_param npc_qty="5"/>
+				<npc_param npc_is_crew="1"/>
+				<npc_param npc_name="Repair Bot"/>
+				<npc_param npc_race="CYBORG"/>
+				<npc_param npc_home_system="MEDICAL"/>
+				<npc_param npc_spawn_at_home="1"/>
+				<npc_ai type="NPC_LIFESUPPORT" heal_at_percent="40" oxygen_at_percent="40"/>
+				<npc_ai type="NPC_FIREMAN"/>
+				<npc_ai type="NPC_REPAIRMAN"/>
+				<npc_ai type="NPC_DEFENDER"/>
+				<npc_ai type="NPC_WORKER">
+					<npc_ai_param SYSTEMS="SENSORS:MEDICAL:OXYGEN:DOOR_CONTROL:SHIELDS:REACTOR"/>
+					<npc_ai_param WORK_TIME="22"/>
+				</npc_ai>
+			</spawn_npc_on_ship>
+		</add_ship>
+	</event>
+	
+	<event type="SPAWN_SHIP" name="SPAWN_UPGRADED_SINGULARITY">
+		<event_param chain_events_to_created="1"/>
+		<event_param chain_event="SPAWN_SINGU_CREW"/>
+		<add_ship>
+			<ship_param gen_ship_model="SINGULARITY"/>
+			<ship_param death_event="GAME_OVER_SOUND"/>			
+			<ship_param damage_event="SINGULARITY_DAMAGE_COUNT_INC"/>			
+			<ship_param free_doors="1"/>
+			<ship_param free_med="1"/>
+			<ship_param free_oxygen="1"/>
+			<ship_param free_sensors="1"/>
+			<ship_param ship_name="VAR(SINGU_NAME)"/>
+			<ship_param pos="VAR(LAST_STAND_POS)"/>
+			<ship_param min_health="10000"/>
+			<ship_param max_health="10000"/>
+			<ship_ai type="AUTOREPAIR" crewless="1"/>
+			<ship_ai type="LIFE_SUPPORT" crewless="1"/>
+			<ship_ai type="ENEMY_SHOOTER" crewless="1"/>
+			<ship_ai type="RACE_HUNTER" TARGET="VOID" crewless="1"/>
+			<ship_ai type="LEVEL_LOADER"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1" TIMER="60" EVENT="UPDATE_SINGU_CODE"/>
+			<ship_ai type="EVENT_TRIGGER" crewless="1" CREWLESS_ONLY="1" TIMER="60" EVENT="SINGULARITY_CREW_LOST"/>
+		</add_ship>
+	</event>
+	
+	<event type="SERVER_VARIABLE" name="SINGULARITY_UPGRADE_READY">
+		<event_param var_name="SINGULARITY_UPGRADE_READY" /> 
+		<event_param var_value="1" />
+	</event>
+	
+	<event type="GROUP" name="UPGRADE_SINGU">
+		<event_param chain_event="REMOVE_SELF"/>
+		<event_param chain_event="SPAWN_UPGRADED_SINGULARITY"/>
+	</event>
+	
+	<event type="MODIFY_SHIP" name="TAKE_SINGU_UPGRADE_ITEMS">
+		<condition type="SHIP_CARGO_PRESENT" cargo_type="SHIP_SYSTEM" system_model="CHADIUM" qty="1"/>
+		<condition type="SHIP_CARGO_PRESENT" cargo_type="SHIP_SYSTEM" system_model="DILITHIUM" qty="1"/>
+		<condition type="SHIP_CARGO_PRESENT" cargo_type="SHIP_SYSTEM" system_model="WHALE_HEART" qty="1"/>
+		<condition type="SHIP_CARGO_PRESENT" cargo_type="SHIP_SYSTEM" system_model="EMP_Cannon" qty="1"/>
+		<event_param for_ship_name="VAR([PLAYER_NAME]_input_ship_name)"/>
+		<event_param remove_system_model_from_cargo="CHADIUM"/>
+		<event_param remove_system_model_from_cargo="DILITHIUM"/>
+		<event_param remove_system_model_from_cargo="WHALE_HEART"/>
+		<event_param remove_system_model_from_cargo="EMP_Cannon"/>
+		<event_param chain_event="SINGULARITY_UPGRADE_READY"/>
+	</event>
+
+	<event type="SPAWN_NPC" name="Spawn_SINGU_HR">
+		<spawn_npc>
+			<npc_param npc_qty="1"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Singularity Head HR"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="DOOR_CONTROL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_dialogue="HR_AGENT_SINGU"/>
+			<npc_param npc_remote_dialogue="HR_AGENT_SINGU"/>
+			<npc_ai type="NPC_LIFESUPPORT" heal_at_percent="90" oxygen_at_percent="90"/>
+			<npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_FIREMAN"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="SENSORS:MEDICAL:OXYGEN:DOOR_CONTROL:SHIELDS:REACTOR"/>
+				<npc_ai_param WORK_TIME="44"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="INPUT_ShipName">
+        <event_param var_name="[PLAYER_NAME]_input_ship_name"/>
+        <event_param var_value="[INPUT]"/>
+    </event>
+	
+	<event type="PLAY_AUDIO" name="SINGU_RED_SOUND">
+		<event_param track="singu_red"/>
+		<event_param music="0"/>
+		<event_param all_players="1"/>
+	</event>
+	<event type="PLAY_AUDIO" name="SINGU_GREEN_SOUND">
+		<event_param track="singu_green"/>
+		<event_param music="0"/>
+		<event_param all_players="1"/>
+	</event>
+	
+	<event type="GROUP" name="UPDATE_SINGU_CODE">
+		<event_param chain_event="SINGULARITY_CODE_RED"/>
+		<event_param chain_event="SINGULARITY_CODE_GREEN"/>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="SINGULARITY_CODE_RED">
+		<condition type="SECTOR_SHIPS_PRESENT" owner="VAR(VOID_OWNER)" qty="5"/>
+        <event_param var_name="SINGULARITY_ALARM"/>
+        <event_param var_value="1"/>
+		<event_param chain_event="SINGU_RED_SOUND"/>
+    </event>
+
+	<event type="SERVER_VARIABLE" name="SINGULARITY_CODE_GREEN">
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="SINGULARITY_ALARM" any_value="1"/>
+		<condition type="SECTOR_SHIPS_ABSENT" owner="VAR(VOID_OWNER)" qty="1"/>
+        <event_param var_name="SINGULARITY_ALARM"/>
+        <event_param var_value=""/>
+		<event_param chain_event="SINGU_GREEN_SOUND"/>
+    </event>
+
+	<event type="MODIFY_SECTOR" name="LAST_STAND_SECTOR_TYPE">
+		<event_param sector_type="41"/>
+		<event_param visible_to_all="1"/>
+	</event>
+
+	<event type="MODIFY_SHIP" name="SINGULARITY_SURGE">
+		<condition type="SERVER_VARIABLE_BIGGER" var_name="SINGULARITY_DAMAGE_COUNT" var_value="VAR(SINGU_SURGE_FREQUENCY)"/>
+		<event_param repair_breaches="999"/>
+		<event_param put_out_fires="999"/>
+		<event_param repair_system_type="REACTOR"/>
+		<event_param repair_system_type="SHIELDS"/>
+		<event_param repair_system_type="DOOR_CONTROL"/>
+		<event_param repair_system_type="LASER_WEAPONS"/>
+		<event_param repair_system_type="MISSILE_WEAPONS"/>
+		<event_param repair_system_type="SENSORS"/>
+		<event_param repair_system_type="CAPACITOR"/>
+		<event_param repair_system_type="MEDICAL"/>
+		<event_param repair_system_type="OXYGEN"/>
+		<event_param repair_system_type="SYSTEMS_SHOP"/>
+		<event_param repair_system_type="SHIPS_SHOP"/>
+		<event_param repair_system_type="CONSUMABLES_SHOP"/>
+		<event_param repair_system_type="BEAM_WEAPONS"/>
+		<event_param repair_system_type="TELEPORT"/>
+		<event_param repair_system_type="REPAIR"/>
+		<event_param repair_system_type="WEAPONS_CONTROL"/>
+		<event_param give_shields="999"/>
+		<event_param chain_events_to_modified="1"/>
+		<event_param chain_event="CLEAR_SINGULARITY_DAMAGE_COUNT"/>
+		<event_param chain_event="RESPAWN_SINGU_CREW"/>
+	</event>
+
+	<event type="SPAWN_NPC" name="RESPAWN_SINGU_CREW">
+		<condition type="SERVER_VARIABLE_PRESENT" var_name="SINGULARITY_CREW_LOST" any_value="1"/>
+		<condition type="SECTOR_PLAYERS_ABSENT" qty="1" online="1"/>
+		<event_param chain_event="SPAWN_SINGU_CREW"/>
+		<event_param chain_event="CLEAR_SINGULARITY_CREW_LOST"/>
+	</event>
+
+	<event type="SERVER_VARIABLE" name="SINGULARITY_CREW_LOST" var_name="SINGULARITY_CREW_LOST" var_value="1"/>
+	<event type="SERVER_VARIABLE" name="CLEAR_SINGULARITY_CREW_LOST" var_name="SINGULARITY_CREW_LOST" var_value=""/>
+
+	<event type="SERVER_VARIABLE" name="SINGULARITY_DAMAGE_COUNT_INC" var_name="SINGULARITY_DAMAGE_COUNT" var_value="++"/>
+	<event type="SERVER_VARIABLE" name="CLEAR_SINGULARITY_DAMAGE_COUNT" var_name="SINGULARITY_DAMAGE_COUNT" var_value=""/>
+	
+	<event type="SPAWN_NPC" name="SPAWN_SINGU_CREW">
+		<event_param chain_event="SPAWN_SHACK_INSTRUCTOR"/>
+        <event_param chain_event="SPAWN_DUCK_INSTRUCTOR"/>
+		<event_param chain_event="SPAWN_INT_DEP_CHIEF"/>
+		<event_param chain_event="Spawn_SINGU_HR"/>
+		<event_param chain_event="Spawn_Stargate_operator_seller"/>
+		<spawn_npc>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Admiral Breachburn"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="MEDICAL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_param npc_dialogue="ADMIRAL"/>
+			<npc_param npc_remote_dialogue="ADMIRAL"/>
+			<npc_ai type="NPC_LIFESUPPORT" heal_at_percent="70" oxygen_at_percent="50"/>
+			<npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_FIREMAN"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="WEAPONS_CONTROL:SHIELDS:REACTOR"/>
+				<npc_ai_param WORK_TIME="32"/>
+			</npc_ai>
+		</spawn_npc>
+		<spawn_npc>
+			<npc_param npc_qty="5"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Singularity crew"/>
+			<npc_param npc_race="HUMAN"/>
+			<npc_param npc_home_system="MEDICAL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT" heal_at_percent="40" oxygen_at_percent="40"/>
+			<npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_FIREMAN"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="SENSORS:MEDICAL:OXYGEN:DOOR_CONTROL:SHIELDS:REACTOR"/>
+				<npc_ai_param WORK_TIME="26"/>
+			</npc_ai>
+		</spawn_npc>
+		<spawn_npc>
+			<npc_param npc_qty="8"/>
+			<npc_param npc_is_crew="1"/>
+			<npc_param npc_name="Repair Bot"/>
+			<npc_param npc_race="CYBORG"/>
+			<npc_param npc_home_system="MEDICAL"/>
+			<npc_param npc_spawn_at_home="1"/>
+			<npc_ai type="NPC_LIFESUPPORT" heal_at_percent="40" oxygen_at_percent="40"/>
+			<npc_ai type="NPC_FIREMAN"/>
+			<npc_ai type="NPC_REPAIRMAN"/>
+			<npc_ai type="NPC_DEFENDER"/>
+			<npc_ai type="NPC_WORKER">
+				<npc_ai_param SYSTEMS="SENSORS:MEDICAL:OXYGEN:DOOR_CONTROL:SHIELDS:REACTOR"/>
+				<npc_ai_param WORK_TIME="22"/>
+			</npc_ai>
+		</spawn_npc>
+	</event>
+
+	<event type="THREAT_SPIKE" name="LAST_STAND_SPIKE">
+		<event_param radius_min="60"/>
+		<event_param radius_max="60"/>
+		<event_param threat_min="1"/>
+		<event_param threat_max="1"/>
+	</event>
+
+</events>

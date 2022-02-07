@@ -1,0 +1,8 @@
+name=PSI
+image=unknown
+range=3
+damage=100
+door_damage=50
+system_damage=150
+reload=60
+projectile=psi
