@@ -1,0 +1,4 @@
+random_death_event=0
+death_event=REMOVE_VD_TARGET
+random_damage_event=0
+random_jump_event=0

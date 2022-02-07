@@ -1,0 +1,8 @@
+random_death_event=0
+death_event=RARE_WHALE_DEATH_SOUND_1
+death_event=RARE_WHALE_DEATH_SOUND_2
+death_event=SPAWN_SW
+random_damage_event=0
+damage_event=SPAWN_SW_BACKUP
+random_jump_event=0
+jump_event=SW_JUMP
