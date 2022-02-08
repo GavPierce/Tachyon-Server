@@ -1,0 +1,4 @@
+random_death_event=0
+death_event=Game_Progress_5
+random_damage_event=0
+random_jump_event=0
