@@ -1,0 +1,10 @@
+name=ZOLTAN
+sprite=ZOLTAN
+health=1540
+oxygen=1800
+no_oxygen_damage=30
+oxygen_consum_speed=4
+weapon=Blaster
+repair_power = 15
+fireman_power = 3
+power_generation=4

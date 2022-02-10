@@ -1,0 +1,10 @@
+name=LANIUS
+sprite=LANIUS
+health=2200
+oxygen=0
+no_oxygen_damage=0
+oxygen_consum_speed=0
+weapon=Lanius Blaster
+repair_power = 15
+fireman_power = 3
+oxygen_drain=50

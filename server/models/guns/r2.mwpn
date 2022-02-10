@@ -1,0 +1,8 @@
+name=Scythes
+image=unknown
+range=1
+damage=600
+door_damage=70
+system_damage=500
+reload=50
+projectile=swing

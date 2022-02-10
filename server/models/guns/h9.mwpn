@@ -1,0 +1,8 @@
+name=Lanius Blaster
+image=blaster
+range=4
+damage=40
+door_damage=250
+system_damage=3000
+reload=48
+projectile=plasma

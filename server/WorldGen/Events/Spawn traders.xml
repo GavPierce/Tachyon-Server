@@ -60,7 +60,7 @@
 				<npc_param npc_qty="2"/>
 				<npc_param npc_is_crew="1"/>
 				<npc_param npc_random_name="1"/>
-				<npc_param npc_race="HUMAN"/>
+				<npc_param npc_race="CYBORG"/>
 				<npc_param npc_home_system="ENGINES"/>
 				<npc_param npc_spawn_at_home="1"/>
 				<npc_ai type="NPC_LIFESUPPORT"/>
@@ -499,7 +499,7 @@
 			<ship_param free_med="1"/>
 			<ship_param free_oxygen="1"/>
 			<ship_param free_sensors="1"/>
-			<ship_param ship_model="H_CARGO"/>
+			<ship_param ship_model="STATION10"/>
 			<ship_param ship_qty="1"/>
 			<ship_param ship_name="Unity Repair platform"/>
 			<ship_param ship_owner="THE_UNITY"/>
@@ -520,7 +520,7 @@
 				<npc_param npc_qty="1"/>
 				<npc_param npc_is_crew="1"/>
 				<npc_param npc_random_name="1"/>
-				<npc_param npc_race="HUMAN"/>
+				<npc_param npc_race="CYBORG"/>
 				<npc_param npc_home_system="PILOTING"/>
 				<npc_param npc_spawn_at_home="1"/>
 				<npc_ai type="NPC_LIFESUPPORT"/>
@@ -533,7 +533,7 @@
 				<npc_param npc_qty="2"/>
 				<npc_param npc_is_crew="1"/>
 				<npc_param npc_random_name="1"/>
-				<npc_param npc_race="HUMAN"/>
+				<npc_param npc_race="CYBORG"/>
 				<npc_param npc_home_system="ENGINES"/>
 				<npc_param npc_spawn_at_home="1"/>
 				<npc_ai type="NPC_LIFESUPPORT"/>
@@ -546,7 +546,7 @@
 				<npc_param npc_qty="2"/>
 				<npc_param npc_is_crew="1"/>
 				<npc_param npc_random_name="1"/>
-				<npc_param npc_race="HUMAN"/>
+				<npc_param npc_race="CYBORG"/>
 				<npc_param npc_home_system="MEDICAL"/>
 				<npc_param npc_spawn_at_home="1"/>
 				<npc_ai type="NPC_LIFESUPPORT"/>
@@ -705,7 +705,7 @@
 				<npc_param npc_qty="2"/>
 				<npc_param npc_is_crew="1"/>
 				<npc_param npc_random_name="1"/>
-				<npc_param npc_race="HUMAN"/>
+				<npc_param npc_race="CYBORG"/>
 				<npc_param npc_home_system="ENGINES"/>
 				<npc_param npc_spawn_at_home="1"/>
 				<npc_ai type="NPC_LIFESUPPORT"/>
@@ -718,7 +718,7 @@
 				<npc_param npc_qty="2"/>
 				<npc_param npc_is_crew="1"/>
 				<npc_param npc_random_name="1"/>
-				<npc_param npc_race="HUMAN"/>
+				<npc_param npc_race="ZOLTAN"/>
 				<npc_param npc_home_system="MEDICAL"/>
 				<npc_param npc_spawn_at_home="1"/>
 				<npc_ai type="NPC_LIFESUPPORT"/>
