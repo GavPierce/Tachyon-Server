@@ -12,13 +12,13 @@
 			<ship_param random_ship_name="1"></ship_param>
 			<ship_param ship_owner="MANTIDS"></ship_param>
 			<ship_param random_pos="1"></ship_param>
-			<ship_param min_missile_ammo="10"></ship_param>
-			<ship_param max_missile_ammo="20"></ship_param>
+			<ship_param min_missile_ammo="5"></ship_param>
+			<ship_param max_missile_ammo="10"></ship_param>
 			<ship_param min_drone_ammo="2"></ship_param>
 			<ship_param max_drone_ammo="6"></ship_param>
-			<ship_param min_scrap="120"></ship_param>
-			<ship_param max_scrap="200"></ship_param>
-			<ship_param min_health="50"></ship_param>
+			<ship_param min_scrap="220"></ship_param>
+			<ship_param max_scrap="300"></ship_param>
+			<ship_param min_health="10"></ship_param>
 			<ship_param max_health="70"></ship_param>
 			<ship_ai type="LIFE_SUPPORT"></ship_ai>
 			<ship_ai type="EVADER"></ship_ai>
@@ -36,17 +36,13 @@
 					<ship_random_systems_param mandatory="1"></ship_random_systems_param>
 					<ship_random_systems_param model="TELEPORT2"></ship_random_systems_param>
 				</ship_random_systems>
-				<ship_random_systems type="MEDICAL">
-					<ship_random_systems_param mandatory="1"></ship_random_systems_param>
-					<ship_random_systems_param model="MEDICAL2"></ship_random_systems_param>
-				</ship_random_systems>
 				<ship_random_systems type="REACTOR">
 					<ship_random_systems_param mandatory="1"></ship_random_systems_param>
 					<ship_random_systems_param model="BOU_REACTOR4"></ship_random_systems_param>
 				</ship_random_systems>
 			</ship_randomizer>
 			<spawn_npc_on_ship>
-				<npc_param npc_qty="3"></npc_param>
+				<npc_param npc_qty="1"></npc_param>
 				<npc_param npc_is_crew="1"></npc_param>
 				<npc_param npc_name="Pirate "></npc_param>
 				<npc_param npc_random_name="1"></npc_param>
@@ -59,22 +55,9 @@
 				<npc_ai type="NPC_REPAIRMAN"></npc_ai>
 				<npc_ai type="NPC_WORKER" SYSTEMS="PILOTING:SENSORS:WEAPONS_CONTROL" WORK_TIME="10"></npc_ai>
 			</spawn_npc_on_ship>
+			
 			<spawn_npc_on_ship>
-				<npc_param npc_qty="2"></npc_param>
-				<npc_param npc_is_crew="1"></npc_param>
-				<npc_param npc_name="Pirate "></npc_param>
-				<npc_param npc_random_name="1"></npc_param>
-				<npc_param npc_race="CYBORG"></npc_param>
-				<npc_param npc_home_system="ENGINES"></npc_param>
-				<npc_param npc_spawn_at_home="1"></npc_param>
-				<npc_ai type="NPC_LIFESUPPORT"></npc_ai>
-				<npc_ai type="NPC_DEFENDER"></npc_ai>
-	 			<npc_ai type="NPC_FIREMAN"></npc_ai>
-				<npc_ai type="NPC_REPAIRMAN"></npc_ai>
-				<npc_ai type="NPC_WORKER" SYSTEMS="SHIELDS:ENGINES:HYPERDRIVE:REACTOR:CAPACITOR" WORK_TIME="12"></npc_ai>
-			</spawn_npc_on_ship>
-			<spawn_npc_on_ship>
-				<npc_param npc_qty="3"></npc_param>
+				<npc_param npc_qty="1"></npc_param>
 				<npc_param npc_is_crew="1"></npc_param>
 				<npc_param npc_name="Pirate "></npc_param>
 				<npc_param npc_random_name="1"></npc_param>
@@ -120,10 +103,6 @@
 					<ship_random_systems_param mandatory="1"></ship_random_systems_param>
 					<ship_random_systems_param model="TELEPORT2"></ship_random_systems_param>
 				</ship_random_systems>
-				<ship_random_systems type="MEDICAL">
-					<ship_random_systems_param mandatory="1"></ship_random_systems_param>
-					<ship_random_systems_param model="MEDICAL2"></ship_random_systems_param>
-				</ship_random_systems>
 				<ship_random_systems type="PILOTING">
 					<ship_random_systems_param mandatory="1"></ship_random_systems_param>
 					<ship_random_systems_param model="PILOTING1"></ship_random_systems_param>
@@ -135,7 +114,7 @@
 				</ship_random_systems>
 			</ship_randomizer>
 			<spawn_npc_on_ship>
-				<npc_param npc_qty="3"></npc_param>
+				<npc_param npc_qty="2"></npc_param>
 				<npc_param npc_is_crew="1"></npc_param>
 				<npc_param npc_name="Pirate "></npc_param>
 				<npc_param npc_random_name="1"></npc_param>
@@ -149,7 +128,7 @@
 				<npc_ai type="NPC_WORKER" SYSTEMS="PILOTING:SENSORS:WEAPONS_CONTROL" WORK_TIME="10"></npc_ai>
 			</spawn_npc_on_ship>
 			<spawn_npc_on_ship>
-				<npc_param npc_qty="2"></npc_param>
+				<npc_param npc_qty="1"></npc_param>
 				<npc_param npc_is_crew="1"></npc_param>
 				<npc_param npc_name="Slave "></npc_param>
 				<npc_param npc_random_name="1"></npc_param>
@@ -163,7 +142,7 @@
 				<npc_ai type="NPC_WORKER" SYSTEMS="SHIELDS:ENGINES:HYPERDRIVE:REACTOR:CAPACITOR" WORK_TIME="12"></npc_ai>
 			</spawn_npc_on_ship>
 			<spawn_npc_on_ship>
-				<npc_param npc_qty="2"></npc_param>
+				<npc_param npc_qty="1"></npc_param>
 				<npc_param npc_is_crew="1"></npc_param>
 				<npc_param npc_name="Pirate "></npc_param>
 				<npc_param npc_random_name="1"></npc_param>
@@ -290,10 +269,6 @@
 					<ship_random_systems_param mandatory="1"></ship_random_systems_param>
 					<ship_random_systems_param model="TELEPORT2"></ship_random_systems_param>
 				</ship_random_systems>
-				<ship_random_systems type="MEDICAL">
-					<ship_random_systems_param mandatory="1"></ship_random_systems_param>
-					<ship_random_systems_param model="MEDICAL2"></ship_random_systems_param>
-				</ship_random_systems>
 				<ship_random_systems type="PILOTING">
 					<ship_random_systems_param mandatory="1"></ship_random_systems_param>
 					<ship_random_systems_param model="PILOTING1"></ship_random_systems_param>
@@ -305,7 +280,7 @@
 				</ship_random_systems>
 			</ship_randomizer>
 			<spawn_npc_on_ship>
-				<npc_param npc_qty="2"></npc_param>
+				<npc_param npc_qty="1"></npc_param>
 				<npc_param npc_is_crew="1"></npc_param>
 				<npc_param npc_name="Pirate "></npc_param>
 				<npc_param npc_random_name="1"></npc_param>
@@ -319,7 +294,7 @@
 				<npc_ai type="NPC_WORKER" SYSTEMS="PILOTING:SENSORS:WEAPONS_CONTROL" WORK_TIME="10"></npc_ai>
 			</spawn_npc_on_ship>
 			<spawn_npc_on_ship>
-				<npc_param npc_qty="2"></npc_param>
+				<npc_param npc_qty="1"></npc_param>
 				<npc_param npc_is_crew="1"></npc_param>
 				<npc_param npc_name="Slave "></npc_param>
 				<npc_param npc_random_name="1"></npc_param>
@@ -333,7 +308,7 @@
 				<npc_ai type="NPC_WORKER" SYSTEMS="SHIELDS:ENGINES:HYPERDRIVE:REACTOR:CAPACITOR" WORK_TIME="12"></npc_ai>
 			</spawn_npc_on_ship>
 			<spawn_npc_on_ship>
-				<npc_param npc_qty="2"></npc_param>
+				<npc_param npc_qty="1"></npc_param>
 				<npc_param npc_is_crew="1"></npc_param>
 				<npc_param npc_name="Boarder "></npc_param>
 				<npc_param npc_random_name="1"></npc_param>
@@ -471,7 +446,6 @@
 		</condition>
 		<event_param random_chain_event="1"/>
 		<event_param chain_event="SPAWN_B_FORCE_1SCOUT"/>
-		<event_param chain_event="SPAWN_B_FORCE_1INT"/>
 	</event>
 	<event type="SPAWN_SHIP" name="SPAWN_RANDOM_B_FORCE_7TO10">
 		<event_param nonstop="1"/>
@@ -488,8 +462,6 @@
 		<event_param chain_event="SPAWN_B_FORCE_1SCOUT"/>
 		<event_param chain_event="SPAWN_B_FORCE_2SCOUTS"/>
 		<event_param chain_event="SPAWN_B_FORCE_1SCOUT_1INT"/>
-		<event_param chain_event="SPAWN_B_FORCE_3INT"/>
-		<event_param chain_event="SPAWN_B_FORCE_4INT"/>
 	</event>
 	<event type="SPAWN_SHIP" name="SPAWN_RANDOM_B_FORCE_11TO16">
 		<event_param nonstop="1"/>
@@ -508,9 +480,7 @@
 		<event_param chain_event="SPAWN_B_FORCE_3SCOUTS"/>
 		<event_param chain_event="SPAWN_B_FORCE_1SCOUT_2INT"/>
 		<event_param chain_event="SPAWN_B_FORCE_3INT"/>
-		<event_param chain_event="SPAWN_B_FORCE_4INT"/>
 		<event_param chain_event="SPAWN_B_FORCE_1CRUS_1SCOUT"/>
-		<event_param chain_event="SPAWN_B_FORCE_1CRUS_2INT"/>
 	</event>
 	<event type="SPAWN_SHIP" name="SPAWN_RANDOM_B_FORCE_17">
 		<event_param nonstop="1"/>
@@ -522,7 +492,7 @@
 		<event_param chain_event="SPAWN_B_FORCE_2CRUS"/>
 		<event_param chain_event="SPAWN_B_FORCE_3SCOUTS"/>
 		<event_param chain_event="SPAWN_B_FORCE_2SCOUTS_2INT"/>
-		<event_param chain_event="SPAWN_B_FORCE_5INT"/>
+		<event_param chain_event="SPAWN_B_FORCE_4INT"/>
 		<event_param chain_event="SPAWN_B_FORCE_1CRUS_2SCOUT"/>
 		<event_param chain_event="SPAWN_B_FORCE_1CRUS_2INT"/>
 	</event>
@@ -556,8 +526,8 @@
 			<ship_param max_drone_ammo="6"></ship_param>
 			<ship_param min_scrap="120"></ship_param>
 			<ship_param max_scrap="200"></ship_param>
-			<ship_param min_health="70"></ship_param>
-			<ship_param max_health="100"></ship_param>
+			<ship_param min_health="50"></ship_param>
+			<ship_param max_health="70"></ship_param>
 			<ship_ai type="BOARDING_MANAGER"></ship_ai>
 			<ship_ai type="LIFE_SUPPORT"></ship_ai>
 			<ship_ai type="EVADER"></ship_ai>
@@ -569,10 +539,6 @@
 				<ship_random_systems type="TELEPORT">
 					<ship_random_systems_param mandatory="1"></ship_random_systems_param>
 					<ship_random_systems_param model="TELEPORT2"></ship_random_systems_param>
-				</ship_random_systems>
-				<ship_random_systems type="MEDICAL">
-					<ship_random_systems_param mandatory="1"></ship_random_systems_param>
-					<ship_random_systems_param model="MEDICAL2"></ship_random_systems_param>
 				</ship_random_systems>
 				<ship_random_systems type="PILOTING">
 					<ship_random_systems_param mandatory="1"></ship_random_systems_param>
@@ -599,12 +565,12 @@
 				<npc_ai type="NPC_WORKER" SYSTEMS="PILOTING:SENSORS:WEAPONS_CONTROL" WORK_TIME="10"></npc_ai>
 			</spawn_npc_on_ship>
 			<spawn_npc_on_ship>
-				<npc_param npc_qty="3"></npc_param>
+				<npc_param npc_qty="1"></npc_param>
 				<npc_param npc_is_crew="1"></npc_param>
 				<npc_param npc_name="Scavenger "></npc_param>
 				<npc_param npc_random_name="1"></npc_param>
 				<npc_param npc_race="LANIUS"></npc_param>
-				<npc_param npc_home_system="MEDICAL"></npc_param>
+				<npc_param npc_home_system="PILOTING"></npc_param>
 				<npc_param npc_spawn_at_home="1"></npc_param>
 				<npc_ai type="NPC_LIFESUPPORT"></npc_ai>
 				<npc_ai type="NPC_DEFENDER"></npc_ai>
@@ -613,7 +579,7 @@
 				<npc_ai type="NPC_WORKER" SYSTEMS="SHIELDS:ENGINES:HYPERDRIVE:REACTOR:CAPACITOR" WORK_TIME="12"></npc_ai>
 			</spawn_npc_on_ship>
 			<spawn_npc_on_ship>
-				<npc_param npc_qty="4"></npc_param>
+				<npc_param npc_qty="1"></npc_param>
 				<npc_param npc_is_crew="1"></npc_param>
 				<npc_param npc_name="Boarder "></npc_param>
 				<npc_param npc_random_name="1"></npc_param>
@@ -730,8 +696,8 @@
 			<ship_param max_drone_ammo="6"></ship_param>
 			<ship_param min_scrap="100"></ship_param>
 			<ship_param max_scrap="180"></ship_param>
-			<ship_param min_health="50"></ship_param>
-			<ship_param max_health="90"></ship_param>
+			<ship_param min_health="20"></ship_param>
+			<ship_param max_health="40"></ship_param>
 			<ship_ai type="BOARDING_MANAGER"></ship_ai>
 			<ship_ai type="LIFE_SUPPORT"></ship_ai>
 			<ship_ai type="EVADER"></ship_ai>
@@ -773,7 +739,7 @@
 				<npc_ai type="NPC_WORKER" SYSTEMS="PILOTING:SENSORS:WEAPONS_CONTROL" WORK_TIME="10"></npc_ai>
 			</spawn_npc_on_ship>
 			<spawn_npc_on_ship>
-				<npc_param npc_qty="3"></npc_param>
+				<npc_param npc_qty="1"></npc_param>
 				<npc_param npc_is_crew="1"></npc_param>
 				<npc_param npc_name="Boarder "></npc_param>
 				<npc_param npc_random_name="1"></npc_param>
@@ -1074,7 +1040,6 @@
 		</condition>
 		<event_param random_chain_event="1"/>
 		<event_param chain_event="SPAWN_S_FORCE_1SCOUT"/>
-		<event_param chain_event="SPAWN_S_FORCE_1INT"/>
 	</event>
 	<event type="SPAWN_SHIP" name="SPAWN_RANDOM_S_FORCE_7TO10">
 		<event_param nonstop="1"/>
@@ -1084,15 +1049,11 @@
 		</condition>
 		<event_param random_chain_event="1"/>
 		<event_param chain_event="SPAWN_S_FORCE_1SCOUT_1INT"/>
-		<event_param chain_event="SPAWN_S_FORCE_2INT"/>
 		<event_param chain_event="SPAWN_S_FORCE_1CRUS"/>
 		<event_param chain_event="SPAWN_S_FORCE_1SCOUT"/>
-		<event_param chain_event="SPAWN_S_FORCE_1CRUS"/>
 		<event_param chain_event="SPAWN_S_FORCE_1SCOUT"/>
 		<event_param chain_event="SPAWN_S_FORCE_2SCOUTS"/>
-		<event_param chain_event="SPAWN_S_FORCE_1SCOUT_1INT"/>
-		<event_param chain_event="SPAWN_S_FORCE_3INT"/>
-		<event_param chain_event="SPAWN_S_FORCE_4INT"/>
+
 	</event>
 	<event type="SPAWN_SHIP" name="SPAWN_RANDOM_S_FORCE_11TO16">
 		<event_param nonstop="1"/>
@@ -1111,9 +1072,7 @@
 		<event_param chain_event="SPAWN_S_FORCE_3SCOUTS"/>
 		<event_param chain_event="SPAWN_S_FORCE_1SCOUT_2INT"/>
 		<event_param chain_event="SPAWN_S_FORCE_3INT"/>
-		<event_param chain_event="SPAWN_S_FORCE_4INT"/>
 		<event_param chain_event="SPAWN_S_FORCE_1CRUS_1SCOUT"/>
-		<event_param chain_event="SPAWN_S_FORCE_1CRUS_2INT"/>
 	</event>
 	<event type="SPAWN_SHIP" name="SPAWN_RANDOM_S_FORCE_17">
 		<event_param nonstop="1"/>
@@ -1125,7 +1084,6 @@
 		<event_param chain_event="SPAWN_S_FORCE_2CRUS"/>
 		<event_param chain_event="SPAWN_S_FORCE_3SCOUTS"/>
 		<event_param chain_event="SPAWN_S_FORCE_2SCOUTS_2INT"/>
-		<event_param chain_event="SPAWN_S_FORCE_5INT"/>
 		<event_param chain_event="SPAWN_S_FORCE_1CRUS_2SCOUT"/>
 		<event_param chain_event="SPAWN_S_FORCE_1CRUS_2INT"/>
 	</event>
