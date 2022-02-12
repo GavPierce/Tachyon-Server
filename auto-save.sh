@@ -5,6 +5,7 @@ array[2]="Pro Tip: Don't shoot your partners in combat..."
 array[3]="Pro Tip: Don't shoot your freinds ship..."
 array[4]="Pro Tip: Don't blow up the Falcon!"
 array[5]="Pro Tip: Never touch reset server!!!"
+array[6]="Pro Tip: Don't forget where you parked your ship."
 size=${#array[@]}
 index=$(($RANDOM % $size))
 screen -S tachyonServer -p 0 -X stuff "Saving...^M"
