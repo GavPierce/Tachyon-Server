@@ -42,7 +42,7 @@ client.on("interactionCreate", async (interaction) => {
         }
         setTimeout(() => {
           getLastLine(serverLog, 1)
-            .then((lastLine) => {
+            .then(async (lastLine) => {
               await interaction.reply(lastLine);
             })
             .catch((err) => {
