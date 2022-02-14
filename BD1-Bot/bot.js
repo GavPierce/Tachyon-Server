@@ -40,13 +40,15 @@ client.on("interactionCreate", async (interaction) => {
           console.log(`stderr: ${stderr}`);
           return;
         }
-        getLastLine(serverLog, 1)
-          .then((lastLine) => {
-            await interaction.reply(lastLine);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
+        setTimeout(() => {
+          getLastLine(serverLog, 1)
+            .then((lastLine) => {
+              await interaction.reply(lastLine);
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        }, 1000);
       }
     );
   }
