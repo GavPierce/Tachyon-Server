@@ -10,9 +10,22 @@ const minLineLength = 1;
 const { exec } = require("child_process");
 
 client.once("ready", () => {
-  console.log("Ready!");
+  console.log("BD-1 Is running!");
 });
 
+fs.watch(serverLog, (event, filename) => {
+  if (filename) {
+    getLastLine(serverLog, 1)
+      .then(async (lastLine) => {
+        if (lastLine.contains("ONLINE") || lastLine.contains("OFFLINE")) {
+          await interaction.reply(lastLine);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+});
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isCommand()) return;
 
@@ -29,28 +42,15 @@ client.on("interactionCreate", async (interaction) => {
       `Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`
     );
   } else if (commandName === "online") {
-    exec(
-      "screen -S tachyonServer -p 0 -X stuff '/online^M'",
-      (error, stdout, stderr) => {
-        if (error) {
-          console.log(`error: ${error.message}`);
-          return;
-        }
-        if (stderr) {
-          console.log(`stderr: ${stderr}`);
-          return;
-        }
-        setTimeout(() => {
-          getLastLine(serverLog, 1)
-            .then(async (lastLine) => {
-              await interaction.reply(lastLine);
-            })
-            .catch((err) => {
-              console.error(err);
-            });
-        }, 1000);
-      }
-    );
+    exec("screen -S tachyonServer -p 0 -X stuff '/online^M'", () => {
+      getLastLine(serverLog, 1)
+        .then(async (lastLine) => {
+          await interaction.reply(lastLine);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    });
   }
 });
 
