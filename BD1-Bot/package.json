@@ -1,0 +1,17 @@
+{
+  "name": "bd1-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for Tachyon Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.27.0",
+    "discord.js": "^13.6.0"
+  }
+}
