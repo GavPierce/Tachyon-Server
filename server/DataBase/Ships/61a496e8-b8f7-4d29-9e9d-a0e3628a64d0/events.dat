@@ -1,0 +1,5 @@
+random_death_event=0
+death_event=CLEAR_SECTOR_SLAVER_PROVOKED
+death_event=CLEAR_SECTOR_SLAVES_SOLD
+random_damage_event=0
+random_jump_event=0
