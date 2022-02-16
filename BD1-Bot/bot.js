@@ -19,6 +19,8 @@ fs.watch(serverLog, (event, filename) => {
       .then(async (lastLine) => {
         if (lastLine.contains("ONLINE") || lastLine.contains("OFFLINE")) {
           await interaction.reply(lastLine);
+        } else if (lastLine.contains("/discord")) {
+          await interaction.reply(lastLine.replace("/discord", ""));
         }
       })
       .catch((err) => {
