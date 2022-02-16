@@ -1,0 +1,6 @@
+random_death_event=1
+death_event=WHALE_DEATH_SOUND_1
+death_event=WHALE_DEATH_SOUND_2
+death_event=WHALE_DEATH_SOUND_3
+random_damage_event=0
+random_jump_event=0

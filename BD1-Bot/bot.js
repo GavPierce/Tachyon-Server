@@ -48,7 +48,7 @@ client.on("interactionCreate", async (interaction) => {
             .catch((err) => {
               console.error(err);
             });
-        }, 1000);
+        }, 2000);
       }
     );
   }
